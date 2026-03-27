@@ -308,6 +308,339 @@ ul,ol { list-style:none }
 .animate-delay-2 { animation-delay:.2s }
 .animate-delay-3 { animation-delay:.3s }
 .animate-delay-4 { animation-delay:.4s }
+
+/* ===== PHPSA Policy Sandbox Simulators CSS ===== */
+/* Tobacco Tax Impact Simulator, OneHealth Costing Model, Spectrum/LiST Model, HTA Value Simulator */
+
+.sandbox-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: var(--bg, #f5f5f5);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.sandbox-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--primary, #1e40af);
+    background: var(--bg, #f5f5f5);
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.sandbox-tab-btn {
+    padding: 12px 20px;
+    border: none;
+    background: transparent;
+    color: var(--text, #333);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.sandbox-tab-btn:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+.sandbox-tab-btn.active {
+    border-bottom-color: var(--primary, #1e40af);
+    color: var(--primary, #1e40af);
+}
+
+.sandbox-tab-content {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.sandbox-tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.simulator-section {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.simulator-header {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary, #1e40af);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--accent, #f97316);
+    padding-bottom: 10px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-label {
+    font-weight: 500;
+    color: var(--text, #333);
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+.input-field {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--primary, #1e40af);
+    box-shadow: 0 0 0 2px rgba(30, 64, 175, 0.1);
+}
+
+.slider-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.slider-input {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(to right, var(--secondary, #10b981), var(--primary, #1e40af));
+}
+
+.slider-value {
+    min-width: 50px;
+    text-align: right;
+    font-weight: 500;
+    color: var(--primary, #1e40af);
+}
+
+.assumptions-panel {
+    background: #f9fafb;
+    border-left: 4px solid var(--accent, #f97316);
+    padding: 15px;
+    border-radius: 4px;
+    margin: 15px 0;
+}
+
+.assumptions-title {
+    font-weight: 600;
+    color: var(--text, #333);
+    margin-bottom: 10px;
+}
+
+.assumption-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.assumption-item:last-child {
+    border-bottom: none;
+}
+
+.chart-container {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: var(--primary, #1e40af);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark, #1e3a8a);
+    box-shadow: 0 4px 8px rgba(30, 64, 175, 0.2);
+}
+
+.btn-secondary {
+    background: var(--secondary, #10b981);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #059669;
+}
+
+.btn-reset {
+    background: var(--bg, #f0f0f0);
+    color: var(--text, #333);
+    border: 1px solid #ddd;
+}
+
+.btn-reset:hover {
+    background: #e5e5e5;
+}
+
+.results-section {
+    background: #f0f9ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.results-title {
+    font-weight: 600;
+    color: var(--primary, #1e40af);
+    margin-bottom: 10px;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #dbeafe;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.result-label {
+    color: var(--text, #333);
+}
+
+.result-value {
+    font-weight: 600;
+    color: var(--primary, #1e40af);
+}
+
+.info-box {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    padding: 12px;
+    border-radius: 4px;
+    margin: 10px 0;
+    font-size: 13px;
+    color: #78350f;
+}
+
+.error-box {
+    background: #fee2e2;
+    border-left: 4px solid #ef4444;
+    padding: 12px;
+    border-radius: 4px;
+    margin: 10px 0;
+    font-size: 13px;
+    color: #7f1d1d;
+}
+
+.success-box {
+    background: #dcfce7;
+    border-left: 4px solid #22c55e;
+    padding: 12px;
+    border-radius: 4px;
+    margin: 10px 0;
+    font-size: 13px;
+    color: #15803d;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+@media (max-width: 1024px) {
+    .grid-3 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .sandbox-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .sandbox-tab-btn {
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+    
+    .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-container {
+        min-height: 250px;
+    }
+}
+
+/* Language-specific styling */
+[data-lang="ar"] {
+    direction: rtl;
+}
+
+[data-lang="ar"] .sandbox-tab-btn {
+    border-bottom: 3px solid transparent;
+}
+
+[data-lang="ar"] .assumptions-panel {
+    border-left: none;
+    border-right: 4px solid var(--accent, #f97316);
+    padding-right: 15px;
+    padding-left: 0;
+}
+
+[data-lang="ar"] .results-section {
+    border-left: none;
+}
+
 </style>
 </head>
 <body>
@@ -934,25 +1267,6 @@ function renderPubKSA() {
 }
 
 function renderPubSandbox() {
-  const POLICIES = [
-    {ar:'الترتيبات التنظيمية لهيئة الصحة العامة',en:'Public Health Authority Organizational Regulations',cat:{ar:'الصحة العامة',en:'Public Health'},type:{ar:'تنظيم',en:'Regulation'},src:{ar:'مجلس الوزراء',en:'Cabinet Resolution'},sum:{ar:'تأسيس هيئة الصحة العامة لمعالجة قصور الوقاية من الأمراض والاستجابة للطوارئ الصحية وتعزيز الصحة السكانية.',en:'Establishes the Public Health Authority to address disease prevention, health emergency response, and population health promotion.'},tags:['Public Health Authority','Disease Prevention','Health Emergency Preparedness','Health Standards'],votes:0,comments:0,date:'Dec 3, 2025'},
-    {ar:'نظام مزاولة المهن الصحية',en:'Health Professions Practice Law',cat:{ar:'القوى العاملة',en:'Workforce'},type:{ar:'نظام',en:'Law'},src:{ar:'مرسوم ملكي',en:'Royal Decree'},sum:{ar:'معالجة عدم الاتساق في تنظيم ممارسة المهن الصحية من خلال إطار ترخيص وسلوك مهني شامل.',en:'Addresses inconsistent regulation of health professions through comprehensive licensing and professional conduct framework.'},tags:['Health Professions','Licensing','Professional Conduct','Medical Ethics'],votes:0,comments:0,date:'Dec 3, 2025'},
-    {ar:'نظام الهيئة السعودية للتخصصات الصحية',en:'Saudi Commission for Health Specialties System',cat:{ar:'القوى العاملة',en:'Workforce'},type:{ar:'نظام',en:'Law'},src:{ar:'الهيئة السعودية للتخصصات الصحية',en:'SCFHS'},sum:{ar:'معالجة عدم الاتساق في التدريب المهني والاعتماد من خلال هيئة تنظيمية مركزية للتخصصات الصحية.',en:'Addresses inconsistency in professional training and accreditation through a centralized regulatory body for health specialties.'},tags:['Certification','Medical Education','Professional Training'],votes:0,comments:0,date:'Dec 3, 2025'},
-    {ar:'نظام المراقبة الصحية في منافذ الدخول',en:'Health Surveillance at Ports of Entry',cat:{ar:'الصحة العامة',en:'Public Health'},type:{ar:'تنظيم',en:'Regulation'},src:{ar:'أخرى',en:'Others'},sum:{ar:'نظام المراقبة الصحية لمواجهة مخاطر الأمراض المعدية العابرة للحدود وفق اللوائح الصحية الدولية.',en:'Health surveillance system addressing cross-border communicable disease risks aligned with International Health Regulations.'},tags:['Border Health','Quarantine','Disease Prevention','International Health Regulations'],votes:0,comments:0,date:'Dec 3, 2025'},
-    {ar:'نظام المؤسسات الصحية الخاصة',en:'Private Health Institutions System',cat:{ar:'الوصول للرعاية',en:'Healthcare Access'},type:{ar:'نظام',en:'Law'},src:{ar:'أخرى',en:'Others'},sum:{ar:'معالجة تفتت معايير الجودة في المؤسسات الصحية الخاصة من خلال إطار ترخيص وتشغيل موحد.',en:'Addresses quality fragmentation in private health institutions through unified licensing and operational standards.'},tags:['Private Healthcare','Licensing','Operational Standards','Patient Rights'],votes:0,comments:0,date:'Dec 3, 2025'},
-    {ar:'نظام الضمان الصحي التعاوني',en:'Cooperative Health Insurance System',cat:{ar:'تمويل الرعاية',en:'Healthcare Funding'},type:{ar:'نظام',en:'Law'},src:{ar:'مرسوم ملكي',en:'Royal Decree'},sum:{ar:'نظام ضمان صحي تعاوني لمعالجة عدم المساواة في الوصول للرعاية الصحية وتوفير الحماية المالية.',en:'Cooperative health insurance system addressing healthcare access inequity and providing financial protection.'},tags:['Health Insurance','Healthcare Access','Financial Protection','Health Equity'],votes:0,comments:0,date:'Dec 3, 2025'},
-    {ar:'نظام الرعاية الصحية النفسية',en:'Mental Healthcare System',cat:{ar:'الصحة النفسية',en:'Mental Health'},type:{ar:'نظام',en:'Law'},src:{ar:'أخرى',en:'Others'},sum:{ar:'إطار شامل قائم على الحقوق للرعاية الصحية النفسية يشمل حقوق المرضى والإدخال الإلزامي ومجالس الإشراف.',en:'Comprehensive rights-based mental healthcare framework including patient rights, mandatory admission rules, and oversight councils.'},tags:['Mental Health','Patient Rights','Psychiatric Facilities','Oversight Councils'],votes:0,comments:0,date:'Dec 3, 2025'},
-    {ar:'لائحة البحوث والدراسات في وزارة الصحة',en:'MOH Research & Studies Regulation',cat:{ar:'البحث العلمي',en:'Research'},type:{ar:'تنظيم',en:'Regulation'},src:{ar:'وزارة الصحة',en:'Ministry of Health'},sum:{ar:'تنظيم البحوث والدراسات في وزارة الصحة لمعالجة التفتت وعدم التنسيق في البحث الصحي.',en:'Regulates research and studies at MOH to address fragmentation and lack of coordination in health research.'},tags:['Health Research','Research Ethics','Research Funding','Intellectual Property'],votes:0,comments:0,date:'Dec 3, 2025'},
-    {ar:'تنظيم المركز الوطني للمعلومات الصحية',en:'National Center for Health Information Regulation',cat:{ar:'التقنية الصحية',en:'Healthcare Technology'},type:{ar:'تنظيم',en:'Regulation'},src:{ar:'المجلس الصحي السعودي',en:'Saudi Health Council'},sum:{ar:'معالجة تفتت بيانات الرعاية الصحية من خلال مركز وطني موحد للمعلومات الصحية والسجلات الإلكترونية.',en:'Addresses fragmented healthcare data through a unified national health information center and electronic records.'},tags:['Digital Health','Health Data','Electronic Health Records','Health Informatics'],votes:0,comments:0,date:'Dec 3, 2025'},
-    {ar:'تنظيم المركز الوطني لتعزيز الصحة النفسية',en:'National Mental Health Promotion Center',cat:{ar:'الصحة النفسية',en:'Mental Health'},type:{ar:'تنظيم',en:'Regulation'},src:{ar:'أخرى',en:'Others'},sum:{ar:'معالجة النهج المجزأ للصحة النفسية من خلال مركز وطني متخصص في تعزيز الوعي والخدمات النفسية.',en:'Addresses fragmented mental health approach through a specialized national center for mental health awareness and services.'},tags:['Mental Health Services','Community Health','Integrated Care'],votes:0,comments:0,date:'Dec 3, 2025'},
-    {ar:'تنظيم المركز السعودي لاعتماد المنشآت الصحية',en:'Saudi Health Facilities Accreditation Center',cat:{ar:'الصحة العامة',en:'Public Health'},type:{ar:'نظام',en:'Law'},src:{ar:'أخرى',en:'Others'},sum:{ar:'معالجة عدم الاتساق في معايير الجودة بالمنشآت الصحية من خلال مركز اعتماد وطني متخصص.',en:'Addresses quality inconsistency in health facilities through a specialized national accreditation center.'},tags:['Healthcare Accreditation','Quality Assurance','Patient Safety'],votes:0,comments:0,date:'Dec 3, 2025'},
-    {ar:'تنظيم المدن الطبية والمستشفيات التخصصية',en:'Medical Cities & Specialized Hospitals Regulation',cat:{ar:'إصلاح الرعاية',en:'Healthcare Reform'},type:{ar:'تنظيم',en:'Regulation'},src:{ar:'وزارة الصحة',en:'Ministry of Health'},sum:{ar:'تنظيم حوكمة المدن الطبية والمستشفيات التخصصية التابعة لوزارة الصحة لتحسين الجودة والبحث العلمي.',en:'Regulates governance of MOH medical cities and specialized hospitals to improve quality and research.'},tags:['Medical Cities','Specialized Hospitals','Healthcare Governance','Medical Research'],votes:0,comments:0,date:'Dec 3, 2025'},
-    {ar:'النظام الموحد لإدارة نفايات الرعاية الصحية بدول الخليج',en:'Unified GCC Healthcare Waste Management System',cat:{ar:'الصحة العامة',en:'Public Health'},type:{ar:'تنظيم',en:'Regulation'},src:{ar:'وزارة الصحة',en:'Ministry of Health'},sum:{ar:'نظام موحد لإدارة نفايات الرعاية الصحية في دول مجلس التعاون لمواجهة المخاطر البيئية والصحية.',en:'Unified system for managing healthcare waste across GCC countries addressing environmental and health risks.'},tags:['Healthcare Waste','Environmental Health','GCC','Infection Control'],votes:0,comments:0,date:'Dec 3, 2025'},
-    {ar:'النظام الصحي',en:'The Healthcare System Law',cat:{ar:'إصلاح الرعاية',en:'Healthcare Reform'},type:{ar:'نظام',en:'Law'},src:{ar:'وزارة الصحة',en:'Ministry of Health'},sum:{ar:'نظام صحي شامل يعالج تحديات توفير الرعاية الصحية العادلة والشاملة بما يتوافق مع رؤية 2030.',en:'Comprehensive healthcare system law addressing equitable and universal healthcare delivery aligned with Vision 2030.'},tags:['Health System Law','Healthcare Access','Regulatory Framework','Patient Rights'],votes:0,comments:0,date:'Dec 3, 2025'},
-  ];
-
-  const catColors = {'Public Health':'var(--accent)','Workforce':'var(--info)','Healthcare Access':'#8B5CF6','Healthcare Funding':'#F59E0B','Mental Health':'#EC4899','Research':'#10B981','Healthcare Technology':'#6366F1','Healthcare Reform':'#EF4444','الصحة العامة':'var(--accent)','القوى العاملة':'var(--info)','الوصول للرعاية':'#8B5CF6','تمويل الرعاية':'#F59E0B','الصحة النفسية':'#EC4899','البحث العلمي':'#10B981','التقنية الصحية':'#6366F1','إصلاح الرعاية':'#EF4444'};
-
   return `
     <!-- SANDBOX IFRAME (hidden by default) -->
     <div id="sandbox-iframe-wrap" style="display:none">
@@ -1017,66 +1331,78 @@ function renderPubSandbox() {
     <section class="section">
       <div class="container">
         <div class="section-header">
-          <div class="overline">${isAr()?'شارك أفكارك':'SHARE YOUR IDEAS'}</div>
-          <h2>${isAr()?'مختبر الابتكار في السياسات الصحية':'Policy Innovation Hub'}</h2>
-          <p>${isAr()?'شارك أفكارك في السياسات الصحية، وتفاعل مع مقترحات الآخرين، وساهم في تشكيل مستقبل الرعاية الصحية في المملكة.':'Share your healthcare policy ideas, engage with proposals from others, and help shape the future of healthcare policy in Saudi Arabia.'}</p>
+          <div class="overline">${isAr()?'محاكيات السياسات':'POLICY SIMULATORS'}</div>
+          <h2>${isAr()?'مختبر السياسات الصحية الديناميكي':'Dynamic Health Policy Simulator Lab'}</h2>
+          <p>${isAr()?'اختبر تأثير السياسات الصحية على المؤشرات الاقتصادية والديموغرافية من خلال محاكيات تفاعلية مبنية على بيانات فعلية.':'Test the impact of health policies on economic and demographic indicators through interactive simulators built on real-world data.'}</p>
         </div>
 
-        <div style="display:flex;gap:var(--space-4);justify-content:center;margin-bottom:var(--space-8)">
-          <button class="btn btn-primary" style="font-size:14px;padding:12px 28px" onclick="switchView('dashboard')">+ ${isAr()?'اقتراح سياسة جديدة':'Submit New Policy Idea'}</button>
-        </div>
-
-        <div style="display:flex;gap:var(--space-4);align-items:center;margin-bottom:var(--space-6);flex-wrap:wrap;justify-content:center">
-          <input type="text" id="sandboxSearch" placeholder="${isAr()?'ابحث في السياسات...':'Search policies...'}" style="flex:1;min-width:280px;max-width:500px;padding:10px 16px;border:1px solid var(--border);border-radius:var(--radius);font-size:14px;font-family:inherit" oninput="filterSandbox()">
-          <div style="display:flex;gap:6px;flex-wrap:wrap" id="sandboxFilters">
-            <button class="badge badge-navy sandbox-filter active" onclick="filterSandboxCat(this,'')" style="cursor:pointer;padding:6px 14px">${isAr()?'الكل':'All'}</button>
-            ${[...new Set(POLICIES.map(p=>t(p.cat)))].map(c=>'<button class="badge sandbox-filter" onclick="filterSandboxCat(this,\''+c+'\')" style="cursor:pointer;padding:6px 14px;background:'+((catColors[c]||'var(--text-muted)')+'20')+';color:'+(catColors[c]||'var(--text-muted)')+'">'+c+'</button>').join('')}
-          </div>
-        </div>
-
-        <div style="display:flex;gap:var(--space-6)">
-          <div style="flex:1" id="sandboxCards">
-            ${POLICIES.map((p,i)=>{
-              const cc = catColors[t(p.cat)] || 'var(--text-muted)';
-              return '<div class="card sandbox-card" data-cat="'+t(p.cat)+'" style="padding:var(--space-6);margin-bottom:var(--space-4);border-inline-start:4px solid '+cc+'">'+
-                '<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap">'+
-                  '<span class="badge" style="background:'+cc+'20;color:'+cc+';font-size:11px">'+t(p.cat)+'</span>'+
-                  '<span class="badge badge-navy" style="font-size:11px">'+t(p.type)+'</span>'+
-                  '<span style="font-size:11px;color:var(--text-muted);margin-inline-start:auto">'+p.date+'</span>'+
-                '</div>'+
-                '<h3 style="font-size:16px;font-weight:700;color:var(--primary);margin-bottom:8px">'+(isAr()?p.ar:p.en)+'</h3>'+
-                '<p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:10px">'+t(p.sum)+'</p>'+
-                '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px">'+
-                  p.tags.slice(0,4).map(tg=>'<span style="font-size:10px;padding:2px 8px;background:var(--bg-secondary);border-radius:10px;color:var(--text-muted)">'+tg+'</span>').join('')+
-                '</div>'+
-                '<div style="display:flex;align-items:center;gap:16px;font-size:12px;color:var(--text-muted);padding-top:8px;border-top:1px solid var(--border)">'+
-                  '<span style="cursor:pointer" onclick="this.textContent=\'👍 1\'">👍 '+p.votes+'</span>'+
-                  '<span>💬 '+p.comments+'</span>'+
-                  '<span style="margin-inline-start:auto;font-size:11px">'+t(p.src)+'</span>'+
-                '</div>'+
-              '</div>';
-            }).join('')}
+        <div class="sandbox-container">
+          <div class="sandbox-tabs">
+            <button class="sandbox-tab-btn active" data-tab="overview" onclick="switchSandboxTab('overview')">${isAr()?'نظرة عامة':'Overview'}</button>
+            <button class="sandbox-tab-btn" data-tab="tobacco" onclick="switchSandboxTab('tobacco')">${isAr()?'ضريبة التبغ':'Tobacco Tax'}</button>
+            <button class="sandbox-tab-btn" data-tab="onehealth" onclick="switchSandboxTab('onehealth')">${isAr()?'نموذج One Health':'OneHealth Model'}</button>
+            <button class="sandbox-tab-btn" data-tab="spectrum" onclick="switchSandboxTab('spectrum')">${isAr()?'نموذج Spectrum/LiST':'Spectrum/LiST'}</button>
+            <button class="sandbox-tab-btn" data-tab="hta" onclick="switchSandboxTab('hta')">${isAr()?'محاكي HTA':'HTA Value'}</button>
           </div>
 
-          <div style="width:240px;flex-shrink:0">
-            <div class="card" style="padding:var(--space-6);position:sticky;top:100px">
-              <h4 style="color:var(--primary);margin-bottom:12px;font-size:14px">${isAr()?'إحصائيات المختبر':'Hub Stats'}</h4>
-              <div style="display:grid;gap:10px;margin-bottom:16px">
-                <div style="display:flex;justify-content:space-between;font-size:13px"><span style="color:var(--text-muted)">${isAr()?'السياسات':'Policies'}</span><strong>${POLICIES.length}</strong></div>
-                <div style="display:flex;justify-content:space-between;font-size:13px"><span style="color:var(--text-muted)">${isAr()?'المساهمون':'Contributors'}</span><strong>1</strong></div>
-                <div style="display:flex;justify-content:space-between;font-size:13px"><span style="color:var(--text-muted)">${isAr()?'التعليقات':'Comments'}</span><strong>0</strong></div>
-              </div>
-              <h4 style="color:var(--primary);margin-bottom:10px;font-size:14px;border-top:1px solid var(--border);padding-top:12px">${isAr()?'كيف تكسب النقاط':'How to Earn Points'}</h4>
-              <div style="display:grid;gap:6px;font-size:12px">
-                <div style="display:flex;justify-content:space-between"><span>${isAr()?'اقتراح سياسة':'Submit policy'}</span><span class="badge badge-green" style="font-size:11px">+50</span></div>
-                <div style="display:flex;justify-content:space-between"><span>${isAr()?'تعليق':'Post comment'}</span><span class="badge badge-green" style="font-size:11px">+10</span></div>
-                <div style="display:flex;justify-content:space-between"><span>${isAr()?'تصويت مفيد':'Helpful vote'}</span><span class="badge badge-green" style="font-size:11px">+15</span></div>
+          <div class="sandbox-tab-content" data-content="overview">
+            <div style="padding:var(--space-8);text-align:center">
+              <h3 style="color:var(--primary);margin-bottom:16px">${isAr()?'اختر محاكاة لبدء الاستكشاف':'Select a Simulator to Begin'}</h3>
+              <p style="color:var(--text-secondary);margin-bottom:24px;max-width:500px;margin-inline:auto">${isAr()?'تقدم هذه المحاكيات أدوات قائمة على البيانات لتقييم تأثير السياسات الصحية على الاقتصاد والصحة العامة والنتائج السكانية.':'These simulators provide data-driven tools to assess the impact of healthcare policies on economic, public health, and population outcomes.'}</p>
+              <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-6);max-width:600px;margin-inline:auto">
+                <div class="card" style="padding:var(--space-6);cursor:pointer;border:2px solid var(--border);transition:all 0.3s" onclick="switchSandboxTab('tobacco')">
+                  <div style="font-size:32px;margin-bottom:12px">🚭</div>
+                  <h4 style="color:var(--primary);margin-bottom:8px">${isAr()?'ضريبة التبغ':'Tobacco Tax'}</h4>
+                  <p style="font-size:13px;color:var(--text-secondary)">${isAr()?'قياس تأثير ضرائب التبغ على الصحة والإيرادات':'Assess tobacco tax impact on health and revenue'}</p>
+                </div>
+                <div class="card" style="padding:var(--space-6);cursor:pointer;border:2px solid var(--border);transition:all 0.3s" onclick="switchSandboxTab('onehealth')">
+                  <div style="font-size:32px;margin-bottom:12px">🏥</div>
+                  <h4 style="color:var(--primary);margin-bottom:8px">${isAr()?'One Health':'OneHealth Model'}</h4>
+                  <p style="font-size:13px;color:var(--text-secondary)">${isAr()?'نموذج التكاليف المتكاملة':'Integrated costing model'}</p>
+                </div>
+                <div class="card" style="padding:var(--space-6);cursor:pointer;border:2px solid var(--border);transition:all 0.3s" onclick="switchSandboxTab('spectrum')">
+                  <div style="font-size:32px;margin-bottom:12px">📊</div>
+                  <h4 style="color:var(--primary);margin-bottom:8px">${isAr()?'Spectrum/LiST':'Spectrum/LiST'}</h4>
+                  <p style="font-size:13px;color:var(--text-secondary)">${isAr()?'تخطيط التدخلات الصحية':'Health intervention planning'}</p>
+                </div>
+                <div class="card" style="padding:var(--space-6);cursor:pointer;border:2px solid var(--border);transition:all 0.3s" onclick="switchSandboxTab('hta')">
+                  <div style="font-size:32px;margin-bottom:12px">💰</div>
+                  <h4 style="color:var(--primary);margin-bottom:8px">${isAr()?'HTA Value':'HTA Value'}</h4>
+                  <p style="font-size:13px;color:var(--text-secondary)">${isAr()?'تقييم التكنولوجيا الصحية':'Health technology assessment'}</p>
+                </div>
               </div>
             </div>
+          </div>
+
+          <div class="sandbox-tab-content" data-content="tobacco" style="display:none">
+            <div id="tobaccoSimulator"></div>
+          </div>
+
+          <div class="sandbox-tab-content" data-content="onehealth" style="display:none">
+            <div id="onehealthSimulator"></div>
+          </div>
+
+          <div class="sandbox-tab-content" data-content="spectrum" style="display:none">
+            <div id="spectrumSimulator"></div>
+          </div>
+
+          <div class="sandbox-tab-content" data-content="hta" style="display:none">
+            <div id="htaSimulator"></div>
           </div>
         </div>
       </div>
     </section>`;
+}
+
+let currentSandboxTab = 'overview';
+function switchSandboxTab(tab) {
+  currentSandboxTab = tab;
+  document.querySelectorAll('.sandbox-tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === tab);
+  });
+  document.querySelectorAll('.sandbox-tab-content').forEach(content => {
+    content.style.display = content.dataset.content === tab ? '' : 'none';
+  });
 }
 
 function filterSandbox() {
@@ -1588,6 +1914,2185 @@ document.addEventListener('keydown', e => {
   if (e.key==='Escape') document.getElementById('dashSidebar')?.classList.remove('open');
 });
 
+function generateRecommendations() {
+            const isAr = document.documentElement.lang === 'ar';
+            const recs = [];
+
+            // High-power opponents to convert
+            const dangerousOpponents = pmStakeholders.filter(s => positionValues[s.position] < 0 && s.power === 'high');
+            if (dangerousOpponents.length > 0) {
+                const names = dangerousOpponents.map(s => s.name).join(isAr ? '، ' : ', ');
+                recs.push(isAr
+                    ? `⚠️ <strong>أولوية قصوى — تحييد المعارضة القوية:</strong> ${names} — هؤلاء أصحاب قوة عالية ومعارضون. يجب التعامل معهم عبر حوار مباشر أو تقديم تنازلات مدروسة أو بناء تحالفات تُحيّد تأثيرهم.`
+                    : `⚠️ <strong>Top Priority — Neutralize powerful opponents:</strong> ${names} — These are high-power opponents. Engage through direct dialogue, targeted concessions, or build coalitions that counterbalance their influence.`
+                );
+            }
+
+            // High-interest neutrals to recruit
+            const recruitableNeutrals = pmStakeholders.filter(s => s.position === 'neutral' && (s.interest === 'high' || s.power === 'high'));
+            if (recruitableNeutrals.length > 0) {
+                const names = recruitableNeutrals.map(s => s.name).join(isAr ? '، ' : ', ');
+                recs.push(isAr
+                    ? `🎯 <strong>فرصة استقطاب:</strong> ${names} — جهات محايدة ذات قوة أو اهتمام عالي. استثمر في استقطابهم عبر تقديم الأدلة وإبراز الفوائد المباشرة لهم.`
+                    : `🎯 <strong>Recruitment Opportunity:</strong> ${names} — Neutral stakeholders with high power or interest. Invest in evidence-based persuasion highlighting direct benefits to them.`
+                );
+            }
+
+            // Champions to leverage
+            const champions = pmStakeholders.filter(s => positionValues[s.position] > 0 && s.power === 'high');
+            if (champions.length > 0) {
+                const names = champions.map(s => s.name).join(isAr ? '، ' : ', ');
+                recs.push(isAr
+                    ? `🏆 <strong>استفد من الأبطال:</strong> ${names} — هؤلاء مؤيدون أقوياء. اجعلهم واجهة الدعوة للسياسة وامنحهم الأدوات والبيانات اللازمة لتعزيز موقفهم.`
+                    : `🏆 <strong>Leverage Champions:</strong> ${names} — These are powerful supporters. Position them as the public face of advocacy and equip them with data and talking points.`
+                );
+            }
+
+            // Low-power high-interest supporters = grassroots
+            const grassroots = pmStakeholders.filter(s => positionValues[s.position] > 0 && s.power === 'low' && s.interest === 'high');
+            if (grassroots.length > 0) {
+                const names = grassroots.map(s => s.name).join(isAr ? '، ' : ', ');
+                recs.push(isAr
+                    ? `👥 <strong>حشد القاعدة الشعبية:</strong> ${names} — مؤيدون ذوو اهتمام عالي لكن قوة محدودة. نظّم جهودهم لتضخيم الصوت العام وبناء ضغط شعبي.`
+                    : `👥 <strong>Mobilize Grassroots:</strong> ${names} — Supportive with high interest but low power. Organize their efforts to amplify public voice and build popular pressure.`
+                );
+            }
+
+            // General strategy
+            const supporters = pmStakeholders.filter(s => positionValues[s.position] > 0).length;
+            const opponents = pmStakeholders.filter(s => positionValues[s.position] < 0).length;
+            if (opponents > supporters) {
+                recs.push(isAr
+                    ? `📋 <strong>استراتيجية عامة:</strong> المعارضون يفوقون المؤيدين عدداً. فكّر في تعديل السياسة لتقليل المقاومة (مثل التطبيق التدريجي أو الاستثناءات المؤقتة) قبل الدفع بالتنفيذ.`
+                    : `📋 <strong>Overall Strategy:</strong> Opponents outnumber supporters. Consider modifying the policy to reduce resistance (e.g., phased implementation, temporary exemptions) before pushing for adoption.`
+                );
+            }
+
+            if (recs.length === 0) {
+                recs.push(isAr ? '✅ لا توجد تحديات سياسية واضحة. تابع بالتنفيذ.' : '✅ No obvious political challenges. Proceed with implementation.');
+            }
+
+            document.getElementById('pmRecommendations').innerHTML = recs.map(r => `<div style="margin-bottom:10px; padding:10px 14px; background:white; border-radius:var(--radius-sm); border-right:3px solid var(--accent);">${r}</div>`).join('');
+        }
+
+        function resetPolicyMaker() {
+            pmStakeholders = [];
+            document.getElementById('pmPolicyName').value = '';
+            document.getElementById('pmPolicyDomain').value = '';
+            updatePolicyMaker();
+        }
+
+        function loadExampleScenario() {
+            const isAr = document.documentElement.lang === 'ar';
+            pmStakeholders = [];
+            document.getElementById('pmPolicyName').value = isAr ? 'فرض ضريبة إضافية 50% على المشروبات السكرية' : 'Additional 50% tax on sugar-sweetened beverages';
+            document.getElementById('pmPolicyDomain').value = 'population';
+
+            const scenario = [
+                ['\u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u0635\u062D\u0629','Ministry of Health','strong_support','high','high'],
+                ['\u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u0645\u0627\u0644\u064A\u0629','Ministry of Finance','moderate_support','high','high'],
+                ['\u0627\u0644\u0645\u062C\u0644\u0633 \u0627\u0644\u0635\u062D\u064A \u0627\u0644\u0633\u0639\u0648\u062F\u064A','Saudi Health Council','strong_support','high','medium'],
+                ['\u0635\u0646\u0627\u0639\u0629 \u0627\u0644\u0645\u0634\u0631\u0648\u0628\u0627\u062A','Beverage Industry','strong_oppose','medium','high'],
+                ['\u0645\u0646\u0638\u0645\u0627\u062A \u0627\u0644\u0645\u0633\u062A\u0647\u0644\u0643\u064A\u0646','Consumer Groups','moderate_oppose','low','high'],
+                ['\u0627\u0644\u0631\u0623\u064A \u0627\u0644\u0639\u0627\u0645','General Public','neutral','low','medium'],
+                ['\u0627\u0644\u0647\u064A\u0626\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u063A\u0630\u0627\u0621 \u0648\u0627\u0644\u062F\u0648\u0627\u0621','SFDA','moderate_support','medium','medium'],
+                ['\u0645\u062C\u0644\u0633 \u0627\u0644\u0634\u0648\u0631\u0649','Shura Council','neutral','high','medium'],
+                ['\u0627\u0644\u0623\u0643\u0627\u062F\u064A\u0645\u064A\u0648\u0646 \u0648\u0627\u0644\u0628\u0627\u062D\u062B\u0648\u0646','Academics & Researchers','strong_support','low','high'],
+                ['\u0642\u0637\u0627\u0639 \u0627\u0644\u062A\u062C\u0632\u0626\u0629','Retail Sector','moderate_oppose','medium','medium'],
+            ];
+            scenario.forEach(([ar,en,pos,pow,int]) => {
+                pmStakeholders.push({ id: Date.now() + Math.random(), name: isAr ? ar : en, position: pos, power: pow, interest: int });
+            });
+            updatePolicyMaker();
+        }
+
+        function exportPolicyMaker() {
+            const isAr = document.documentElement.lang === 'ar';
+            const dir = isAr ? 'rtl' : 'ltr';
+            const align = isAr ? 'right' : 'left';
+            const policyName = document.getElementById('pmPolicyName').value || (isAr ? 'غير محدد' : 'Unspecified');
+            const domainSelect = document.getElementById('pmPolicyDomain');
+            const domainText = domainSelect.options[domainSelect.selectedIndex]?.text || '';
+            const scoreEl = document.getElementById('pmFeasibilityScore');
+            const labelEl = document.getElementById('pmFeasibilityLabel');
+            const powerBal = document.getElementById('pmPowerBalance');
+            const coalEl = document.getElementById('pmCoalitionStatus');
+            const recsEl = document.getElementById('pmRecommendations');
+            const today = new Date().toLocaleDateString(isAr ? 'ar-SA' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            // Capture canvas images
+            const posMapCanvas = document.getElementById('pmPositionMap');
+            const powerGridCanvas = document.getElementById('pmPowerGrid');
+            const posMapImg = posMapCanvas ? posMapCanvas.toDataURL('image/png') : '';
+            const powerGridImg = powerGridCanvas ? powerGridCanvas.toDataURL('image/png') : '';
+
+            // Build stakeholder table rows
+            const stakeholderRows = pmStakeholders.map(s => {
+                const pos = positionLabels[s.position];
+                return `<tr>
+                    <td style="padding:8px 12px; border-bottom:1px solid #E5E7EB;">${pos.emoji} ${s.name}</td>
+                    <td style="padding:8px 12px; border-bottom:1px solid #E5E7EB; color:${pos.color}; font-weight:600;">${isAr ? pos.ar : pos.en}</td>
+                    <td style="padding:8px 12px; border-bottom:1px solid #E5E7EB; text-transform:capitalize;">${s.power}</td>
+                    <td style="padding:8px 12px; border-bottom:1px solid #E5E7EB; text-transform:capitalize;">${s.interest}</td>
+                </tr>`;
+            }).join('');
+
+            const bodyHtml = `
+<h4>${isAr ? 'السياسة المُحلَّلة' : 'Policy Under Analysis'}</h4>
+<p><strong>${isAr ? 'اسم السياسة:' : 'Policy Name:'}</strong> ${policyName}</p>
+<p><strong>${isAr ? 'المجال:' : 'Domain:'}</strong> ${domainText}</p>
+
+<h4>${isAr ? 'نتائج تحليل الجدوى' : 'Feasibility Results'}</h4>
+<div style="display:flex; gap:16px; flex-wrap:wrap; margin:10px 0;">
+    <div style="background:#F6F3EF; border:2px solid #0F7C7B; border-radius:8px; padding:12px 24px; text-align:center;">
+        <div style="font-size:28pt; font-weight:800; color:${scoreEl.style.color};">${scoreEl.textContent}</div>
+        <div style="font-size:9pt; color:#6B7280;">${isAr ? 'مؤشر الجدوى السياسية' : 'Political Feasibility Index'}</div>
+        <div style="font-size:9pt; color:${labelEl.style.color}; font-weight:600;">${labelEl.textContent}</div>
+    </div>
+    <div style="background:#F6F3EF; border:2px solid #0F7C7B; border-radius:8px; padding:12px 24px; text-align:center;">
+        <div style="font-size:28pt; font-weight:800; color:${powerBal.style.color};">${powerBal.textContent}</div>
+        <div style="font-size:9pt; color:#6B7280;">${isAr ? 'ميزان القوى' : 'Power Balance'}</div>
+    </div>
+    <div style="background:#F6F3EF; border:2px solid #0F7C7B; border-radius:8px; padding:12px 24px; text-align:center;">
+        <div style="font-size:28pt; font-weight:800; color:#0B1F3B;">${coalEl.textContent}</div>
+        <div style="font-size:9pt; color:#6B7280;">${isAr ? 'مؤيد / محايد / معارض' : 'Support / Neutral / Oppose'}</div>
+    </div>
+</div>
+
+<h4>${isAr ? 'أصحاب المصلحة' : 'Stakeholders'}</h4>
+<table><thead><tr>
+    <th>${isAr ? 'الجهة' : 'Stakeholder'}</th><th>${isAr ? 'الموقف' : 'Position'}</th>
+    <th>${isAr ? 'القوة' : 'Power'}</th><th>${isAr ? 'الاهتمام' : 'Interest'}</th>
+</tr></thead><tbody>${stakeholderRows}</tbody></table>
+
+${posMapImg ? `<h4>${isAr ? 'خريطة مواقف أصحاب المصلحة' : 'Stakeholder Position Map'}</h4><img src="${posMapImg}" style="width:100%;max-height:280px;object-fit:contain;">` : ''}
+${powerGridImg ? `<h4>${isAr ? 'مصفوفة القوة والاهتمام' : 'Power–Interest Grid'}</h4><img src="${powerGridImg}" style="width:100%;max-height:280px;object-fit:contain;">` : ''}
+
+<h4>${isAr ? 'التوصيات الاستراتيجية' : 'Strategic Recommendations'}</h4>
+${recsEl ? recsEl.innerHTML.replace(/background:white/g, 'background:#FFF7ED') : ''}`;
+
+            const htmlContent = phpsa_pdfShell({
+                title: 'Stakeholder & Political Feasibility Analysis',
+                titleAr: 'تحليل أصحاب المصلحة والجدوى السياسية',
+                subtitle: 'Based on PolicyMaker 4.0 — Prof. Michael Reich, Harvard T.H. Chan School of Public Health',
+                subtitleAr: 'مبني على إطار PolicyMaker 4.0 — البروفيسور مايكل رايش، كلية هارفارد للصحة العامة',
+                modelName: 'PolicyMaker 4.0 — Prof. Michael Reich, Harvard T.H. Chan School of Public Health',
+                modelNameAr: 'PolicyMaker 4.0 — البروفيسور مايكل رايش، كلية هارفارد تي إتش تشان للصحة العامة',
+                modelUrl: 'https://michaelrreich.com/policymaker-software',
+                modelRef: 'Reich, M.R. (1996). "Applied political analysis for health policy reform." Current Issues in Public Health, 2, 186-191.',
+                accentColor: '#0B1F3B',
+                bodyHtml
+            });
+
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(htmlContent);
+            printWindow.document.close();
+            // Auto-trigger print dialog after a short delay for rendering
+            setTimeout(() => { printWindow.print(); }, 600);
+        }
+
+        // ============================================================
+        // POLICY LIBRARY
+        // ============================================================
+        const policies = [
+            // === NATIONAL (Saudi Arabia) ===
+            { id: 1, title_ar: "برنامج التحول الوطني للقطاع الصحي", title_en: "National Health Transformation Program (NTP)", area: "healthcare", domain: "governance", level: "national", type: "strategy", year: 2021, status: "active", issuer_ar: "مجلس الشؤون الاقتصادية والتنمية", issuer_en: "Council of Economic and Development Affairs", description_ar: "البرنامج الاستراتيجي الرئيسي لتحويل القطاع الصحي ضمن رؤية 2030، يشمل إعادة هيكلة النظام الصحي وخصخصة الخدمات وتحسين الكفاءة.", description_en: "The flagship strategic program for health sector transformation under Vision 2030, covering system restructuring, privatization, and efficiency improvements.", targets: "80% patient satisfaction by 2030; reduce household health spending to 15%", url: "https://www.vision2030.gov.sa/en/vision-2030/vrp/health-sector-transformation-program/" },
+            { id: 2, title_ar: "أهداف رؤية 2030 للقطاع الصحي", title_en: "Vision 2030 Health Sector Goals", area: "healthcare", domain: "governance", level: "national", type: "strategy", year: 2016, status: "active", issuer_ar: "مجلس الشؤون الاقتصادية والتنمية", issuer_en: "Council of Economic and Development Affairs", description_ar: "الأهداف الاستراتيجية الصحية ضمن رؤية المملكة 2030 تشمل زيادة تغطية الرعاية الأولية وخفض معدلات الأمراض المزمنة وتحسين جودة الخدمات.", description_en: "Strategic health goals within Saudi Vision 2030 including expanding primary care coverage, reducing NCD rates, and improving service quality.", targets: "Increase PHC coverage to 80%; reduce premature NCD mortality by 25%", url: "https://www.vision2030.gov.sa/en/explore/programs/quality-of-life" },
+            { id: 3, title_ar: "نظام مكافحة التدخين ولائحته التنفيذية", title_en: "Anti-Smoking Law and Executive Regulations", area: "tobacco", domain: "population", level: "national", type: "law", year: 2015, status: "active", issuer_ar: "وزارة الصحة", issuer_en: "Ministry of Health", description_ar: "نظام شامل لمكافحة التدخين يحظر التدخين في الأماكن العامة والمغلقة ويفرض قيوداً على الإعلان والترويج للتبغ.", description_en: "Comprehensive anti-smoking law banning smoking in enclosed public places and restricting tobacco advertising and promotion.", targets: "Reduce smoking prevalence to 5% by 2030", url: "https://www.moh.gov.sa/en/Ministry/Rules/Pages/default.aspx" },
+            { id: 4, title_ar: "اختصاصات المجلس الصحي السعودي", title_en: "Saudi Health Council Mandate & Bylaws", area: "healthcare", domain: "governance", level: "national", type: "law", year: 2019, status: "active", issuer_ar: "المجلس الصحي السعودي", issuer_en: "Saudi Health Council", description_ar: "النظام المؤسسي للمجلس الصحي السعودي كجهة تنسيقية عليا للقطاع الصحي، يحدد صلاحيات الإشراف والتنظيم والتخطيط الاستراتيجي.", description_en: "Institutional mandate of the Saudi Health Council as the supreme coordinating body for the health sector, defining oversight and strategic planning authorities.", targets: "Unified national health governance framework", url: "https://shc.gov.sa/en/Pages/default.aspx" },
+            { id: 5, title_ar: "نظام الضمان الصحي التعاوني ولوائحه", title_en: "Cooperative Health Insurance Law (CCHI Regulations)", area: "healthcare", domain: "financing", level: "national", type: "law", year: 2021, status: "active", issuer_ar: "مجلس الضمان الصحي", issuer_en: "Council of Cooperative Health Insurance (CCHI)", description_ar: "نظام التأمين الصحي الإلزامي للعاملين في القطاع الخاص وعائلاتهم، مع لوائح تنظيمية لشركات التأمين ومقدمي الخدمات.", description_en: "Mandatory health insurance law for private sector employees and dependents, with regulatory frameworks for insurers and service providers.", targets: "Universal insurance coverage for all residents", url: "https://chi.gov.sa/en/Pages/default.aspx" },
+            { id: 6, title_ar: "استراتيجية الرعاية الصحية الأولية", title_en: "National Primary Healthcare Strategy", area: "healthcare", domain: "service", level: "national", type: "strategy", year: 2021, status: "active", issuer_ar: "وزارة الصحة", issuer_en: "Ministry of Health", description_ar: "استراتيجية تحويل نموذج الرعاية إلى نظام يركز على الرعاية الأولية كنقطة دخول أولى، مع نموذج طبيب الأسرة والفرق الصحية المتكاملة.", description_en: "Strategy to transform the care model to a PHC-centered system with family medicine, integrated health teams, and community-based care.", targets: "2,500 PHC centers by 2030; 80% of encounters at PHC level", url: "https://www.moh.gov.sa/en/Ministry/About/Pages/Strategy.aspx" },
+            { id: 7, title_ar: "استراتيجية الصحة النفسية الوطنية", title_en: "National Mental Health Strategy", area: "mental", domain: "service", level: "national", type: "strategy", year: 2022, status: "active", issuer_ar: "وزارة الصحة", issuer_en: "Ministry of Health", description_ar: "استراتيجية لتوسيع خدمات الصحة النفسية وتقليل الوصمة ودمج خدمات الصحة النفسية في الرعاية الأولية وتدريب الكوادر المتخصصة.", description_en: "Strategy to expand mental health services, reduce stigma, integrate mental health into PHC, and train specialized workforce.", targets: "5 psychiatrists per 100,000 population by 2030", url: "https://www.moh.gov.sa/en/Ministry/About/Pages/Strategy.aspx" },
+            { id: 8, title_ar: "الاستراتيجية الوطنية للصحة الإلكترونية", title_en: "National E-Health Strategy", area: "healthcare", domain: "information", level: "national", type: "strategy", year: 2019, status: "active", issuer_ar: "وزارة الصحة - المركز السعودي للصحة الإلكترونية", issuer_en: "MOH - Saudi Health Information Exchange (SHIE)", description_ar: "استراتيجية رقمنة الخدمات الصحية وتطبيق السجلات الطبية الإلكترونية الموحدة وتبادل المعلومات الصحية بين القطاعات.", description_en: "Strategy for healthcare digitization, unified electronic medical records, and cross-sector health information exchange.", targets: "100% EHR adoption by 2025; unified health data platform", url: "https://www.moh.gov.sa/en/Ministry/nehs/Pages/default.aspx" },
+            { id: 9, title_ar: "لوائح الهيئة العامة للغذاء والدواء", title_en: "SFDA Pharmaceutical Regulations", area: "healthcare", domain: "products", level: "national", type: "regulation", year: 2020, status: "active", issuer_ar: "الهيئة العامة للغذاء والدواء", issuer_en: "Saudi Food and Drug Authority (SFDA)", description_ar: "اللوائح المنظمة لتسجيل وتصنيع واستيراد وتوزيع المنتجات الدوائية والأجهزة الطبية في المملكة.", description_en: "Regulations governing registration, manufacturing, import, and distribution of pharmaceuticals and medical devices in Saudi Arabia.", targets: "Local pharma manufacturing to cover 40% of needs by 2030", url: "https://www.sfda.gov.sa/en/regulations" },
+            { id: 10, title_ar: "إطار الاستعداد والاستجابة لحالات الطوارئ الصحية", title_en: "Health Emergency Preparedness & Response Framework", area: "healthcare", domain: "emergency", level: "national", type: "framework", year: 2020, status: "active", issuer_ar: "المركز الوطني للوقاية من الأمراض ومكافحتها", issuer_en: "National Center for Disease Prevention and Control (Weqaya)", description_ar: "إطار الاستجابة للأوبئة والطوارئ الصحية المبني على دروس جائحة كوفيد-19 ومتلازمة الشرق الأوسط التنفسية.", description_en: "Epidemic and health emergency response framework built on lessons from COVID-19 and MERS-CoV experiences.", targets: "48-hour rapid response capability; 95% contact tracing", url: "https://www.weqaya.org.sa/" },
+            { id: 11, title_ar: "البرنامج الوطني للوقاية من الأمراض المزمنة", title_en: "National NCD Prevention Program", area: "healthcare", domain: "population", level: "national", type: "action_plan", year: 2021, status: "active", issuer_ar: "وزارة الصحة", issuer_en: "Ministry of Health", description_ar: "برنامج شامل للوقاية من السكري وأمراض القلب والسمنة يشمل ضريبة السكر وحملات التوعية والفحص المبكر.", description_en: "Comprehensive program for diabetes, CVD, and obesity prevention including sugar tax, awareness campaigns, and early screening.", targets: "Reduce obesity prevalence from 33% to 24% by 2030", url: "https://www.moh.gov.sa/en/HealthAwareness/Pages/default.aspx" },
+            { id: 12, title_ar: "معايير اعتماد المنشآت الصحية (CBAHI)", title_en: "Healthcare Facility Accreditation Standards (CBAHI)", area: "healthcare", domain: "service", level: "national", type: "guideline", year: 2022, status: "active", issuer_ar: "المركز السعودي لاعتماد المنشآت الصحية", issuer_en: "Saudi Central Board for Accreditation of Healthcare Institutions", description_ar: "معايير الاعتماد الوطنية لضمان جودة وسلامة الخدمات الصحية في المستشفيات ومراكز الرعاية الأولية.", description_en: "National accreditation standards ensuring quality and safety of healthcare services in hospitals and PHC centers.", targets: "100% hospital accreditation by 2025", url: "https://portal.cbahi.gov.sa/" },
+            { id: 13, title_ar: "استراتيجية القوى العاملة الصحية والسعودة", title_en: "Health Workforce Strategy & Saudization", area: "healthcare", domain: "workforce", level: "national", type: "strategy", year: 2020, status: "active", issuer_ar: "الهيئة السعودية للتخصصات الصحية", issuer_en: "Saudi Commission for Health Specialties (SCFHS)", description_ar: "استراتيجية لزيادة نسبة السعوديين في القطاع الصحي وتطوير برامج التدريب والابتعاث وتخطيط القوى العاملة.", description_en: "Strategy to increase Saudi nationals in healthcare, develop training programs, scholarship programs, and workforce planning.", targets: "50% Saudization of physicians by 2030", url: "https://www.scfhs.org.sa/en/pages/default.aspx" },
+            { id: 14, title_ar: "سياسة حماية البيانات الصحية", title_en: "Health Data Protection Policy", area: "healthcare", domain: "information", level: "national", type: "regulation", year: 2023, status: "active", issuer_ar: "الهيئة السعودية للبيانات والذكاء الاصطناعي", issuer_en: "Saudi Data & AI Authority (SDAIA)", description_ar: "لوائح حماية البيانات الصحية الشخصية ضمن نظام حماية البيانات الشخصية وتنظيم مشاركة البيانات الصحية للبحث العلمي.", description_en: "Health data privacy regulations under the Personal Data Protection Law, governing health data sharing for research.", targets: "Full PDPL compliance across health sector by 2025", url: "https://sdaia.gov.sa/en/SDAIA/about/Pages/default.aspx" },
+            { id: 15, title_ar: "سياسة العدالة الصحية وتقليص الفجوات بين المناطق", title_en: "Health Equity & Regional Disparities Policy", area: "healthcare", domain: "equity", level: "national", type: "framework", year: 2022, status: "active", issuer_ar: "وزارة الصحة", issuer_en: "Ministry of Health", description_ar: "إطار لتقليص الفجوات الصحية بين المناطق الحضرية والريفية ومعالجة المحددات الاجتماعية للصحة.", description_en: "Framework to reduce health disparities between urban and rural regions and address social determinants of health.", targets: "Equal PHC access across all 13 regions by 2030", url: "https://www.moh.gov.sa/en/Ministry/About/Pages/Strategy.aspx" },
+            // === GCC Level ===
+            { id: 16, title_ar: "الاستراتيجية الصحية الموحدة لدول مجلس التعاون", title_en: "GCC Unified Health Strategy", area: "healthcare", domain: "governance", level: "gcc", type: "strategy", year: 2019, status: "active", issuer_ar: "مجلس الصحة لدول مجلس التعاون", issuer_en: "Gulf Health Council", description_ar: "استراتيجية موحدة للتعاون الصحي بين دول الخليج تشمل التبادل المعرفي والمشتريات المشتركة ومكافحة الأوبئة.", description_en: "Unified strategy for health cooperation among GCC states covering knowledge exchange, joint procurement, and epidemic control.", targets: "Common GCC drug registration by 2025", url: "https://ghc.sa/en/" },
+            { id: 17, title_ar: "اتفاقية مكافحة التبغ لدول الخليج", title_en: "GCC Tobacco Control Agreement", area: "tobacco", domain: "population", level: "gcc", type: "framework", year: 2016, status: "active", issuer_ar: "مجلس الصحة لدول مجلس التعاون", issuer_en: "Gulf Health Council", description_ar: "اتفاقية إقليمية لتنسيق سياسات مكافحة التبغ بين دول الخليج بما يتماشى مع اتفاقية منظمة الصحة العالمية.", description_en: "Regional agreement for coordinating tobacco control policies among GCC states in line with WHO FCTC.", targets: "Harmonized tobacco taxation across GCC", url: "https://ghc.sa/en/" },
+            { id: 18, title_ar: "إطار الترصد الوبائي المشترك لدول الخليج", title_en: "GCC Joint Epidemiological Surveillance Framework", area: "healthcare", domain: "emergency", level: "gcc", type: "framework", year: 2020, status: "active", issuer_ar: "مجلس الصحة لدول مجلس التعاون", issuer_en: "Gulf Health Council", description_ar: "إطار مشترك للترصد الوبائي والإنذار المبكر ومشاركة البيانات الوبائية بين دول الخليج.", description_en: "Joint framework for epidemiological surveillance, early warning, and data sharing among GCC states.", targets: "Real-time cross-border disease notification system", url: "https://ghc.sa/en/" },
+            // === Global Level ===
+            { id: 19, title_ar: "إطار التغطية الصحية الشاملة - منظمة الصحة العالمية", title_en: "WHO Universal Health Coverage Framework", area: "healthcare", domain: "financing", level: "global", type: "framework", year: 2019, status: "active", issuer_ar: "منظمة الصحة العالمية", issuer_en: "World Health Organization (WHO)", description_ar: "الإطار العالمي للتغطية الصحية الشاملة الذي يوجه الدول نحو ضمان حصول الجميع على الخدمات الصحية دون معاناة مالية.", description_en: "Global framework guiding countries toward ensuring everyone receives health services without financial hardship.", targets: "1 billion more people covered by 2025", url: "https://www.who.int/health-topics/universal-health-coverage" },
+            { id: 20, title_ar: "الاتفاقية الإطارية لمكافحة التبغ (FCTC)", title_en: "WHO Framework Convention on Tobacco Control (FCTC)", area: "tobacco", domain: "population", level: "global", type: "framework", year: 2005, status: "active", issuer_ar: "منظمة الصحة العالمية", issuer_en: "World Health Organization (WHO)", description_ar: "أول معاهدة دولية للصحة العامة تهدف لمكافحة وباء التبغ من خلال إجراءات تنظيمية على العرض والطلب.", description_en: "The first international public health treaty aimed at combating the tobacco epidemic through demand and supply reduction measures.", targets: "30% relative reduction in tobacco use by 2025", url: "https://fctc.who.int/" },
+            { id: 21, title_ar: "أهداف التنمية المستدامة - الهدف الثالث: الصحة الجيدة", title_en: "SDG Goal 3: Good Health and Well-being", area: "healthcare", domain: "governance", level: "global", type: "framework", year: 2015, status: "active", issuer_ar: "الأمم المتحدة", issuer_en: "United Nations", description_ar: "الهدف الثالث من أهداف التنمية المستدامة يشمل 13 غاية لضمان حياة صحية وتعزيز الرفاه لجميع الأعمار بحلول 2030.", description_en: "SDG 3 encompasses 13 targets to ensure healthy lives and promote well-being for all at all ages by 2030.", targets: "Reduce maternal mortality to <70/100,000; end preventable child deaths", url: "https://sdgs.un.org/goals/goal3" },
+            { id: 22, title_ar: "خطة عمل منظمة الصحة العالمية للأمراض غير السارية", title_en: "WHO Global NCD Action Plan 2013-2030", area: "healthcare", domain: "population", level: "global", type: "action_plan", year: 2013, status: "active", issuer_ar: "منظمة الصحة العالمية", issuer_en: "World Health Organization (WHO)", description_ar: "خطة عمل عالمية للوقاية من الأمراض غير السارية ومكافحتها تتضمن 9 أهداف طوعية و25 مؤشراً.", description_en: "Global action plan for NCD prevention and control with 9 voluntary targets and 25 indicators.", targets: "25% reduction in premature NCD mortality by 2025", url: "https://www.who.int/publications/i/item/9789241506236" },
+            { id: 23, title_ar: "اللوائح الصحية الدولية (IHR 2005)", title_en: "International Health Regulations (IHR 2005)", area: "healthcare", domain: "emergency", level: "global", type: "law", year: 2005, status: "active", issuer_ar: "منظمة الصحة العالمية", issuer_en: "World Health Organization (WHO)", description_ar: "اللوائح الدولية الملزمة لجميع الدول الأعضاء للكشف عن طوارئ الصحة العامة والإبلاغ عنها والاستجابة لها.", description_en: "Legally binding regulations for all member states to detect, report, and respond to public health emergencies.", targets: "Core capacity compliance across all member states", url: "https://www.who.int/health-topics/international-health-regulations" },
+            { id: 24, title_ar: "استراتيجية منظمة الصحة العالمية للصحة الرقمية", title_en: "WHO Global Strategy on Digital Health 2020-2025", area: "healthcare", domain: "information", level: "global", type: "strategy", year: 2020, status: "active", issuer_ar: "منظمة الصحة العالمية", issuer_en: "World Health Organization (WHO)", description_ar: "استراتيجية عالمية لتوجيه الدول في استخدام التقنيات الرقمية لتحسين النتائج الصحية وتعزيز الأنظمة الصحية.", description_en: "Global strategy guiding countries in using digital technologies to improve health outcomes and strengthen health systems.", targets: "All countries with national digital health strategy by 2025", url: "https://www.who.int/docs/default-source/documents/gs4dhdaa2a9f352b0445bafbc79ca799dce4d.pdf" },
+            { id: 25, title_ar: "سجلات WHO-CHOICE لفعالية التكلفة", title_en: "WHO-CHOICE Cost-Effectiveness Registers", area: "healthcare", domain: "financing", level: "global", type: "guideline", year: 2021, status: "active", issuer_ar: "منظمة الصحة العالمية — وحدة التحليل الاقتصادي", issuer_en: "World Health Organization — Economic Analysis Unit", description_ar: "قاعدة بيانات عالمية لأدلة فعالية التكلفة للتدخلات الصحية حسب المنطقة. توفر بيانات إقليم شرق المتوسط (EMRO) المطبقة على المملكة العربية السعودية. مصدر مرجعي أساسي لتحديد الأولويات المبني على الأدلة وتغذية نماذج مثل OneHealth.", description_en: "WHO's global database of cost-effectiveness evidence for health interventions by region. Provides EMRO (Eastern Mediterranean) regional data applicable to Saudi Arabia. A key reference source for evidence-based priority setting that informs models like OneHealth.", targets: "Comprehensive CE data across all WHO regions; updated EMRO cost-effectiveness ratios", url: "https://www.who.int/news-room/questions-and-answers/item/who-choice-frequently-asked-questions" },
+            { id: 26, title_ar: "مستودع سياسات WHO SRMNCAH", title_en: "WHO SRMNCAH Policy Repository", area: "healthcare", domain: "service", level: "global", type: "guideline", year: 2023, status: "active", issuer_ar: "منظمة الصحة العالمية — قسم صحة الأم والطفل والمراهقين", issuer_en: "World Health Organization — Maternal, Newborn, Child & Adolescent Health", description_ar: "أكبر مستودع معروف لوثائق السياسات الصحية الوطنية: أكثر من 6,500 وثيقة من حوالي 140 دولة. قابل للبحث حسب الدولة ونوع الوثيقة والسنة واللغة. يغطي القوانين والسياسات والمبادئ التوجيهية والخطط الاستراتيجية المتعلقة بصحة الأم والطفل والمراهقين. يتضمن وثائق سعودية لكنه محدود بنطاق SRMNCAH.", description_en: "The largest known repository of national health policy documents: over 6,500 documents from ~140 countries. Searchable by country, document type, year, and language. Covers laws, policies, guidelines, and strategic plans related to sexual, reproductive, maternal, newborn, child, and adolescent health. Includes Saudi documents but limited to the SRMNCAH domain.", targets: "6,500+ policy documents from 140 countries; comprehensive SRMNCAH coverage", url: "https://platform.who.int/data/maternal-newborn-child-adolescent-ageing/national-policies" },
+            { id: 27, title_ar: "المرصد الصحي العالمي (GHO)", title_en: "WHO Global Health Observatory (GHO)", area: "healthcare", domain: "information", level: "global", type: "guideline", year: 2024, status: "active", issuer_ar: "منظمة الصحة العالمية — قسم البيانات والتحليلات", issuer_en: "World Health Organization — Data & Analytics", description_ar: "بوابة إحصاءات صحية وتصورات بيانية منظمة حسب الموضوع (الوفيات، عبء المرض، الأنظمة الصحية، عوامل الخطر). توفر ملفات تعريف قطرية وتتيح إنشاء رسوم بيانية وخرائط مخصصة. بوابة بيانات وليست مكتبة وثائق سياسات — توفر بيانات المملكة العربية السعودية المفيدة لتحليل السياسات.", description_en: "A portal of health statistics and data visualizations organized by theme (mortality, disease burden, health systems, risk factors). Provides country profiles and lets users create custom charts and maps. A data portal rather than a policy library — provides Saudi Arabia country data useful for policy analysis.", targets: "Comprehensive health indicators for 194 WHO member states", url: "https://www.who.int/data/gho" },
+            { id: 28, title_ar: "إحصاءات ومراجعات الصحة — OECD", title_en: "OECD Health Statistics & Policy Reviews", area: "healthcare", domain: "governance", level: "global", type: "framework", year: 2024, status: "active", issuer_ar: "منظمة التعاون الاقتصادي والتنمية (OECD)", issuer_en: "Organisation for Economic Co-operation and Development (OECD)", description_ar: "المصدر الأشمل لمقارنة أداء الأنظمة الصحية بين الدول المتقدمة والشريكة. يغطي الإنفاق الصحي، القوى العاملة، مؤشرات الجودة، الأدوية، وصحة السكان. ينشر مراجعات دورية للأنظمة الصحية. السعودية شريك لـ OECD وبعض بياناتها مدرجة. منهجية المراجعة يمكن أن تفيد عمل PHPSA في المقارنة المعيارية.", description_en: "The most comprehensive source for comparing health system performance across developed and partner countries. Covers health spending, workforce, quality indicators, pharmaceuticals, and population health. Publishes periodic Health System Reviews. Saudi Arabia is an OECD Partner with some data included. The review methodology could inform PHPSA's benchmarking work.", targets: "Health system performance data for 38 OECD members + partner countries", url: "https://www.oecd.org/health/" },
+            { id: 29, title_ar: "بيانات الصحة والتغذية والسكان — البنك الدولي", title_en: "World Bank Health, Nutrition & Population Data", area: "healthcare", domain: "financing", level: "global", type: "framework", year: 2024, status: "active", issuer_ar: "البنك الدولي — قسم الصحة والتغذية والسكان", issuer_en: "The World Bank — Health, Nutrition & Population", description_ar: "بيانات صحية مفتوحة الوصول تغطي أكثر من 200 دولة، مع مؤشرات حول الإنفاق الصحي وتغطية الخدمات وعبء المرض والديموغرافيا. يتضمن تقارير تحليلية ووثائق مشاريع الإقراض. مستودع المعرفة المفتوحة يحتوي أكثر من 35,000 عنصر بحثي. يشمل بيانات السعودية كمصدر أدلة لموجزات PHPSA السياسية.", description_en: "Open-access health data covering 200+ countries, with indicators on health expenditure, service coverage, disease burden, and demographics. Includes analytical reports and lending project documents. The Open Knowledge Repository has 35,000+ research items. Includes Saudi Arabia data — useful as an evidence source for PHPSA policy briefs.", targets: "Health indicators for 200+ countries; 35,000+ research documents", url: "https://datatopics.worldbank.org/health/" },
+            { id: 30, title_ar: "سلسلة الأنظمة الصحية في مرحلة انتقالية (HiT)", title_en: "Health Systems in Transition (HiT) Series", area: "healthcare", domain: "governance", level: "global", type: "framework", year: 2023, status: "active", issuer_ar: "المرصد الأوروبي للأنظمة والسياسات الصحية / منظمة الصحة العالمية أوروبا", issuer_en: "European Observatory on Health Systems and Policies / WHO Europe", description_ar: "ملفات تعريف معمقة للأنظمة الصحية القطرية وفق نموذج موحد يغطي الحوكمة والتمويل وتقديم الخدمات وتاريخ الإصلاح. نُشر أكثر من 80 مراجعة قطرية. أشمل توثيق للأنظمة الصحية المتاح في النطاق العام. لا يوجد ملف سعودي أو خليجي في السلسلة (تغطي المنطقة الأوروبية)، لكن منهجية HiT إطار ممتاز يمكن لـ PHPSA تكييفه لتوثيق النظام الصحي السعودي.", description_en: "In-depth country health system profiles following a standardized template covering governance, financing, service delivery, and reform history. Over 80 country reviews published — the most thorough public-domain health system documentation available. No Saudi or GCC profile exists (covers European region), but the HiT methodology is an excellent framework PHPSA could adapt for Saudi health system documentation.", targets: "80+ country health system profiles; standardized review methodology", url: "https://eurohealthobservatory.who.int/publications/health-systems-reviews" },
+        ];
+
+        const domainLabels = {
+            governance: { ar: 'الحوكمة الصحية', en: 'Health Governance' },
+            financing: { ar: 'التمويل الصحي', en: 'Health Financing' },
+            workforce: { ar: 'القوى العاملة', en: 'Health Workforce' },
+            service: { ar: 'تقديم الخدمات', en: 'Service Delivery' },
+            information: { ar: 'نظم المعلومات', en: 'Health Info Systems' },
+            products: { ar: 'المنتجات الطبية', en: 'Medical Products' },
+            population: { ar: 'صحة السكان', en: 'Population Health' },
+            equity: { ar: 'العدالة الصحية', en: 'Health Equity' },
+            emergency: { ar: 'الطوارئ والجاهزية', en: 'Emergency Preparedness' },
+            crosscutting: { ar: 'متعدد المجالات', en: 'Cross-cutting' }
+        };
+        const levelLabels = { national: { ar: 'وطني', en: 'National' }, gcc: { ar: 'خليجي', en: 'GCC' }, global: { ar: 'دولي', en: 'Global' } };
+        const typeLabels = { strategy: { ar: 'استراتيجية', en: 'Strategy' }, law: { ar: 'نظام', en: 'Law' }, regulation: { ar: 'لائحة', en: 'Regulation' }, guideline: { ar: 'دليل', en: 'Guideline' }, action_plan: { ar: 'خطة عمل', en: 'Action Plan' }, framework: { ar: 'إطار', en: 'Framework' } };
+        const statusColors = { active: '#10B981', under_review: '#F59E0B', superseded: '#EF4444' };
+
+
+        function renderPolicyCard(policy) {
+            const isAr = document.documentElement.lang === 'ar';
+            const title = isAr ? policy.title_ar : policy.title_en;
+            const desc = isAr ? policy.description_ar : policy.description_en;
+            const issuer = isAr ? policy.issuer_ar : policy.issuer_en;
+            const domainLabel = domainLabels[policy.domain] ? (isAr ? domainLabels[policy.domain].ar : domainLabels[policy.domain].en) : policy.domain;
+            const levelLabel = levelLabels[policy.level] ? (isAr ? levelLabels[policy.level].ar : levelLabels[policy.level].en) : policy.level;
+            const typeLabel = typeLabels[policy.type] ? (isAr ? typeLabels[policy.type].ar : typeLabels[policy.type].en) : policy.type;
+
+            return `
+                <div class="policy-card" style="position:relative; border-${isAr ? 'right' : 'left'}: 4px solid ${policy.level === 'national' ? 'var(--teal)' : policy.level === 'gcc' ? 'var(--accent)' : '#6366F1'};">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
+                        <h4 style="font-size:1.05rem; color:var(--primary); flex:1;">${title}</h4>
+                    </div>
+                    <div style="font-size:0.85rem; color:var(--text-light); margin-bottom:0.5rem;">${issuer} · ${policy.year}</div>
+                    <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:0.75rem;">
+                        <span style="background:var(--teal); color:white; padding:2px 10px; border-radius:12px; font-size:0.75rem;">${domainLabel}</span>
+                        <span style="background:var(--light); color:var(--primary); padding:2px 10px; border-radius:12px; font-size:0.75rem;">${levelLabel}</span>
+                        <span style="background:var(--light); color:var(--primary); padding:2px 10px; border-radius:12px; font-size:0.75rem;">${typeLabel}</span>
+                        <span style="background:${statusColors[policy.status] || '#10B981'}; color:white; padding:2px 10px; border-radius:12px; font-size:0.75rem;">${isAr ? (policy.status === 'active' ? 'نشط' : 'قيد المراجعة') : policy.status}</span>
+                    </div>
+                    <p style="font-size:0.9rem; line-height:1.6; color:var(--text-dark); margin-bottom:0.5rem;">${desc}</p>
+                    ${policy.targets ? `<div style="font-size:0.8rem; background:var(--light); padding:8px 12px; border-radius:6px; margin-top:0.5rem;"><strong>${isAr ? 'المستهدفات:' : 'Targets:'}</strong> ${policy.targets}</div>` : ''}
+                    ${policy.url ? `<a href="${policy.url}" target="_blank" rel="noopener" style="display:inline-block; margin-top:0.75rem; font-size:0.82rem; color:var(--teal); text-decoration:none; font-weight:600; padding:5px 14px; border:1.5px solid var(--teal); border-radius:8px; transition:all 0.2s;" onmouseover="this.style.background='var(--teal)';this.style.color='white'" onmouseout="this.style.background='transparent';this.style.color='var(--teal)'">🔗 ${isAr ? 'عرض المصدر الرسمي' : 'View Official Source'}</a>` : ''}
+                </div>
+            `;
+        }
+
+        function initializePolicyLibrary() {
+            renderPolicies(policies);
+        }
+
+        function renderPolicies(list) {
+            const policyList = document.getElementById('policyList');
+            if (list.length === 0) {
+                const isAr = document.documentElement.lang === 'ar';
+                policyList.innerHTML = `<div style="text-align:center; padding:3rem; color:var(--text-light);">${isAr ? 'لا توجد سياسات مطابقة للبحث' : 'No policies match your search criteria'}</div>`;
+                return;
+            }
+            policyList.innerHTML = list.map(p => renderPolicyCard(p)).join('');
+        }
+
+        function filterPolicies() {
+            const searchTerm = document.getElementById('policySearch').value.toLowerCase();
+            const areaFilter = document.getElementById('policyAreaFilter').value;
+            const yearFilter = document.getElementById('policyYearFilter').value;
+
+            const filtered = policies.filter(p => {
+                const matchesSearch = !searchTerm || p.title_ar.toLowerCase().includes(searchTerm) || p.title_en.toLowerCase().includes(searchTerm) || p.description_ar.toLowerCase().includes(searchTerm) || p.description_en.toLowerCase().includes(searchTerm);
+                const matchesArea = !areaFilter || p.domain === areaFilter || p.level === areaFilter || p.type === areaFilter;
+                const matchesYear = !yearFilter || p.year == yearFilter;
+                return matchesSearch && matchesArea && matchesYear;
+            });
+            renderPolicies(filtered);
+        }
+
+
+
+        // ============================================================
+        // MODULE: WHO OneHealth-Inspired Investment Planner
+        // ============================================================
+
+        // Saudi health programs data model
+        const ohPrograms = [
+            {
+                id: 'phc', nameAr: 'الرعاية الصحية الأولية', nameEn: 'Primary Health Care',
+                color: '#0F7C7B', baseline: 62,
+                unitCostSAR: 850, // per capita per year
+                eligiblePop: 36000000, // total population
+                effectivenessRate: 0.15, // mortality reduction per 10% coverage gain
+                dalyRate: 320, // DALYs averted per 1000 additional covered
+                hrPer10k: { physicians: 2.5, nurses: 5.0, allied: 1.5 }
+            },
+            {
+                id: 'ncd', nameAr: 'الأمراض غير السارية (NCD)', nameEn: 'NCD Prevention & Control',
+                color: '#A56A4A', baseline: 38,
+                unitCostSAR: 420,
+                eligiblePop: 18000000, // adults 30+
+                effectivenessRate: 0.12,
+                dalyRate: 280,
+                hrPer10k: { physicians: 1.8, nurses: 3.2, allied: 2.0 }
+            },
+            {
+                id: 'mch', nameAr: 'صحة الأم والطفل', nameEn: 'Maternal & Child Health',
+                color: '#059669', baseline: 78,
+                unitCostSAR: 1200,
+                eligiblePop: 5400000, // women 15-49 + children <5
+                effectivenessRate: 0.22,
+                dalyRate: 450,
+                hrPer10k: { physicians: 3.0, nurses: 6.0, allied: 2.0 }
+            },
+            {
+                id: 'mental', nameAr: 'الصحة النفسية', nameEn: 'Mental Health',
+                color: '#7C3AED', baseline: 22,
+                unitCostSAR: 380,
+                eligiblePop: 28000000, // adults 15+
+                effectivenessRate: 0.08,
+                dalyRate: 190,
+                hrPer10k: { physicians: 0.8, nurses: 2.0, allied: 3.5 }
+            },
+            {
+                id: 'infectious', nameAr: 'الأمراض المعدية', nameEn: 'Infectious Disease Control',
+                color: '#DC2626', baseline: 72,
+                unitCostSAR: 280,
+                eligiblePop: 36000000,
+                effectivenessRate: 0.18,
+                dalyRate: 350,
+                hrPer10k: { physicians: 1.2, nurses: 2.8, allied: 1.0 }
+            },
+            {
+                id: 'elderly', nameAr: 'رعاية كبار السن', nameEn: 'Elderly & Long-term Care',
+                id: 'elderly', nameAr: 'رعاية كبار السن', nameEn: 'Elderly & Long-term Care',
+                color: '#B45309', baseline: 18,
+                unitCostSAR: 1600,
+                eligiblePop: 2200000, // 60+
+                effectivenessRate: 0.10,
+                dalyRate: 220,
+                hrPer10k: { physicians: 1.5, nurses: 4.5, allied: 4.0 }
+            },
+            {
+                id: 'digital', nameAr: 'الصحة الرقمية', nameEn: 'Digital Health & eHealth',
+                color: '#0284C7', baseline: 35,
+                unitCostSAR: 120,
+                eligiblePop: 36000000,
+                effectivenessRate: 0.05,
+                dalyRate: 80,
+                hrPer10k: { physicians: 0.2, nurses: 0.5, allied: 2.5 }
+            },
+            {
+                id: 'workforce', nameAr: 'القوى العاملة الصحية', nameEn: 'Health Workforce Development',
+                color: '#4338CA', baseline: 45,
+                unitCostSAR: 250,
+                eligiblePop: 36000000,
+                effectivenessRate: 0.06,
+                dalyRate: 60,
+                hrPer10k: { physicians: 0.0, nurses: 0.0, allied: 0.0 }
+            }
+        ];
+
+        // Scenario presets
+        const ohScenarios = [
+            {
+                id: 'custom', nameAr: 'مخصص (تعديل يدوي)', nameEn: 'Custom (Manual Adjustment)',
+                targets: null
+            },
+            {
+                id: 'conservative', nameAr: 'تحسين تدريجي', nameEn: 'Conservative Scale-up',
+                targets: { phc: 72, ncd: 48, mch: 85, mental: 32, infectious: 80, elderly: 28, digital: 50, workforce: 55 }
+            },
+            {
+                id: 'moderate', nameAr: 'توسع متوسط', nameEn: 'Moderate Expansion',
+                targets: { phc: 82, ncd: 58, mch: 90, mental: 45, infectious: 88, elderly: 40, digital: 65, workforce: 65 }
+            },
+            {
+                id: 'ambitious', nameAr: 'توسع طموح', nameEn: 'Ambitious Scale-up',
+                targets: { phc: 92, ncd: 72, mch: 95, mental: 60, infectious: 95, elderly: 55, digital: 85, workforce: 80 }
+            },
+            {
+                id: 'vision2030', nameAr: '🇸🇦 رؤية السعودية 2030', nameEn: '🇸🇦 Saudi Vision 2030',
+                targets: { phc: 90, ncd: 70, mch: 95, mental: 55, infectious: 92, elderly: 50, digital: 90, workforce: 85 }
+            }
+        ];
+
+        // Current slider values (coverage targets)
+        let ohCoverageTargets = {};
+
+        function initOneHealth() {
+            const isAr = document.documentElement.lang === 'ar';
+            // Populate scenario dropdown
+            const scenarioSelect = document.getElementById('ohScenario');
+            if (!scenarioSelect) return;
+            scenarioSelect.innerHTML = ohScenarios.map(s =>
+                `<option value="${s.id}">${isAr ? s.nameAr : s.nameEn}</option>`
+            ).join('');
+
+            // Initialize coverage targets to baselines
+            ohPrograms.forEach(p => {
+                ohCoverageTargets[p.id] = p.baseline;
+            });
+
+            // Render sliders and assumptions
+            renderOhSliders();
+            renderOhAssumptions();
+            // Initial calculation
+            updateOneHealth();
+        }
+
+        // Store original defaults for reset
+        const ohDefaults = ohPrograms.map(p => ({
+            id: p.id, unitCostSAR: p.unitCostSAR, eligiblePop: p.eligiblePop,
+            effectivenessRate: p.effectivenessRate, dalyRate: p.dalyRate, baseline: p.baseline
+        }));
+
+        function renderOhAssumptions() {
+            const container = document.getElementById('ohAssumptionsGrid');
+            if (!container) return;
+            const isAr = document.documentElement.lang === 'ar';
+
+            const fields = [
+                { key: 'unitCostSAR', labelAr: 'تكلفة الوحدة (ر.س/فرد/سنة)', labelEn: 'Unit Cost (SAR/person/yr)', type: 'number', step: 10 },
+                { key: 'eligiblePop', labelAr: 'السكان المؤهلون', labelEn: 'Eligible Population', type: 'number', step: 100000 },
+                { key: 'baseline', labelAr: 'التغطية الأساسية (%)', labelEn: 'Baseline Coverage (%)', type: 'number', step: 1, min: 0, max: 100 },
+                { key: 'effectivenessRate', labelAr: 'معدل خفض الوفيات / 10% تغطية', labelEn: 'Mortality Reduction / 10% Coverage', type: 'number', step: 0.01 },
+                { key: 'dalyRate', labelAr: 'DALYs مُتجنبة / 1000 مُغطى', labelEn: 'DALYs Averted / 1,000 Covered', type: 'number', step: 10 }
+            ];
+
+            container.innerHTML = ohPrograms.map(p => `
+                <div style="border:1px solid var(--border); border-radius:var(--radius-md); padding:14px; border-top:3px solid ${p.color};">
+                    <div style="font-weight:700; font-size:0.85rem; color:${p.color}; margin-bottom:10px;">${isAr ? p.nameAr : p.nameEn}</div>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:8px;">
+                        ${fields.map(f => {
+                            const val = p[f.key];
+                            const dflt = ohDefaults.find(d => d.id === p.id)[f.key];
+                            const isModified = val !== dflt;
+                            return `<div>
+                                <label style="font-size:0.7rem; color:${isModified ? '#DC2626' : 'var(--text-light)'}; display:block; margin-bottom:2px;">
+                                    ${isAr ? f.labelAr : f.labelEn}${isModified ? ' ✏️' : ''}
+                                </label>
+                                <input type="number" value="${val}" step="${f.step}" ${f.min !== undefined ? `min="${f.min}"` : ''} ${f.max !== undefined ? `max="${f.max}"` : ''}
+                                    onchange="onOhAssumptionChange('${p.id}','${f.key}',this.value)"
+                                    style="width:100%; padding:5px 8px; border:1px solid ${isModified ? '#F59E0B' : 'var(--border)'}; border-radius:6px; font-size:0.82rem; font-family:var(--font-sans); box-sizing:border-box; background:${isModified ? '#FFFBEB' : 'white'};">
+                            </div>`;
+                        }).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function onOhAssumptionChange(programId, key, value) {
+            const p = ohPrograms.find(pr => pr.id === programId);
+            if (!p) return;
+            const numVal = parseFloat(value);
+            if (isNaN(numVal)) return;
+            p[key] = numVal;
+            // If baseline changed, update slider min and current target
+            if (key === 'baseline') {
+                const slider = document.getElementById('ohSlider_' + programId);
+                if (slider) {
+                    slider.min = numVal;
+                    if (ohCoverageTargets[programId] < numVal) {
+                        ohCoverageTargets[programId] = numVal;
+                        slider.value = numVal;
+                        const valEl = document.getElementById('ohVal_' + programId);
+                        if (valEl) valEl.textContent = numVal + '%';
+                    }
+                }
+            }
+            renderOhAssumptions(); // refresh highlight on modified fields
+            updateOneHealth();
+        }
+
+        function resetOhAssumptions() {
+            ohDefaults.forEach(d => {
+                const p = ohPrograms.find(pr => pr.id === d.id);
+                if (p) {
+                    p.unitCostSAR = d.unitCostSAR;
+                    p.eligiblePop = d.eligiblePop;
+                    p.effectivenessRate = d.effectivenessRate;
+                    p.dalyRate = d.dalyRate;
+                    p.baseline = d.baseline;
+                }
+            });
+            renderOhAssumptions();
+            renderOhSliders();
+            updateOneHealth();
+        }
+
+        function refreshOhScenarioDropdown() {
+            const isAr = document.documentElement.lang === 'ar';
+            const select = document.getElementById('ohScenario');
+            if (!select) return;
+            const current = select.value;
+            select.innerHTML = ohScenarios.map(s =>
+                `<option value="${s.id}">${isAr ? s.nameAr : s.nameEn}</option>`
+            ).join('');
+            select.value = current;
+        }
+
+        function renderOhSliders() {
+            const container = document.getElementById('ohSliders');
+            if (!container) return;
+            const isAr = document.documentElement.lang === 'ar';
+            container.innerHTML = ohPrograms.map(p => {
+                const val = ohCoverageTargets[p.id] || p.baseline;
+                const gain = Math.max(0, val - p.baseline);
+                return `
+                <div style="background:white; border:1px solid var(--border); border-radius:var(--radius-md); padding:12px; border-right:4px solid ${p.color}; ${isAr ? 'border-right' : 'border-left'}:4px solid ${p.color};">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                        <span style="font-weight:600; font-size:0.85rem; color:var(--primary);">${isAr ? p.nameAr : p.nameEn}</span>
+                        <span style="font-weight:800; font-size:1.1rem; color:${p.color};" id="ohVal_${p.id}">${val}%</span>
+                    </div>
+                    <input type="range" min="${p.baseline}" max="100" value="${val}" step="1"
+                        id="ohSlider_${p.id}"
+                        oninput="onOhSliderChange('${p.id}', this.value)"
+                        style="width:100%; accent-color:${p.color}; cursor:pointer;">
+                    <div style="display:flex; justify-content:space-between; font-size:0.7rem; color:var(--text-light); margin-top:2px;">
+                        <span>${isAr ? 'الأساس' : 'Baseline'}: ${p.baseline}%</span>
+                        <span style="color:${gain > 0 ? '#059669' : 'var(--text-light)'};">+${gain}%</span>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function onOhSliderChange(programId, value) {
+            ohCoverageTargets[programId] = parseInt(value);
+            const valEl = document.getElementById('ohVal_' + programId);
+            if (valEl) valEl.textContent = value + '%';
+            // Set scenario to custom
+            document.getElementById('ohScenario').value = 'custom';
+            updateOneHealth();
+        }
+
+        function onOhScenarioChange() {
+            const scenarioId = document.getElementById('ohScenario').value;
+            const scenario = ohScenarios.find(s => s.id === scenarioId);
+            if (!scenario || !scenario.targets) return;
+            // Apply preset targets
+            ohPrograms.forEach(p => {
+                const target = scenario.targets[p.id] || p.baseline;
+                ohCoverageTargets[p.id] = target;
+                const slider = document.getElementById('ohSlider_' + p.id);
+                if (slider) slider.value = target;
+                const valEl = document.getElementById('ohVal_' + p.id);
+                if (valEl) valEl.textContent = target + '%';
+            });
+            updateOneHealth();
+        }
+
+        function updateOneHealth() {
+            const horizon = parseInt(document.getElementById('ohHorizon').value) || 5;
+            const isAr = document.documentElement.lang === 'ar';
+
+            let totalCost = 0;
+            let totalLivesSaved = 0;
+            let totalDALYs = 0;
+            const programResults = [];
+
+            ohPrograms.forEach(p => {
+                const target = ohCoverageTargets[p.id] || p.baseline;
+                const coverageGain = Math.max(0, (target - p.baseline) / 100);
+                const additionalCovered = coverageGain * p.eligiblePop;
+
+                // Cost calculation with economies of scale (5% discount for large programs)
+                const scaleDiscount = additionalCovered > 1000000 ? 0.95 : 1.0;
+                const annualCost = additionalCovered * p.unitCostSAR * scaleDiscount;
+                // Infrastructure ramp-up: Year 1 costs 30% more, declining
+                const totalProgramCost = Array.from({length: horizon}, (_, y) => {
+                    const rampup = y === 0 ? 1.3 : (y === 1 ? 1.1 : 1.0);
+                    const yearCoverage = p.baseline / 100 + (coverageGain * Math.min(1, (y + 1) / Math.min(horizon, 3)));
+                    const yearAdditional = Math.max(0, yearCoverage - p.baseline / 100) * p.eligiblePop;
+                    return yearAdditional * p.unitCostSAR * scaleDiscount * rampup;
+                }).reduce((a, b) => a + b, 0);
+
+                // Health impact
+                const livesSaved = Math.round(additionalCovered * p.effectivenessRate * (horizon / 5) * 0.001);
+                const dalysAverted = Math.round(additionalCovered * p.dalyRate / 1000 * (horizon / 5));
+
+                // HR requirements
+                const hrNeeded = {
+                    physicians: Math.round(additionalCovered / 10000 * p.hrPer10k.physicians),
+                    nurses: Math.round(additionalCovered / 10000 * p.hrPer10k.nurses),
+                    allied: Math.round(additionalCovered / 10000 * p.hrPer10k.allied)
+                };
+
+                totalCost += totalProgramCost;
+                totalLivesSaved += livesSaved;
+                totalDALYs += dalysAverted;
+
+                programResults.push({
+                    ...p,
+                    target,
+                    coverageGain: coverageGain * 100,
+                    annualCost,
+                    totalCost: totalProgramCost,
+                    livesSaved,
+                    dalysAverted,
+                    hrNeeded,
+                    costPerDALY: dalysAverted > 0 ? totalProgramCost / dalysAverted : 0
+                });
+            });
+
+            const costPerDALY = totalDALYs > 0 ? totalCost / totalDALYs : 0;
+
+            // Update KPI cards
+            document.getElementById('ohTotalCost').textContent = (totalCost / 1e9).toFixed(2);
+            document.getElementById('ohLivesSaved').textContent = totalLivesSaved.toLocaleString();
+            document.getElementById('ohDALYs').textContent = totalDALYs.toLocaleString();
+            document.getElementById('ohCostPerDALY').textContent = Math.round(costPerDALY).toLocaleString();
+
+            // Draw charts
+            requestAnimationFrame(() => {
+                drawOhCostChart(programResults);
+                drawOhImpactChart(programResults);
+            });
+
+            // Render projection table
+            renderOhProjectionTable(programResults, horizon);
+
+            // Render HR requirements
+            renderOhHR(programResults);
+        }
+
+        function drawOhCostChart(results) {
+            const canvas = document.getElementById('ohCostChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const dpr = window.devicePixelRatio || 1;
+            const w = canvas.parentElement.offsetWidth - 32 || 400;
+            const h = 280;
+            canvas.width = w * dpr;
+            canvas.height = h * dpr;
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
+            ctx.scale(dpr, dpr);
+            ctx.clearRect(0, 0, w, h);
+
+            const isAr = document.documentElement.lang === 'ar';
+            const active = results.filter(r => r.coverageGain > 0);
+            if (active.length === 0) {
+                ctx.fillStyle = '#9CA3AF';
+                ctx.font = '13px "IBM Plex Sans Arabic", Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(isAr ? 'حرّك المؤشرات لعرض التكاليف' : 'Adjust sliders to see costs', w / 2, h / 2);
+                return;
+            }
+
+            const totalCost = active.reduce((s, r) => s + r.totalCost, 0);
+            // Horizontal bar chart — measure label widths first
+            const barAreaTop = 30;
+            const barAreaBottom = h - 20;
+            const barHeight = Math.min(28, (barAreaBottom - barAreaTop) / active.length - 6);
+            const maxCost = Math.max(...active.map(r => r.totalCost));
+
+            // Measure the widest program name to reserve space
+            ctx.font = '11px "IBM Plex Sans Arabic", Arial';
+            const labelPad = 12;
+            const maxLabelW = Math.max(...active.map(r => ctx.measureText(isAr ? r.nameAr : r.nameEn).width)) + labelPad;
+            const costLabelW = 70; // space for cost text like "63.26 مليار"
+
+            // In RTL: [costLabel gap] [bar ←] [nameLabel]  (right side has names)
+            // In LTR: [nameLabel] [→ bar] [costLabel gap]
+            const chartLeft = isAr ? costLabelW : maxLabelW;
+            const chartRight = isAr ? w - maxLabelW : w - costLabelW;
+            const barWidth = chartRight - chartLeft;
+
+            // Title
+            ctx.fillStyle = '#0B1F3B';
+            ctx.font = 'bold 13px "IBM Plex Sans Arabic", Arial';
+            ctx.textAlign = isAr ? 'right' : 'left';
+            ctx.fillText(isAr ? 'التكلفة الإجمالية حسب البرنامج' : 'Total Cost by Program', isAr ? w - 10 : 10, 18);
+
+            active.forEach((r, i) => {
+                const y = barAreaTop + i * (barHeight + 6);
+                const bw = maxCost > 0 ? (r.totalCost / maxCost) * barWidth : 0;
+                const textY = y + barHeight / 2 + 4;
+
+                // Program name — always in the label gutter, never overlapping bars
+                ctx.fillStyle = '#374151';
+                ctx.font = '11px "IBM Plex Sans Arabic", Arial';
+                if (isAr) {
+                    ctx.textAlign = 'right';
+                    ctx.fillText(isAr ? r.nameAr : r.nameEn, w - 6, textY);
+                } else {
+                    ctx.textAlign = 'right';
+                    ctx.fillText(r.nameEn, chartLeft - 8, textY);
+                }
+
+                // Bar — grows from the label edge toward the cost-label edge
+                const barX = isAr ? chartRight - bw : chartLeft;
+                ctx.fillStyle = r.color + 'DD';
+                ctx.beginPath();
+                ctx.roundRect(barX, y, Math.max(bw, 2), barHeight, 4);
+                ctx.fill();
+
+                // Cost label — in the opposite gutter from the name
+                const costText = (r.totalCost / 1e9).toFixed(2) + (isAr ? ' مليار' : 'B');
+                ctx.fillStyle = '#1F2937';
+                ctx.font = 'bold 11px "IBM Plex Sans Arabic", Arial';
+                if (isAr) {
+                    ctx.textAlign = 'right';
+                    ctx.fillText(costText, barX - 6, textY);
+                } else {
+                    ctx.textAlign = 'left';
+                    ctx.fillText(costText, barX + bw + 6, textY);
+                }
+            });
+        }
+
+        function drawOhImpactChart(results) {
+            const canvas = document.getElementById('ohImpactChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const dpr = window.devicePixelRatio || 1;
+            const w = canvas.parentElement.offsetWidth - 32 || 400;
+            const h = 280;
+            canvas.width = w * dpr;
+            canvas.height = h * dpr;
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
+            ctx.scale(dpr, dpr);
+            ctx.clearRect(0, 0, w, h);
+
+            const isAr = document.documentElement.lang === 'ar';
+            const active = results.filter(r => r.coverageGain > 0);
+            if (active.length === 0) {
+                ctx.fillStyle = '#9CA3AF';
+                ctx.font = '13px "IBM Plex Sans Arabic", Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(isAr ? 'حرّك المؤشرات لعرض الأثر' : 'Adjust sliders to see impact', w / 2, h / 2);
+                return;
+            }
+
+
+            // Bubble chart: x = cost-effectiveness (cost/DALY), y = DALYs averted, size = total cost
+            const padding = { top: 35, right: 30, bottom: 50, left: 60 };
+            const plotW = w - padding.left - padding.right;
+            const plotH = h - padding.top - padding.bottom;
+
+            const maxDALY = Math.max(...active.map(r => r.dalysAverted)) * 1.2;
+            const maxCPD = Math.max(...active.map(r => r.costPerDALY)) * 1.2;
+            const maxTotalCost = Math.max(...active.map(r => r.totalCost));
+
+            // Title
+            ctx.fillStyle = '#0B1F3B';
+            ctx.font = 'bold 13px "IBM Plex Sans Arabic", Arial';
+            ctx.textAlign = isAr ? 'right' : 'left';
+            ctx.fillText(isAr ? 'فعالية التكلفة مقابل الأثر' : 'Cost-effectiveness vs Impact', isAr ? w - 10 : 10, 18);
+
+            // Axes
+            ctx.strokeStyle = '#E5E7EB';
+            ctx.lineWidth = 1;
+            // X axis
+            ctx.beginPath();
+            ctx.moveTo(padding.left, h - padding.bottom);
+            ctx.lineTo(w - padding.right, h - padding.bottom);
+            ctx.stroke();
+            // Y axis
+            ctx.beginPath();
+            ctx.moveTo(padding.left, padding.top);
+            ctx.lineTo(padding.left, h - padding.bottom);
+            ctx.stroke();
+
+            // Axis labels
+            ctx.fillStyle = '#6B7280';
+            ctx.font = '11px "IBM Plex Sans Arabic", Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(isAr ? 'التكلفة / DALY (ر.س)' : 'Cost per DALY (SAR)', w / 2, h - 8);
+            ctx.save();
+            ctx.translate(14, h / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.fillText(isAr ? 'DALYs مُتجنبة' : 'DALYs Averted', 0, 0);
+            ctx.restore();
+
+            // WHO cost-effectiveness threshold line
+            const gdpPerCapita = 95000; // Saudi GDP per capita SAR ~$25,000
+            if (maxCPD > 0) {
+                const threshX = padding.left + (gdpPerCapita / maxCPD) * plotW;
+                if (threshX < w - padding.right) {
+                    ctx.strokeStyle = '#F59E0B88';
+                    ctx.lineWidth = 2;
+                    ctx.setLineDash([6, 4]);
+                    ctx.beginPath();
+                    ctx.moveTo(threshX, padding.top);
+                    ctx.lineTo(threshX, h - padding.bottom);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                    ctx.fillStyle = '#F59E0B';
+                    ctx.font = '10px "IBM Plex Sans Arabic", Arial';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(isAr ? 'عتبة GDP' : 'GDP threshold', threshX, padding.top - 4);
+                }
+            }
+
+            // Bubbles
+            active.forEach(r => {
+                if (maxCPD === 0 || maxDALY === 0) return;
+                const x = padding.left + (r.costPerDALY / maxCPD) * plotW;
+                const y = (h - padding.bottom) - (r.dalysAverted / maxDALY) * plotH;
+                const radius = Math.max(8, Math.min(28, Math.sqrt(r.totalCost / maxTotalCost) * 28));
+
+                ctx.fillStyle = r.color + '55';
+                ctx.strokeStyle = r.color;
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.arc(x, y, radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+
+                // Label
+                ctx.fillStyle = r.color;
+                ctx.font = 'bold 11px "IBM Plex Sans Arabic", Arial';
+                ctx.textAlign = 'center';
+                const label = isAr ? r.nameAr.split(' ')[0] : r.nameEn.split(' ')[0];
+                ctx.fillText(label, x, y - radius - 5);
+            });
+        }
+
+        function renderOhProjectionTable(results, horizon) {
+            const container = document.getElementById('ohProjectionTable');
+            if (!container) return;
+            const isAr = document.documentElement.lang === 'ar';
+            const active = results.filter(r => r.coverageGain > 0);
+
+            if (active.length === 0) {
+                container.innerHTML = `<div style="color:#9CA3AF; text-align:center; padding:20px; font-size:0.85rem;">${isAr ? 'حرّك المؤشرات لعرض الإسقاطات' : 'Adjust sliders to see projections'}</div>`;
+                return;
+            }
+
+            const years = Array.from({length: horizon}, (_, i) => 2026 + i);
+            let html = `<table style="width:100%; border-collapse:collapse; font-size:0.8rem;">
+                <thead>
+                    <tr style="background:var(--primary); color:white;">
+                        <th style="padding:8px; text-align:${isAr ? 'right' : 'left'}; border-radius:${isAr ? '0 8px 0 0' : '8px 0 0 0'};">${isAr ? 'البرنامج' : 'Program'}</th>
+                        ${years.map((y, i) => `<th style="padding:8px; text-align:center; ${i === years.length - 1 ? `border-radius:${isAr ? '8px 0 0 0' : '0 8px 0 0'}` : ''}">${y}</th>`).join('')}
+                        <th style="padding:8px; text-align:center; font-weight:800;">${isAr ? 'الإجمالي' : 'Total'}</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+
+            const yearTotals = new Array(horizon).fill(0);
+            let grandTotal = 0;
+
+            active.forEach((r, ri) => {
+                const yearlyCosts = Array.from({length: horizon}, (_, y) => {
+                    const rampup = y === 0 ? 1.3 : (y === 1 ? 1.1 : 1.0);
+                    const coverageGain = Math.max(0, (r.target - r.baseline) / 100);
+                    const scaleDiscount = coverageGain * r.eligiblePop > 1000000 ? 0.95 : 1.0;
+                    const yearCoverage = r.baseline / 100 + (coverageGain * Math.min(1, (y + 1) / Math.min(horizon, 3)));
+                    const yearAdditional = Math.max(0, yearCoverage - r.baseline / 100) * r.eligiblePop;
+                    return yearAdditional * r.unitCostSAR * scaleDiscount * rampup;
+                });
+                const rowTotal = yearlyCosts.reduce((a, b) => a + b, 0);
+                yearlyCosts.forEach((c, i) => yearTotals[i] += c);
+                grandTotal += rowTotal;
+
+                const bg = ri % 2 === 0 ? '#F9FAFB' : 'white';
+                html += `<tr style="background:${bg};">
+                    <td style="padding:8px; font-weight:600; color:${r.color}; border-bottom:1px solid #E5E7EB;">${isAr ? r.nameAr : r.nameEn}</td>
+                    ${yearlyCosts.map(c => `<td style="padding:8px; text-align:center; border-bottom:1px solid #E5E7EB;">${(c / 1e6).toFixed(0)}</td>`).join('')}
+                    <td style="padding:8px; text-align:center; font-weight:700; border-bottom:1px solid #E5E7EB;">${(rowTotal / 1e6).toFixed(0)}</td>
+                </tr>`;
+            });
+
+            html += `<tr style="background:var(--primary); color:white; font-weight:700;">
+                <td style="padding:8px;">${isAr ? 'الإجمالي' : 'Total'}</td>
+                ${yearTotals.map(t => `<td style="padding:8px; text-align:center;">${(t / 1e6).toFixed(0)}</td>`).join('')}
+                <td style="padding:8px; text-align:center; font-size:1rem;">${(grandTotal / 1e6).toFixed(0)}</td>
+            </tr></tbody></table>`;
+
+            container.innerHTML = html;
+        }
+
+        function renderOhHR(results) {
+            const container = document.getElementById('ohHRRequirements');
+            if (!container) return;
+            const isAr = document.documentElement.lang === 'ar';
+            const active = results.filter(r => r.coverageGain > 0);
+
+            if (active.length === 0) {
+                container.innerHTML = `<div style="color:#9CA3AF; text-align:center; padding:12px; font-size:0.85rem;">${isAr ? 'حرّك المؤشرات لعرض الاحتياجات' : 'Adjust sliders to see requirements'}</div>`;
+                return;
+            }
+
+            let totalPhys = 0, totalNurses = 0, totalAllied = 0;
+            active.forEach(r => {
+                totalPhys += r.hrNeeded.physicians;
+                totalNurses += r.hrNeeded.nurses;
+                totalAllied += r.hrNeeded.allied;
+            });
+
+            const hrData = [
+                { icon: '👨‍⚕️', labelAr: 'أطباء', labelEn: 'Physicians', count: totalPhys, color: '#0F7C7B' },
+                { icon: '👩‍⚕️', labelAr: 'ممرضين', labelEn: 'Nurses', count: totalNurses, color: '#059669' },
+                { icon: '🏥', labelAr: 'مهن صحية مساندة', labelEn: 'Allied Health', count: totalAllied, color: '#A56A4A' }
+            ];
+
+            container.innerHTML = `<div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px;">
+                ${hrData.map(h => `
+                    <div style="background:white; border-radius:var(--radius-md); padding:14px; text-align:center; border-top:3px solid ${h.color};">
+                        <div style="font-size:1.6rem;">${h.icon}</div>
+                        <div style="font-size:1.3rem; font-weight:800; color:${h.color}; margin:4px 0;">${h.count.toLocaleString()}</div>
+                        <div style="font-size:0.75rem; color:var(--text-light);">${isAr ? h.labelAr : h.labelEn}</div>
+                    </div>
+                `).join('')}
+            </div>
+            <div style="margin-top:10px; font-size:0.75rem; color:var(--text-light); text-align:center;">
+                ${isAr ? 'إجمالي الكوادر الإضافية المطلوبة' : 'Total additional workforce required'}: <strong style="color:var(--primary);">${(totalPhys + totalNurses + totalAllied).toLocaleString()}</strong>
+            </div>`;
+        }
+
+        function resetOneHealth() {
+            ohPrograms.forEach(p => {
+                ohCoverageTargets[p.id] = p.baseline;
+            });
+            document.getElementById('ohScenario').value = 'custom';
+            renderOhSliders();
+            updateOneHealth();
+        }
+
+        function loadOhPresetScenario() {
+            document.getElementById('ohScenario').value = 'vision2030';
+            onOhScenarioChange();
+        }
+
+        function exportOneHealth() {
+            const isAr = document.documentElement.lang === 'ar';
+            const horizon = parseInt(document.getElementById('ohHorizon').value) || 5;
+
+            // Capture charts as images
+            const costCanvas = document.getElementById('ohCostChart');
+            const impactCanvas = document.getElementById('ohImpactChart');
+            const costImg = costCanvas ? costCanvas.toDataURL('image/png') : '';
+            const impactImg = impactCanvas ? impactCanvas.toDataURL('image/png') : '';
+
+            // Get projection table HTML
+            const projTable = document.getElementById('ohProjectionTable');
+            const projHtml = projTable ? projTable.innerHTML : '';
+
+            // Get HR HTML
+            const hrDiv = document.getElementById('ohHRRequirements');
+            const hrHtml = hrDiv ? hrDiv.innerHTML : '';
+
+            // KPI values
+            const totalCost = document.getElementById('ohTotalCost').textContent;
+            const livesSaved = document.getElementById('ohLivesSaved').textContent;
+            const dalys = document.getElementById('ohDALYs').textContent;
+            const costPerDALY = document.getElementById('ohCostPerDALY').textContent;
+
+            // Build program summary
+            const active = ohPrograms.filter(p => (ohCoverageTargets[p.id] || p.baseline) > p.baseline);
+            const programRows = active.map(p => {
+                const target = ohCoverageTargets[p.id] || p.baseline;
+                return `<tr>
+                    <td style="padding:6px 10px; border-bottom:1px solid #E5E7EB; font-weight:600; color:${p.color};">${isAr ? p.nameAr : p.nameEn}</td>
+                    <td style="padding:6px 10px; border-bottom:1px solid #E5E7EB; text-align:center;">${p.baseline}%</td>
+                    <td style="padding:6px 10px; border-bottom:1px solid #E5E7EB; text-align:center; font-weight:700;">${target}%</td>
+                    <td style="padding:6px 10px; border-bottom:1px solid #E5E7EB; text-align:center; color:#059669;">+${target - p.baseline}%</td>
+                </tr>`;
+            }).join('');
+
+            const bodyHtml = `
+            <div class="kpi-grid">
+                <div class="kpi-card"><div class="kpi-value" style="color:#0F7C7B;">${totalCost}</div><div class="kpi-label">${isAr ? 'التكلفة (مليار ر.س)' : 'Total Cost (B SAR)'}</div></div>
+                <div class="kpi-card"><div class="kpi-value" style="color:#059669;">${livesSaved}</div><div class="kpi-label">${isAr ? 'أرواح مُنقذة' : 'Lives Saved'}</div></div>
+                <div class="kpi-card"><div class="kpi-value" style="color:#A56A4A;">${dalys}</div><div class="kpi-label">${isAr ? 'DALYs مُتجنبة' : 'DALYs Averted'}</div></div>
+                <div class="kpi-card"><div class="kpi-value" style="color:#0B1F3B;">${costPerDALY}</div><div class="kpi-label">${isAr ? 'تكلفة/DALY (ر.س)' : 'Cost/DALY (SAR)'}</div></div>
+            </div>
+            <h4>${isAr ? 'أهداف التغطية' : 'Coverage Targets'} — ${horizon} ${isAr ? 'سنوات' : 'Years'}</h4>
+            <table style="margin-bottom:16px;">
+                <thead><tr><th style="text-align:${isAr ? 'right' : 'left'};">${isAr ? 'البرنامج' : 'Program'}</th><th>${isAr ? 'الأساس' : 'Baseline'}</th><th>${isAr ? 'الهدف' : 'Target'}</th><th>${isAr ? 'الزيادة' : 'Gain'}</th></tr></thead>
+                <tbody>${programRows}</tbody>
+            </table>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+                ${costImg ? `<div><h4 style="font-size:0.85rem;">${isAr ? 'توزيع التكلفة' : 'Cost Distribution'}</h4><img src="${costImg}"></div>` : ''}
+                ${impactImg ? `<div><h4 style="font-size:0.85rem;">${isAr ? 'الأثر الصحي' : 'Health Impact'}</h4><img src="${impactImg}"></div>` : ''}
+            </div>
+            <h4>${isAr ? 'الإسقاط المالي السنوي (مليون ر.س)' : 'Annual Financial Projection (M SAR)'}</h4>
+            ${projHtml}
+            <h4 style="margin-top:16px;">${isAr ? 'متطلبات الموارد البشرية' : 'Human Resource Requirements'}</h4>
+            ${hrHtml}`;
+
+            const printWindow = window.open('', '_blank');
+            if (!printWindow) return;
+            printWindow.document.write(phpsa_pdfShell({
+                title: 'Health Investment Planner Report',
+                titleAr: 'تقرير مُخطط الاستثمار الصحي',
+                subtitle: 'Inspired by WHO OneHealth Tool — Planning Horizon: ' + horizon + ' years',
+                subtitleAr: 'مستوحى من أداة WHO OneHealth — أفق التخطيط: ' + horizon + ' سنوات',
+                modelName: 'WHO OneHealth Tool — World Health Organization',
+                modelNameAr: 'أداة WHO OneHealth — منظمة الصحة العالمية',
+                modelUrl: 'https://www.who.int/tools/onehealth',
+                modelRef: 'WHO (2013). "OneHealth Tool: Supporting integrated strategic health planning, costing and health impact analysis." Geneva: WHO.',
+                accentColor: '#0F7C7B',
+                bodyHtml
+            }));
+            printWindow.document.close();
+            setTimeout(() => { printWindow.print(); }, 600);
+        }
+
+        // ============================================================
+        // MODULE: Spectrum Suite — Demographic & Health Projections
+        // Inspired by Avenir Health / USAID / UNFPA / WHO
+        // ============================================================
+
+        // Saudi baseline demographics (GASTAT 2024)
+        const specBaseline = {
+            year: 2024,
+            totalPop: 36.0,        // millions
+            growthRate: 0.015,     // 1.5% annual
+            tfr: 2.3,             // total fertility rate
+            lifeExpMale: 76.2,
+            lifeExpFemale: 79.1,
+            infantMortality: 5.2,  // per 1000 live births
+            maternalMortality: 12, // per 100,000 live births
+            under5Mortality: 6.8,  // per 1000 live births
+            neonatalMortality: 3.1,// per 1000
+            births: 480000,        // annual
+            womenRepAge: 8500000,  // women 15-49
+            elderlyPct: 3.8,       // % 65+
+            youth0_14Pct: 24.5,    // % 0-14
+            working15_64Pct: 71.7, // % 15-64
+            smokingPrev: 21.4,     // %
+            obesityPrev: 33.0,     // %
+            diabetesPrev: 18.3,    // %
+            htnPrev: 25.5,         // %
+            cprModern: 29,         // contraceptive prevalence rate (modern) %
+            unmetNeedFP: 12,       // unmet need for FP %
+        };
+
+        // LiST interventions data
+        const specLiSTInterventions = [
+            { id: 'sba', nameAr: 'ولادة بإشراف مهني', nameEn: 'Skilled Birth Attendance', baseline: 98, color: '#DC2626', childEffect: 0, maternalEffect: 0.25, neonatalEffect: 0.15, costPerPct: 1200000 },
+            { id: 'anc', nameAr: 'رعاية ما قبل الولادة (4+ زيارات)', nameEn: 'Antenatal Care (4+ visits)', baseline: 94, color: '#B45309', childEffect: 0.05, maternalEffect: 0.20, neonatalEffect: 0.10, costPerPct: 800000 },
+            { id: 'pnc', nameAr: 'رعاية ما بعد الولادة', nameEn: 'Postnatal Care', baseline: 85, color: '#059669', childEffect: 0.08, maternalEffect: 0.15, neonatalEffect: 0.20, costPerPct: 600000 },
+            { id: 'vacc', nameAr: 'التطعيمات الكاملة للأطفال', nameEn: 'Full Child Immunization', baseline: 96, color: '#4338CA', childEffect: 0.30, maternalEffect: 0, neonatalEffect: 0.05, costPerPct: 500000 },
+            { id: 'ort', nameAr: 'علاج الجفاف بالفم (ORT)', nameEn: 'Oral Rehydration Therapy', baseline: 70, color: '#0284C7', childEffect: 0.15, maternalEffect: 0, neonatalEffect: 0.02, costPerPct: 200000 },
+            { id: 'bfeed', nameAr: 'الرضاعة الطبيعية الحصرية', nameEn: 'Exclusive Breastfeeding', baseline: 35, color: '#7C3AED', childEffect: 0.12, maternalEffect: 0, neonatalEffect: 0.18, costPerPct: 300000 },
+        ];
+        let specLiSTTargets = {};
+
+        // Deep copy of baseline defaults for reset
+        const specBaselineDefaults = JSON.parse(JSON.stringify(specBaseline));
+        const specLiSTDefaults = specLiSTInterventions.map(iv => ({
+            id: iv.id, baseline: iv.baseline, childEffect: iv.childEffect,
+            maternalEffect: iv.maternalEffect, neonatalEffect: iv.neonatalEffect, costPerPct: iv.costPerPct
+        }));
+
+        // Field definitions for each assumption section
+        const specAssumpFields = {
+            demographics: [
+                { key: 'totalPop', labelAr: 'إجمالي السكان (مليون)', labelEn: 'Total Population (M)', step: 0.1 },
+                { key: 'growthRate', labelAr: 'معدل النمو السنوي', labelEn: 'Annual Growth Rate', step: 0.001 },
+                { key: 'tfr', labelAr: 'معدل الخصوبة الكلي', labelEn: 'Total Fertility Rate', step: 0.1 },
+                { key: 'lifeExpMale', labelAr: 'متوسط العمر (ذكور)', labelEn: 'Life Expectancy (M)', step: 0.1 },
+                { key: 'lifeExpFemale', labelAr: 'متوسط العمر (إناث)', labelEn: 'Life Expectancy (F)', step: 0.1 },
+                { key: 'births', labelAr: 'المواليد السنوية', labelEn: 'Annual Births', step: 10000 },
+                { key: 'elderlyPct', labelAr: 'نسبة كبار السن 65+ (%)', labelEn: 'Elderly 65+ (%)', step: 0.1 },
+                { key: 'youth0_14Pct', labelAr: 'نسبة الشباب 0-14 (%)', labelEn: 'Youth 0-14 (%)', step: 0.1 },
+                { key: 'womenRepAge', labelAr: 'النساء في سن الإنجاب', labelEn: 'Women of Reproductive Age', step: 100000 },
+            ],
+            mortality: [
+                { key: 'infantMortality', labelAr: 'وفيات الرضّع / 1000 مولود', labelEn: 'Infant Mortality / 1,000', step: 0.1 },
+                { key: 'under5Mortality', labelAr: 'وفيات تحت 5 / 1000', labelEn: 'Under-5 Mortality / 1,000', step: 0.1 },
+                { key: 'neonatalMortality', labelAr: 'وفيات حديثي الولادة / 1000', labelEn: 'Neonatal Mortality / 1,000', step: 0.1 },
+                { key: 'maternalMortality', labelAr: 'وفيات الأمهات / 100,000', labelEn: 'Maternal Mortality / 100K', step: 1 },
+            ],
+            ncd: [
+                { key: 'smokingPrev', labelAr: 'انتشار التدخين (%)', labelEn: 'Smoking Prevalence (%)', step: 0.1 },
+                { key: 'obesityPrev', labelAr: 'انتشار السمنة (%)', labelEn: 'Obesity Prevalence (%)', step: 0.1 },
+                { key: 'diabetesPrev', labelAr: 'انتشار السكري (%)', labelEn: 'Diabetes Prevalence (%)', step: 0.1 },
+                { key: 'htnPrev', labelAr: 'انتشار ارتفاع الضغط (%)', labelEn: 'Hypertension Prevalence (%)', step: 0.1 },
+            ],
+            rh: [
+                { key: 'cprModern', labelAr: 'معدل استخدام وسائل منع الحمل (%)', labelEn: 'Contraceptive Prevalence (%)', step: 1 },
+                { key: 'unmetNeedFP', labelAr: 'الحاجة غير الملباة لتنظيم الأسرة (%)', labelEn: 'Unmet Need for FP (%)', step: 1 },
+            ]
+        };
+
+        function renderSpecAssumptions() {
+            const isAr = document.documentElement.lang === 'ar';
+            const sections = [
+                { gridId: 'specAssumpDemGrid', fields: specAssumpFields.demographics },
+                { gridId: 'specAssumpMortGrid', fields: specAssumpFields.mortality },
+                { gridId: 'specAssumpNCDGrid', fields: specAssumpFields.ncd },
+                { gridId: 'specAssumpRHGrid', fields: specAssumpFields.rh },
+            ];
+            sections.forEach(sec => {
+                const grid = document.getElementById(sec.gridId);
+                if (!grid) return;
+                grid.innerHTML = sec.fields.map(f => {
+                    const val = specBaseline[f.key];
+                    const dflt = specBaselineDefaults[f.key];
+                    const isModified = val !== dflt;
+                    return `<div>
+                        <label style="font-size:0.7rem; color:${isModified ? '#DC2626' : 'var(--text-light)'}; display:block; margin-bottom:2px;">
+                            ${isAr ? f.labelAr : f.labelEn}${isModified ? ' ✏️' : ''}
+                        </label>
+                        <input type="number" value="${val}" step="${f.step}"
+                            onchange="onSpecAssumpChange('${f.key}', this.value)"
+                            style="width:100%; padding:5px 8px; border:1px solid ${isModified ? '#F59E0B' : 'var(--border)'}; border-radius:6px; font-size:0.82rem; font-family:var(--font-sans); box-sizing:border-box; background:${isModified ? '#FFFBEB' : 'white'};">
+                    </div>`;
+                }).join('');
+            });
+            // Also render LiST intervention assumptions
+            renderSpecLiSTAssumptions();
+        }
+
+        function renderSpecLiSTAssumptions() {
+            // LiST assumptions are shown inline within the LiST panel — append to RH grid
+            const grid = document.getElementById('specAssumpRHGrid');
+            if (!grid) return;
+            const isAr = document.documentElement.lang === 'ar';
+            const listFields = [
+                { key: 'childEffect', labelAr: 'تأثير على وفيات الأطفال', labelEn: 'Child Mortality Effect', step: 0.01 },
+                { key: 'maternalEffect', labelAr: 'تأثير على وفيات الأمهات', labelEn: 'Maternal Mortality Effect', step: 0.01 },
+                { key: 'neonatalEffect', labelAr: 'تأثير على وفيات الحديثي', labelEn: 'Neonatal Mortality Effect', step: 0.01 },
+                { key: 'costPerPct', labelAr: 'تكلفة / نقطة مئوية (ر.س)', labelEn: 'Cost / % Point (SAR)', step: 50000 },
+            ];
+            let listHtml = `<div style="grid-column:1 / -1; margin-top:12px;">
+                <div style="font-weight:700; font-size:0.82rem; color:#0284C7; margin-bottom:8px; border-bottom:2px solid #0284C7; padding-bottom:4px;">
+                    <span lang="ar">🤱 معطيات تدخلات LiST</span>
+                    <span lang="en" class="hidden">🤱 LiST Intervention Parameters</span>
+                </div>
+            </div>`;
+            specLiSTInterventions.forEach(iv => {
+                const dflt = specLiSTDefaults.find(d => d.id === iv.id);
+                listHtml += `<div style="grid-column:1 / -1; border:1px solid var(--border); border-radius:var(--radius-md); padding:10px; border-top:3px solid ${iv.color}; margin-bottom:4px;">
+                    <div style="font-weight:700; font-size:0.8rem; color:${iv.color}; margin-bottom:8px;">${isAr ? iv.nameAr : iv.nameEn}</div>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:6px;">`;
+                listFields.forEach(f => {
+                    const val = iv[f.key];
+                    const isModified = val !== dflt[f.key];
+                    listHtml += `<div>
+                        <label style="font-size:0.7rem; color:${isModified ? '#DC2626' : 'var(--text-light)'}; display:block; margin-bottom:2px;">
+                            ${isAr ? f.labelAr : f.labelEn}${isModified ? ' ✏️' : ''}
+                        </label>
+                        <input type="number" value="${val}" step="${f.step}"
+                            onchange="onSpecLiSTAssumpChange('${iv.id}','${f.key}',this.value)"
+                            style="width:100%; padding:5px 8px; border:1px solid ${isModified ? '#F59E0B' : 'var(--border)'}; border-radius:6px; font-size:0.82rem; font-family:var(--font-sans); box-sizing:border-box; background:${isModified ? '#FFFBEB' : 'white'};">
+                    </div>`;
+                });
+                listHtml += `</div></div>`;
+            });
+            grid.insertAdjacentHTML('beforeend', listHtml);
+        }
+
+        function onSpecAssumpChange(key, value) {
+            const numVal = parseFloat(value);
+            if (isNaN(numVal)) return;
+            specBaseline[key] = numVal;
+            renderSpecAssumptions();
+            updateSpectrum();
+        }
+
+        function onSpecLiSTAssumpChange(ivId, key, value) {
+            const iv = specLiSTInterventions.find(i => i.id === ivId);
+            if (!iv) return;
+            const numVal = parseFloat(value);
+            if (isNaN(numVal)) return;
+            iv[key] = numVal;
+            renderSpecAssumptions();
+            updateSpectrum();
+        }
+
+        function resetSpecAssumptions() {
+            Object.keys(specBaselineDefaults).forEach(k => {
+                specBaseline[k] = specBaselineDefaults[k];
+            });
+            specLiSTDefaults.forEach(d => {
+                const iv = specLiSTInterventions.find(i => i.id === d.id);
+                if (iv) {
+                    iv.baseline = d.baseline;
+                    iv.childEffect = d.childEffect;
+                    iv.maternalEffect = d.maternalEffect;
+                    iv.neonatalEffect = d.neonatalEffect;
+                    iv.costPerPct = d.costPerPct;
+                }
+            });
+            specLiSTInterventions.forEach(iv => { specLiSTTargets[iv.id] = iv.baseline; });
+            renderSpecAssumptions();
+            renderSpecLiSTSliders();
+            updateSpectrum();
+        }
+
+        function switchSpectrumTab(tab) {
+            ['demproj','famplan','list','ncd'].forEach(t => {
+                const panel = document.getElementById('specPanel_' + t);
+                const btn = document.getElementById('specTab_' + t);
+                if (panel) panel.style.display = t === tab ? 'block' : 'none';
+                if (btn) {
+                    btn.className = t === tab ? 'btn btn-primary' : 'btn btn-secondary';
+                    if (t === tab) {
+                        const colors = { demproj:'#4338CA', famplan:'#059669', list:'#DC2626', ncd:'#A56A4A' };
+                        btn.style.background = colors[t];
+                    } else {
+                        btn.style.background = '';
+                    }
+                }
+            });
+        }
+
+        function initSpectrum() {
+            // Init LiST targets to baselines
+            specLiSTInterventions.forEach(iv => { specLiSTTargets[iv.id] = iv.baseline; });
+            renderSpecAssumptions();
+            renderSpecLiSTSliders();
+            updateSpectrum();
+        }
+
+        function renderSpecLiSTSliders() {
+            const container = document.getElementById('specLiSTSliders');
+            if (!container) return;
+            const isAr = document.documentElement.lang === 'ar';
+            container.innerHTML = specLiSTInterventions.map(iv => {
+                const val = specLiSTTargets[iv.id];
+                return `<div style="background:white; border:1px solid var(--border); border-radius:var(--radius-md); padding:10px; border-top:3px solid ${iv.color};">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                        <span style="font-weight:600; font-size:0.8rem; color:var(--primary);">${isAr ? iv.nameAr : iv.nameEn}</span>
+                        <span style="font-weight:800; font-size:1rem; color:${iv.color};" id="specLiST_val_${iv.id}">${val}%</span>
+                    </div>
+                    <input type="range" min="${iv.baseline}" max="100" value="${val}" step="1" oninput="specLiSTTargets['${iv.id}']=parseInt(this.value);document.getElementById('specLiST_val_${iv.id}').textContent=this.value+'%';updateSpectrum()" style="width:100%; accent-color:${iv.color};">
+                    <div style="display:flex; justify-content:space-between; font-size:0.65rem; color:var(--text-light);"><span>${isAr ? 'الأساس' : 'Baseline'}: ${iv.baseline}%</span><span>+${val - iv.baseline}%</span></div>
+                </div>`;
+            }).join('');
+        }
+
+        function updateSpectrum() {
+            updateDemProj();
+            updateFamPlan();
+            updateLiST();
+            updateNCDProj();
+        }
+
+        // === DemProj ===
+        function updateDemProj() {
+            const horizon = parseInt(document.getElementById('specDemHorizon').value);
+            const tfrScenario = document.getElementById('specTFRScenario').value;
+            const migration = parseInt(document.getElementById('specMigration').value);
+            const leGain = parseFloat(document.getElementById('specLifeExpGain').value);
+            const years = horizon - specBaseline.year;
+
+            document.getElementById('specMigVal').textContent = (migration >= 0 ? '+' : '') + migration.toLocaleString();
+            document.getElementById('specLEVal').textContent = '+' + leGain.toFixed(1);
+
+            const tfrMap = { high: 2.8, medium: 2.3, low: 1.8 };
+            const tfr = tfrMap[tfrScenario];
+            // Simple cohort growth model
+            const naturalGrowthRate = (tfr - 2.1) / 2.1 * 0.015 + 0.008; // adjusted
+            const migrationRate = migration / (specBaseline.totalPop * 1e6);
+            const annualGrowth = naturalGrowthRate + migrationRate;
+
+            const projections = [];
+            let pop = specBaseline.totalPop;
+            let elderlyPct = specBaseline.elderlyPct;
+            let youthPct = specBaseline.youth0_14Pct;
+
+            for (let y = 0; y <= years; y++) {
+                const year = specBaseline.year + y;
+                const agingFactor = y / years;
+                const eP = specBaseline.elderlyPct + (agingFactor * (4 + leGain * 0.8));
+                const yP = Math.max(15, specBaseline.youth0_14Pct + (tfr - 2.3) * 2 - agingFactor * 3);
+                const wP = 100 - eP - yP;
+                projections.push({
+                    year, pop: pop,
+                    elderlyPct: eP, youthPct: yP, workingPct: wP,
+                    depRatio: ((eP + yP) / wP * 100)
+                });
+                pop *= (1 + annualGrowth);
+            }
+
+            const final = projections[projections.length - 1];
+            const lifeExp = ((specBaseline.lifeExpMale + specBaseline.lifeExpFemale) / 2 + leGain).toFixed(1);
+            document.getElementById('specPopTotal').textContent = final.pop.toFixed(1);
+            document.getElementById('specLifeExp').textContent = lifeExp;
+            document.getElementById('specDepRatio').textContent = final.depRatio.toFixed(1);
+            document.getElementById('specElderly').textContent = final.elderlyPct.toFixed(1);
+
+            // Draw charts
+            requestAnimationFrame(() => {
+                drawSpecPyramid(final, tfr);
+                drawSpecGrowth(projections);
+                renderSpecDemTable(projections);
+            });
+        }
+
+        function drawSpecPyramid(final, tfr) {
+            const canvas = document.getElementById('specPyramidChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const dpr = window.devicePixelRatio || 1;
+            const w = canvas.parentElement.offsetWidth - 32 || 400;
+            const h = 300;
+            canvas.width = w * dpr; canvas.height = h * dpr;
+            canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+            ctx.scale(dpr, dpr); ctx.clearRect(0, 0, w, h);
+            const isAr = document.documentElement.lang === 'ar';
+
+            const ageGroups = ['0-4','5-14','15-24','25-34','35-44','45-54','55-64','65-74','75+'];
+            // Simplified population distribution based on TFR and aging
+            const baseDist = [0.08, 0.16, 0.17, 0.18, 0.15, 0.11, 0.08, 0.04, 0.03];
+            const tfrAdj = (tfr - 2.3) * 0.02;
+            const maleDist = baseDist.map((v, i) => Math.max(0.01, v + (i < 3 ? tfrAdj : -tfrAdj * 0.3)) * 0.52);
+            const femaleDist = baseDist.map((v, i) => Math.max(0.01, v + (i < 3 ? tfrAdj : -tfrAdj * 0.3)) * 0.48);
+
+            const barH = (h - 40) / ageGroups.length;
+            const centerX = w / 2;
+            const maxBarW = centerX - 50;
+            const maxVal = Math.max(...maleDist, ...femaleDist);
+
+            ctx.fillStyle = '#0B1F3B'; ctx.font = 'bold 12px "IBM Plex Sans Arabic", Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(isAr ? 'ذكور' : 'Male', centerX - maxBarW / 2, 14);
+            ctx.fillText(isAr ? 'إناث' : 'Female', centerX + maxBarW / 2, 14);
+
+            ageGroups.forEach((ag, i) => {
+                const y = 22 + i * barH;
+                const mw = (maleDist[i] / maxVal) * maxBarW;
+                const fw = (femaleDist[i] / maxVal) * maxBarW;
+
+                ctx.fillStyle = '#4338CA88'; ctx.fillRect(centerX - mw - 2, y, mw, barH - 2);
+                ctx.fillStyle = '#DC262688'; ctx.fillRect(centerX + 2, y, fw, barH - 2);
+
+                ctx.fillStyle = '#374151'; ctx.font = '10px "IBM Plex Sans Arabic", Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(ag, centerX, y + barH / 2 + 3);
+            });
+        }
+
+        function drawSpecGrowth(projections) {
+            const canvas = document.getElementById('specGrowthChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const dpr = window.devicePixelRatio || 1;
+            const w = canvas.parentElement.offsetWidth - 32 || 400;
+            const h = 300;
+            canvas.width = w * dpr; canvas.height = h * dpr;
+            canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+            ctx.scale(dpr, dpr); ctx.clearRect(0, 0, w, h);
+            const isAr = document.documentElement.lang === 'ar';
+
+            if (projections.length < 2) return;
+            const pad = { top: 30, right: 20, bottom: 40, left: 50 };
+            const plotW = w - pad.left - pad.right;
+            const plotH = h - pad.top - pad.bottom;
+            const minPop = Math.min(...projections.map(p => p.pop)) * 0.95;
+            const maxPop = Math.max(...projections.map(p => p.pop)) * 1.05;
+
+            // Grid
+            ctx.strokeStyle = '#E5E7EB'; ctx.lineWidth = 1;
+            for (let i = 0; i <= 4; i++) {
+                const y = pad.top + (plotH / 4) * i;
+                ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(w - pad.right, y); ctx.stroke();
+                ctx.fillStyle = '#9CA3AF'; ctx.font = '10px "IBM Plex Sans Arabic", Arial'; ctx.textAlign = 'right';
+                ctx.fillText((maxPop - (maxPop - minPop) * i / 4).toFixed(1) + 'M', pad.left - 5, y + 4);
+            }
+
+            // Line
+            ctx.strokeStyle = '#4338CA'; ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            projections.forEach((p, i) => {
+                const x = pad.left + (i / (projections.length - 1)) * plotW;
+                const y = pad.top + (1 - (p.pop - minPop) / (maxPop - minPop)) * plotH;
+                i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+            });
+            ctx.stroke();
+
+            // Fill
+            ctx.lineTo(pad.left + plotW, pad.top + plotH);
+            ctx.lineTo(pad.left, pad.top + plotH);
+            ctx.closePath();
+            ctx.fillStyle = '#4338CA15'; ctx.fill();
+
+            // X labels
+            ctx.fillStyle = '#6B7280'; ctx.font = '10px "IBM Plex Sans Arabic", Arial'; ctx.textAlign = 'center';
+            const step = Math.max(1, Math.floor(projections.length / 6));
+            projections.forEach((p, i) => {
+                if (i % step === 0 || i === projections.length - 1) {
+                    const x = pad.left + (i / (projections.length - 1)) * plotW;
+                    ctx.fillText(p.year, x, h - pad.bottom + 16);
+                }
+            });
+
+            // Dots on first and last
+            [0, projections.length - 1].forEach(i => {
+                const p = projections[i];
+                const x = pad.left + (i / (projections.length - 1)) * plotW;
+                const y = pad.top + (1 - (p.pop - minPop) / (maxPop - minPop)) * plotH;
+                ctx.fillStyle = '#4338CA'; ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI * 2); ctx.fill();
+                ctx.fillStyle = '#0B1F3B'; ctx.font = 'bold 11px "IBM Plex Sans Arabic", Arial';
+                ctx.fillText(p.pop.toFixed(1) + 'M', x, y - 10);
+            });
+        }
+
+        function renderSpecDemTable(projections) {
+            const container = document.getElementById('specDemTable');
+            if (!container) return;
+            const isAr = document.documentElement.lang === 'ar';
+            const step = Math.max(1, Math.floor((projections.length - 1) / 6));
+            const display = projections.filter((_, i) => i === 0 || i === projections.length - 1 || i % step === 0);
+
+            container.innerHTML = `<div style="overflow-x:auto;"><table style="width:100%; border-collapse:collapse; font-size:0.8rem;">
+                <thead><tr style="background:#4338CA; color:white;">
+                    <th style="padding:8px;">${isAr ? 'السنة' : 'Year'}</th>
+                    <th style="padding:8px;">${isAr ? 'السكان (م)' : 'Pop (M)'}</th>
+                    <th style="padding:8px;">${isAr ? 'شباب 0-14%' : 'Youth 0-14%'}</th>
+                    <th style="padding:8px;">${isAr ? 'عمل 15-64%' : 'Working 15-64%'}</th>
+                    <th style="padding:8px;">${isAr ? 'كبار 65+%' : 'Elderly 65+%'}</th>
+                    <th style="padding:8px;">${isAr ? 'إعالة%' : 'Dep. Ratio%'}</th>
+                </tr></thead><tbody>
+                ${display.map((p, i) => `<tr style="background:${i % 2 === 0 ? '#F9FAFB' : 'white'};">
+                    <td style="padding:6px 8px; text-align:center; font-weight:600;">${p.year}</td>
+                    <td style="padding:6px 8px; text-align:center;">${p.pop.toFixed(1)}</td>
+                    <td style="padding:6px 8px; text-align:center;">${p.youthPct.toFixed(1)}</td>
+                    <td style="padding:6px 8px; text-align:center;">${p.workingPct.toFixed(1)}</td>
+                    <td style="padding:6px 8px; text-align:center; color:#DC2626; font-weight:600;">${p.elderlyPct.toFixed(1)}</td>
+                    <td style="padding:6px 8px; text-align:center;">${p.depRatio.toFixed(1)}</td>
+                </tr>`).join('')}
+            </tbody></table></div>`;
+        }
+
+        // === FamPlan ===
+        function updateFamPlan() {
+            const cpr = parseInt(document.getElementById('specCPR').value);
+            const unmet = parseInt(document.getElementById('specUnmet').value);
+            document.getElementById('specCPRVal').textContent = cpr + '%';
+            document.getElementById('specUnmetVal').textContent = unmet + '%';
+
+            const wra = specBaseline.womenRepAge;
+            const users = Math.round(wra * cpr / 100);
+            // Bongaarts: each 1% CPR increase reduces TFR by ~0.04
+            const cprGain = cpr - specBaseline.cprModern;
+            const tfrReduction = cprGain * 0.04;
+            const pregnanciesAvoided = Math.round(cprGain / 100 * wra * 0.12); // ~12% pregnancy rate
+            const maternalDeathsAvoided = Math.round(pregnanciesAvoided * specBaseline.maternalMortality / 100000);
+            const costPerUser = 180; // SAR per user per year
+            const totalCost = (users * costPerUser / 1e6).toFixed(0);
+
+            document.getElementById('specFPUsers').textContent = (users / 1e6).toFixed(2) + 'M';
+            document.getElementById('specPregnanciesAvoided').textContent = pregnanciesAvoided.toLocaleString();
+            document.getElementById('specMaternalDeathsAvoided').textContent = maternalDeathsAvoided.toLocaleString();
+            document.getElementById('specFPCost').textContent = totalCost;
+
+            requestAnimationFrame(() => drawSpecFPChart(cpr, unmet, cprGain));
+        }
+
+        function drawSpecFPChart(cpr, unmet, cprGain) {
+            const canvas = document.getElementById('specFPChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const dpr = window.devicePixelRatio || 1;
+            const w = canvas.parentElement.offsetWidth - 32 || 400;
+            const h = 260;
+            canvas.width = w * dpr; canvas.height = h * dpr;
+            canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+            ctx.scale(dpr, dpr); ctx.clearRect(0, 0, w, h);
+            const isAr = document.documentElement.lang === 'ar';
+
+            // Stacked bar: CPR modern, unmet need, no need
+            const segments = [
+                { label: isAr ? 'وسائل حديثة' : 'Modern Methods', pct: cpr, color: '#059669' },
+                { label: isAr ? 'حاجة غير ملبّاة' : 'Unmet Need', pct: unmet, color: '#F59E0B' },
+                { label: isAr ? 'لا حاجة / تقليدية' : 'No Need / Traditional', pct: 100 - cpr - unmet, color: '#E5E7EB' },
+            ];
+
+            const barW = Math.min(120, w / 4);
+            const barH = h - 60;
+            const barX = w / 2 - barW / 2;
+            let yOff = 20;
+
+            ctx.fillStyle = '#0B1F3B'; ctx.font = 'bold 12px "IBM Plex Sans Arabic", Arial'; ctx.textAlign = 'center';
+            ctx.fillText(isAr ? 'توزيع استخدام وسائل تنظيم الأسرة' : 'Family Planning Method Mix', w / 2, 14);
+
+            segments.forEach(seg => {
+                const segH = (seg.pct / 100) * barH;
+                ctx.fillStyle = seg.color;
+                ctx.fillRect(barX, yOff, barW, segH);
+                if (segH > 18) {
+                    ctx.fillStyle = seg.color === '#E5E7EB' ? '#374151' : 'white';
+                    ctx.font = 'bold 11px "IBM Plex Sans Arabic", Arial'; ctx.textAlign = 'center';
+                    ctx.fillText(seg.pct + '%', barX + barW / 2, yOff + segH / 2 + 4);
+                }
+                yOff += segH;
+            });
+
+            // Legend
+            let lx = w / 2 - 120;
+            const ly = h - 18;
+            segments.forEach(seg => {
+                ctx.fillStyle = seg.color;
+                ctx.fillRect(lx, ly - 8, 10, 10);
+                ctx.fillStyle = '#374151'; ctx.font = '10px "IBM Plex Sans Arabic", Arial'; ctx.textAlign = 'left';
+                ctx.fillText(seg.label, lx + 14, ly);
+                lx += ctx.measureText(seg.label).width + 24;
+            });
+        }
+
+        // === LiST ===
+        function updateLiST() {
+            const isAr = document.documentElement.lang === 'ar';
+            let totalChildLives = 0, totalMaternalLives = 0, totalNeonatalLives = 0, totalCost = 0;
+            const results = [];
+
+            specLiSTInterventions.forEach(iv => {
+                const target = specLiSTTargets[iv.id];
+                const gain = Math.max(0, target - iv.baseline) / 100;
+                const childLives = Math.round(gain * iv.childEffect * specBaseline.under5Mortality * specBaseline.births / 1000);
+                const maternalLives = Math.round(gain * iv.maternalEffect * specBaseline.maternalMortality * specBaseline.births / 100000);
+                const neonatalLives = Math.round(gain * iv.neonatalEffect * specBaseline.neonatalMortality * specBaseline.births / 1000);
+                const cost = gain * 100 * iv.costPerPct;
+                totalChildLives += childLives;
+                totalMaternalLives += maternalLives;
+                totalNeonatalLives += neonatalLives;
+                totalCost += cost;
+                results.push({ ...iv, target, gain: gain * 100, childLives, maternalLives, neonatalLives, cost });
+            });
+
+            const totalLives = totalChildLives + totalMaternalLives + totalNeonatalLives;
+            const costPerLife = totalLives > 0 ? totalCost / totalLives : 0;
+
+            document.getElementById('specChildLives').textContent = totalChildLives.toLocaleString();
+            document.getElementById('specMaternalLives').textContent = totalMaternalLives.toLocaleString();
+            document.getElementById('specNeonatalLives').textContent = totalNeonatalLives.toLocaleString();
+            document.getElementById('specLiSTCost').textContent = Math.round(costPerLife).toLocaleString();
+
+            requestAnimationFrame(() => drawSpecLiSTChart(results));
+        }
+
+        function drawSpecLiSTChart(results) {
+            const canvas = document.getElementById('specLiSTChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const dpr = window.devicePixelRatio || 1;
+            const w = canvas.parentElement.offsetWidth - 32 || 400;
+            const h = 260;
+            canvas.width = w * dpr; canvas.height = h * dpr;
+            canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+            ctx.scale(dpr, dpr); ctx.clearRect(0, 0, w, h);
+            const isAr = document.documentElement.lang === 'ar';
+
+            const active = results.filter(r => r.gain > 0);
+            if (active.length === 0) {
+                ctx.fillStyle = '#9CA3AF'; ctx.font = '13px "IBM Plex Sans Arabic", Arial'; ctx.textAlign = 'center';
+                ctx.fillText(isAr ? 'حرّك المؤشرات لعرض الأرواح المُنقذة' : 'Adjust sliders to see lives saved', w / 2, h / 2);
+                return;
+            }
+
+            // Grouped bar: child + maternal + neonatal per intervention
+            const barGroupW = (w - 80) / active.length;
+            const barW = Math.min(20, barGroupW / 4);
+            const maxLives = Math.max(...active.map(r => Math.max(r.childLives, r.maternalLives, r.neonatalLives)), 1);
+            const plotH = h - 55;
+
+            ctx.fillStyle = '#0B1F3B'; ctx.font = 'bold 12px "IBM Plex Sans Arabic", Arial'; ctx.textAlign = 'center';
+            ctx.fillText(isAr ? 'الأرواح المُنقذة حسب التدخل' : 'Lives Saved by Intervention', w / 2, 14);
+
+            active.forEach((r, i) => {
+                const gx = 40 + i * barGroupW + barGroupW / 2;
+                const bars = [
+                    { val: r.childLives, color: '#DC2626' },
+                    { val: r.maternalLives, color: '#B45309' },
+                    { val: r.neonatalLives, color: '#4338CA' }
+                ];
+                bars.forEach((b, bi) => {
+                    const bh = (b.val / maxLives) * (plotH - 25);
+                    const bx = gx - barW * 1.5 + bi * (barW + 2);
+                    ctx.fillStyle = b.color + 'CC';
+                    ctx.fillRect(bx, 25 + plotH - 25 - bh, barW, bh);
+                });
+                ctx.fillStyle = '#374151'; ctx.font = '9px "IBM Plex Sans Arabic", Arial'; ctx.textAlign = 'center';
+                const label = (isAr ? r.nameAr : r.nameEn).split(' ').slice(0, 2).join(' ');
+                ctx.fillText(label, gx, h - 18);
+            });
+
+            // Legend
+            const legendItems = [
+                { label: isAr ? 'أطفال' : 'Child', color: '#DC2626' },
+                { label: isAr ? 'أمهات' : 'Maternal', color: '#B45309' },
+                { label: isAr ? 'حديثي ولادة' : 'Neonatal', color: '#4338CA' }
+            ];
+            let lx = w - 200;
+            legendItems.forEach(li => {
+                ctx.fillStyle = li.color; ctx.fillRect(lx, 4, 8, 8);
+                ctx.fillStyle = '#374151'; ctx.font = '9px "IBM Plex Sans Arabic", Arial'; ctx.textAlign = 'left';
+                ctx.fillText(li.label, lx + 11, 12); lx += 60;
+            });
+        }
+
+        // === NCD Projections ===
+        function updateNCDProj() {
+            const smokingRed = parseInt(document.getElementById('specSmokingReduction').value);
+            const obesityRed = parseInt(document.getElementById('specObesityReduction').value);
+            const diabScreen = parseInt(document.getElementById('specDiabScreening').value);
+            const htnCov = parseInt(document.getElementById('specHTNCoverage').value);
+            document.getElementById('specSmokingVal').textContent = smokingRed + '%';
+            document.getElementById('specObesityVal').textContent = obesityRed + '%';
+            document.getElementById('specDiabVal').textContent = diabScreen + '%';
+            document.getElementById('specHTNVal').textContent = htnCov + '%';
+
+            const pop30plus = specBaseline.totalPop * 0.5 * 1e6; // ~18M adults 30+
+            // NCD deaths ~42,000/yr in Saudi (GBD estimate)
+            const baseNCDDeaths = 42000;
+            // Smoking: each 1% prevalence reduction → 0.5% NCD death reduction
+            const smokingEffect = smokingRed * 0.005 * baseNCDDeaths;
+            // Obesity: each 1% reduction → 0.3% NCD death reduction
+            const obesityEffect = obesityRed * 0.003 * baseNCDDeaths;
+            // Diabetes screening: each 1% coverage → early detection saves
+            const diabEffect = (diabScreen - 45) * 0.001 * baseNCDDeaths;
+            // HTN treatment: each 1% coverage → stroke/CVD death reduction
+            const htnEffect = (htnCov - 35) * 0.002 * baseNCDDeaths;
+
+            const totalDeathsAvoided = Math.max(0, Math.round(smokingEffect + obesityEffect + diabEffect + htnEffect));
+            const dalysAvoided = Math.round(totalDeathsAvoided * 12); // ~12 DALYs per death averted
+            // Cost per NCD patient: ~15,000 SAR/yr
+            const savings = (totalDeathsAvoided * 15000 * 5 / 1e9); // 5-year savings
+            // Investment cost
+            const investCost = (smokingRed * 50 + obesityRed * 80 + Math.max(0, diabScreen - 45) * 30 + Math.max(0, htnCov - 35) * 40) * 1e6 / 1e9;
+            const roi = investCost > 0 ? (savings / investCost).toFixed(1) + 'x' : '—';
+
+            document.getElementById('specNCDDeathsAvoided').textContent = totalDeathsAvoided.toLocaleString();
+            document.getElementById('specDALYsNCD').textContent = dalysAvoided.toLocaleString();
+            document.getElementById('specNCDSavings').textContent = savings.toFixed(2);
+            document.getElementById('specNCDROI').textContent = roi;
+
+            requestAnimationFrame(() => drawSpecNCDChart(smokingEffect, obesityEffect, Math.max(0, diabEffect), Math.max(0, htnEffect)));
+        }
+
+        function drawSpecNCDChart(smokingE, obesityE, diabE, htnE) {
+            const canvas = document.getElementById('specNCDChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const dpr = window.devicePixelRatio || 1;
+            const w = canvas.parentElement.offsetWidth - 32 || 400;
+            const h = 260;
+            canvas.width = w * dpr; canvas.height = h * dpr;
+            canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+            ctx.scale(dpr, dpr); ctx.clearRect(0, 0, w, h);
+            const isAr = document.documentElement.lang === 'ar';
+
+            const bars = [
+                { label: isAr ? 'تدخين' : 'Smoking', val: Math.round(smokingE), color: '#A56A4A' },
+                { label: isAr ? 'سمنة' : 'Obesity', val: Math.round(obesityE), color: '#B45309' },
+                { label: isAr ? 'فحص سكري' : 'Diabetes', val: Math.round(diabE), color: '#0284C7' },
+                { label: isAr ? 'علاج ضغط' : 'HTN Tx', val: Math.round(htnE), color: '#DC2626' }
+            ];
+
+            const maxVal = Math.max(...bars.map(b => b.val), 1);
+            const barW = Math.min(60, (w - 100) / bars.length - 10);
+            const plotH = h - 60;
+
+            ctx.fillStyle = '#0B1F3B'; ctx.font = 'bold 12px "IBM Plex Sans Arabic", Arial'; ctx.textAlign = 'center';
+            ctx.fillText(isAr ? 'وفيات NCD مُتجنبة حسب التدخل' : 'NCD Deaths Averted by Intervention', w / 2, 14);
+
+            bars.forEach((b, i) => {
+                const x = 50 + i * ((w - 100) / bars.length) + ((w - 100) / bars.length - barW) / 2;
+                const bh = (b.val / maxVal) * (plotH - 10);
+                const y = 25 + plotH - bh;
+
+                ctx.fillStyle = b.color + 'DD';
+                ctx.beginPath(); ctx.roundRect(x, y, barW, bh, 4); ctx.fill();
+
+                ctx.fillStyle = '#0B1F3B'; ctx.font = 'bold 11px "IBM Plex Sans Arabic", Arial'; ctx.textAlign = 'center';
+                ctx.fillText(b.val.toLocaleString(), x + barW / 2, y - 6);
+
+                ctx.fillStyle = '#374151'; ctx.font = '10px "IBM Plex Sans Arabic", Arial';
+                ctx.fillText(b.label, x + barW / 2, h - 12);
+            });
+        }
+
+        function resetSpectrum() {
+            document.getElementById('specDemHorizon').value = '2035';
+            document.getElementById('specTFRScenario').value = 'medium';
+            document.getElementById('specMigration').value = 150000;
+            document.getElementById('specLifeExpGain').value = 3;
+            document.getElementById('specCPR').value = 29;
+            document.getElementById('specUnmet').value = 12;
+            document.getElementById('specSmokingReduction').value = 10;
+            document.getElementById('specObesityReduction').value = 5;
+            document.getElementById('specDiabScreening').value = 45;
+            document.getElementById('specHTNCoverage').value = 35;
+            specLiSTInterventions.forEach(iv => { specLiSTTargets[iv.id] = iv.baseline; });
+            renderSpecLiSTSliders();
+            switchSpectrumTab('demproj');
+            updateSpectrum();
+        }
+
+        function exportSpectrum() {
+            const isAr = document.documentElement.lang === 'ar';
+            const canvases = ['specPyramidChart','specGrowthChart','specFPChart','specLiSTChart','specNCDChart'];
+            const imgs = {};
+            canvases.forEach(id => {
+                const c = document.getElementById(id);
+                if (c) imgs[id] = c.toDataURL('image/png');
+            });
+            const demTable = document.getElementById('specDemTable');
+            const demTableHtml = demTable ? demTable.innerHTML : '';
+
+            const bodyHtml = `
+            <h4>${isAr ? 'الإسقاط السكاني — DemProj' : 'Population Projection — DemProj'}</h4>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+                ${imgs.specPyramidChart ? `<img src="${imgs.specPyramidChart}">` : ''}
+                ${imgs.specGrowthChart ? `<img src="${imgs.specGrowthChart}">` : ''}
+            </div>
+            ${demTableHtml}
+            <h4 style="margin-top:16px;">${isAr ? 'تنظيم الأسرة — FamPlan' : 'Family Planning — FamPlan'}</h4>
+            ${imgs.specFPChart ? `<img src="${imgs.specFPChart}" style="max-width:450px;margin:0 auto;display:block;">` : ''}
+            <h4 style="margin-top:16px;">${isAr ? 'الأرواح المُنقذة — LiST' : 'Lives Saved — LiST'}</h4>
+            ${imgs.specLiSTChart ? `<img src="${imgs.specLiSTChart}">` : ''}
+            <h4 style="margin-top:16px;">${isAr ? 'الأمراض غير السارية — NCD' : 'NCD Projections'}</h4>
+            ${imgs.specNCDChart ? `<img src="${imgs.specNCDChart}">` : ''}`;
+
+            const printWindow = window.open('', '_blank');
+            if (!printWindow) return;
+            printWindow.document.write(phpsa_pdfShell({
+                title: 'Demographic & Health Projection Suite',
+                titleAr: 'مجموعة الإسقاطات الديموغرافية والصحية',
+                subtitle: 'Inspired by Spectrum Suite — Avenir Health (funded by USAID, UNFPA, WHO)',
+                subtitleAr: 'مستوحى من Spectrum Suite — Avenir Health (بدعم من USAID، UNFPA، WHO)',
+                modelName: 'Spectrum Suite — Avenir Health (USAID / UNFPA / WHO)',
+                modelNameAr: 'مجموعة Spectrum — Avenir Health (بتمويل من USAID / UNFPA / WHO)',
+                modelUrl: 'https://www.avenirhealth.org/software-spectrum.php',
+                modelRef: 'Stover J, et al. (2010). "The Spectrum projection package: improvements in estimating mortality, ART needs, PMTCT impact and uncertainty bounds." Sexually Transmitted Infections, 86(Suppl 2), ii49-ii55.',
+                accentColor: '#4338CA',
+                bodyHtml
+            }));
+            printWindow.document.close();
+            setTimeout(() => { printWindow.print(); }, 600);
+        }
+
+        // ============================================================
+        // HTA VALUE SIMULATOR (inspired by iDSI / Imperial College)
+        // ============================================================
+        const htaBaseline = {
+            totalHealthExp: 400,        // billion SAR (total health expenditure)
+            healthExpGrowth: 0.05,      // 5% annual growth
+            pharmaShare: 0.25,          // 25% of spending on pharma/technology
+            newTechPerYear: 120,        // new technology submissions annually
+            avgTechCostM: 350,          // average technology cost in million SAR/yr
+            htaAgencyCostM: 150,        // HTA agency annual operating cost (million SAR)
+            gdpPerCapita: 93000,        // SAR (~USD 24,800)
+            popMillions: 36,            // population
+            avgSavingsPerReject: 280,   // million SAR saved per rejected/restricted tech
+            qalyGainPerM: 14,           // QALYs gained per million SAR reinvested in high-value care
+            disabilityBurden: 12500000, // total DALYs in population
+        };
+        const htaBaselineDefaults = JSON.parse(JSON.stringify(htaBaseline));
+
+        const htaAssumpFields = {
+            spend: [
+                { key: 'totalHealthExp', labelAr: 'إجمالي الإنفاق الصحي (مليار ر.س)', labelEn: 'Total Health Exp. (B SAR)', step: 10 },
+                { key: 'healthExpGrowth', labelAr: 'نمو الإنفاق السنوي', labelEn: 'Annual Exp. Growth', step: 0.01 },
+                { key: 'pharmaShare', labelAr: 'حصة الأدوية/التقنيات (%)', labelEn: 'Pharma/Tech Share', step: 0.01 },
+                { key: 'newTechPerYear', labelAr: 'تقنيات جديدة / سنة', labelEn: 'New Technologies / Year', step: 10 },
+                { key: 'avgTechCostM', labelAr: 'متوسط تكلفة التقنية (مليون ر.س)', labelEn: 'Avg Tech Cost (M SAR)', step: 10 },
+            ],
+            agency: [
+                { key: 'htaAgencyCostM', labelAr: 'تكلفة تشغيل هيئة HTA (مليون ر.س/سنة)', labelEn: 'HTA Agency Cost (M SAR/yr)', step: 10 },
+                { key: 'avgSavingsPerReject', labelAr: 'وفر لكل تقنية مرفوضة (مليون ر.س)', labelEn: 'Savings per Rejection (M SAR)', step: 10 },
+                { key: 'gdpPerCapita', labelAr: 'الناتج المحلي للفرد (ر.س)', labelEn: 'GDP per Capita (SAR)', step: 1000 },
+            ],
+            outcome: [
+                { key: 'popMillions', labelAr: 'السكان (مليون)', labelEn: 'Population (M)', step: 0.5 },
+                { key: 'qalyGainPerM', labelAr: 'QALYs مكتسبة / مليون ر.س مُعاد تخصيصه', labelEn: 'QALYs Gained / M SAR Reinvested', step: 1 },
+                { key: 'disabilityBurden', labelAr: 'إجمالي عبء الإعاقة (DALYs)', labelEn: 'Total Disability Burden (DALYs)', step: 500000 },
+            ]
+        };
+
+        function renderHtaAssumptions() {
+            const isAr = document.documentElement.lang === 'ar';
+            const sections = [
+                { gridId: 'htaAssumpSpendGrid', fields: htaAssumpFields.spend },
+                { gridId: 'htaAssumpAgencyGrid', fields: htaAssumpFields.agency },
+                { gridId: 'htaAssumpOutcomeGrid', fields: htaAssumpFields.outcome },
+            ];
+            sections.forEach(sec => {
+                const grid = document.getElementById(sec.gridId);
+                if (!grid) return;
+                grid.innerHTML = sec.fields.map(f => {
+                    const val = htaBaseline[f.key];
+                    const dflt = htaBaselineDefaults[f.key];
+                    const isModified = val !== dflt;
+                    return `<div>
+                        <label style="font-size:0.7rem; color:${isModified ? '#DC2626' : 'var(--text-light)'}; display:block; margin-bottom:2px;">
+                            ${isAr ? f.labelAr : f.labelEn}${isModified ? ' ✏️' : ''}
+                        </label>
+                        <input type="number" value="${val}" step="${f.step}"
+                            onchange="onHtaAssumpChange('${f.key}', this.value)"
+                            style="width:100%; padding:5px 8px; border:1px solid ${isModified ? '#F59E0B' : 'var(--border)'}; border-radius:6px; font-size:0.82rem; font-family:var(--font-sans); box-sizing:border-box; background:${isModified ? '#FFFBEB' : 'white'};">
+                    </div>`;
+                }).join('');
+            });
+        }
+
+        function onHtaAssumpChange(key, value) {
+            const numVal = parseFloat(value);
+            if (isNaN(numVal)) return;
+            htaBaseline[key] = numVal;
+            renderHtaAssumptions();
+            updateHTA();
+        }
+
+        function resetHtaAssumptions() {
+            Object.keys(htaBaselineDefaults).forEach(k => { htaBaseline[k] = htaBaselineDefaults[k]; });
+            renderHtaAssumptions();
+            updateHTA();
+        }
+
+        function initHTA() {
+            renderHtaAssumptions();
+            updateHTA();
+        }
+
+        function updateHTA() {
+            const horizon = parseInt(document.getElementById('htaHorizon').value);
+            const startYear = parseInt(document.getElementById('htaStartYear').value);
+            const maturity = document.getElementById('htaMaturity').value;
+            const techAssessed = parseInt(document.getElementById('htaTechAssessed').value);
+            const reinvestRate = parseInt(document.getElementById('htaReinvest').value) / 100;
+            const rejectRate = parseInt(document.getElementById('htaRejectRate').value) / 100;
+            const cetMultiplier = parseFloat(document.getElementById('htaCET').value);
+
+            // Update slider labels
+            document.getElementById('htaTechVal').textContent = techAssessed + '%';
+            document.getElementById('htaReinvestVal').textContent = (reinvestRate * 100) + '%';
+            document.getElementById('htaRejectVal').textContent = (rejectRate * 100) + '%';
+            document.getElementById('htaCETVal').textContent = cetMultiplier.toFixed(1) + '× GDP/cap';
+
+            // Maturity ramp-up curve (how effective HTA agency is each year)
+            const rampYears = maturity === 'fast' ? 2 : maturity === 'moderate' ? 4 : 6;
+
+            const projections = [];
+            let cumulativeSavings = 0;
+            let cumulativeAgencyCost = 0;
+            let cumulativeQALYs = 0;
+
+            for (let y = 0; y < horizon; y++) {
+                const year = startYear + y;
+                const yearsSinceStart = y;
+                // Maturity factor: 0 → 1 over ramp-up period
+                const maturityFactor = Math.min(1, yearsSinceStart / rampYears);
+                // Health expenditure grows
+                const totalExp = htaBaseline.totalHealthExp * Math.pow(1 + htaBaseline.healthExpGrowth, y);
+                const techSpend = totalExp * htaBaseline.pharmaShare;
+                // Without HTA: all new tech adopted = full cost
+                const withoutHTA_spend = totalExp;
+                // With HTA: savings from rejections/restrictions
+                const techReviewed = Math.round(htaBaseline.newTechPerYear * techAssessed / 100 * maturityFactor);
+                const techRejected = Math.round(techReviewed * rejectRate);
+                const yearSavings = techRejected * htaBaseline.avgSavingsPerReject; // in millions
+                const agencyCost = htaBaseline.htaAgencyCostM * (0.5 + 0.5 * maturityFactor); // partial cost in early years
+                const netSavings = yearSavings - agencyCost;
+                const withHTA_spend = totalExp - yearSavings / 1000; // convert millions to billions
+                // QALYs from reinvesting savings
+                const reinvestedM = Math.max(0, netSavings * reinvestRate);
+                const yearQALYs = Math.round(reinvestedM * htaBaseline.qalyGainPerM);
+
+                cumulativeSavings += netSavings;
+                cumulativeAgencyCost += agencyCost;
+                cumulativeQALYs += yearQALYs;
+
+                projections.push({
+                    year, maturityFactor, totalExp, techSpend,
+                    withoutHTA_spend, withHTA_spend,
+                    techReviewed, techRejected, yearSavings, agencyCost, netSavings,
+                    reinvestedM, yearQALYs,
+                    cumulativeSavings, cumulativeAgencyCost, cumulativeQALYs
+                });
+            }
+
+            const last = projections[projections.length - 1];
+            const roi = cumulativeAgencyCost > 0 ? ((cumulativeSavings / cumulativeAgencyCost) * 100).toFixed(0) : 0;
+            const costPerQALY = cumulativeQALYs > 0 ? Math.round(cumulativeAgencyCost * 1e6 / cumulativeQALYs) : 0;
+
+            // Update KPIs
+            document.getElementById('htaSavings').textContent = (cumulativeSavings / 1000).toFixed(1);
+            document.getElementById('htaQALYs').textContent = cumulativeQALYs.toLocaleString();
+            document.getElementById('htaROI').textContent = roi + '%';
+            document.getElementById('htaCostPerQALY').textContent = costPerQALY.toLocaleString();
+
+            drawHtaExpChart(projections);
+            drawHtaSavingsChart(projections);
+            renderHtaProjectionTable(projections);
+        }
+
+        function drawHtaExpChart(projections) {
+            const canvas = document.getElementById('htaExpChart');
+            if (!canvas) return;
+            const dpr = window.devicePixelRatio || 1;
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            const ctx = canvas.getContext('2d');
+            ctx.scale(dpr, dpr);
+            const w = rect.width, h = rect.height;
+            const isAr = document.documentElement.lang === 'ar';
+
+            const pad = { top: 20, right: 20, bottom: 40, left: 60 };
+            const cw = w - pad.left - pad.right;
+            const ch = h - pad.top - pad.bottom;
+
+            ctx.clearRect(0, 0, w, h);
+
+            const maxVal = Math.max(...projections.map(p => Math.max(p.withoutHTA_spend, p.withHTA_spend))) * 1.1;
+            const minVal = Math.min(...projections.map(p => p.withHTA_spend)) * 0.95;
+
+            // Grid
+            ctx.strokeStyle = '#E5E7EB';
+            ctx.lineWidth = 0.5;
+            for (let i = 0; i <= 4; i++) {
+                const y = pad.top + (ch / 4) * i;
+                ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(w - pad.right, y); ctx.stroke();
+                ctx.fillStyle = '#6B7280'; ctx.font = '10px "IBM Plex Sans Arabic", Arial'; ctx.textAlign = 'right';
+                const val = maxVal - (maxVal - minVal) * (i / 4);
+                ctx.fillText(val.toFixed(0) + 'B', pad.left - 6, y + 3);
+            }
+
+            // Without HTA line (red dashed)
+            ctx.beginPath();
+            ctx.strokeStyle = '#EF4444';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([6, 4]);
+            projections.forEach((p, i) => {
+                const x = pad.left + (i / (projections.length - 1)) * cw;
+                const y = pad.top + (1 - (p.withoutHTA_spend - minVal) / (maxVal - minVal)) * ch;
+                i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+            });
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // With HTA line (teal solid) + fill
+            ctx.beginPath();
+            projections.forEach((p, i) => {
+                const x = pad.left + (i / (projections.length - 1)) * cw;
+                const y = pad.top + (1 - (p.withHTA_spend - minVal) / (maxVal - minVal)) * ch;
+                i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+            });
+            ctx.strokeStyle = '#0F766E';
+            ctx.lineWidth = 2.5;
+            ctx.stroke();
+
+            // Fill area between lines (savings area)
+            ctx.beginPath();
+            projections.forEach((p, i) => {
+                const x = pad.left + (i / (projections.length - 1)) * cw;
+                const y = pad.top + (1 - (p.withoutHTA_spend - minVal) / (maxVal - minVal)) * ch;
+                i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+            });
+            for (let i = projections.length - 1; i >= 0; i--) {
+                const x = pad.left + (i / (projections.length - 1)) * cw;
+                const y = pad.top + (1 - (projections[i].withHTA_spend - minVal) / (maxVal - minVal)) * ch;
+                ctx.lineTo(x, y);
+            }
+            ctx.closePath();
+            ctx.fillStyle = 'rgba(15, 118, 110, 0.12)';
+            ctx.fill();
+
+            // X-axis labels
+            ctx.fillStyle = '#6B7280'; ctx.font = '10px "IBM Plex Sans Arabic", Arial'; ctx.textAlign = 'center';
+            projections.forEach((p, i) => {
+                if (i % Math.ceil(projections.length / 8) === 0 || i === projections.length - 1) {
+                    const x = pad.left + (i / (projections.length - 1)) * cw;
+                    ctx.fillText(p.year, x, h - pad.bottom + 18);
+                }
+            });
+
+            // Legend
+            ctx.font = '11px "IBM Plex Sans Arabic", Arial';
+            const withoutLabel = isAr ? 'بدون HTA' : 'Without HTA';
+            const withLabel = isAr ? 'مع HTA' : 'With HTA';
+            ctx.fillStyle = '#EF4444'; ctx.fillRect(pad.left, h - 14, 20, 3);
+            ctx.fillStyle = '#374151'; ctx.textAlign = 'left'; ctx.fillText(withoutLabel, pad.left + 24, h - 8);
+            const xOff = pad.left + 24 + ctx.measureText(withoutLabel).width + 20;
+            ctx.fillStyle = '#0F766E'; ctx.fillRect(xOff, h - 14, 20, 3);
+            ctx.fillStyle = '#374151'; ctx.fillText(withLabel, xOff + 24, h - 8);
+        }
+
+        function drawHtaSavingsChart(projections) {
+            const canvas = document.getElementById('htaSavingsChart');
+            if (!canvas) return;
+            const dpr = window.devicePixelRatio || 1;
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            const ctx = canvas.getContext('2d');
+            ctx.scale(dpr, dpr);
+            const w = rect.width, h = rect.height;
+            const isAr = document.documentElement.lang === 'ar';
+
+            const pad = { top: 20, right: 20, bottom: 40, left: 60 };
+            const cw = w - pad.left - pad.right;
+            const ch = h - pad.top - pad.bottom;
+
+            ctx.clearRect(0, 0, w, h);
+
+            const maxSavings = Math.max(...projections.map(p => p.cumulativeSavings)) * 1.15;
+            const minSavings = Math.min(0, Math.min(...projections.map(p => p.cumulativeSavings)));
+            const range = maxSavings - minSavings;
+
+            // Grid
+            ctx.strokeStyle = '#E5E7EB'; ctx.lineWidth = 0.5;
+            for (let i = 0; i <= 4; i++) {
+                const y = pad.top + (ch / 4) * i;
+                ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(w - pad.right, y); ctx.stroke();
+                ctx.fillStyle = '#6B7280'; ctx.font = '10px "IBM Plex Sans Arabic", Arial'; ctx.textAlign = 'right';
+                const val = maxSavings - range * (i / 4);
+                ctx.fillText((val / 1000).toFixed(1) + 'B', pad.left - 6, y + 3);
+            }
+
+            // Zero line
+            if (minSavings < 0) {
+                const zeroY = pad.top + (1 - (0 - minSavings) / range) * ch;
+                ctx.beginPath(); ctx.strokeStyle = '#9CA3AF'; ctx.setLineDash([4, 4]); ctx.lineWidth = 1;
+                ctx.moveTo(pad.left, zeroY); ctx.lineTo(w - pad.right, zeroY); ctx.stroke();
+                ctx.setLineDash([]);
+            }
+
+            // Bars for net savings per year
+            const barWidth = Math.max(6, cw / projections.length * 0.5);
+            projections.forEach((p, i) => {
+                const x = pad.left + (i / (projections.length - 1)) * cw - barWidth / 2;
+                const zeroY = pad.top + (1 - (0 - minSavings) / range) * ch;
+                const valY = pad.top + (1 - (p.netSavings - minSavings) / range) * ch;
+                ctx.fillStyle = p.netSavings >= 0 ? 'rgba(5, 150, 105, 0.6)' : 'rgba(220, 38, 38, 0.4)';
+                ctx.fillRect(x, Math.min(zeroY, valY), barWidth, Math.abs(valY - zeroY));
+            });
+
+            // Cumulative savings line
+            ctx.beginPath();
+            projections.forEach((p, i) => {
+                const x = pad.left + (i / (projections.length - 1)) * cw;
+                const y = pad.top + (1 - (p.cumulativeSavings - minSavings) / range) * ch;
+                i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+            });
+            ctx.strokeStyle = '#B45309'; ctx.lineWidth = 2.5; ctx.stroke();
+
+            // Dots
+            projections.forEach((p, i) => {
+                const x = pad.left + (i / (projections.length - 1)) * cw;
+                const y = pad.top + (1 - (p.cumulativeSavings - minSavings) / range) * ch;
+                ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI * 2); ctx.fillStyle = '#B45309'; ctx.fill();
+            });
+
+            // X-axis labels
+            ctx.fillStyle = '#6B7280'; ctx.font = '10px "IBM Plex Sans Arabic", Arial'; ctx.textAlign = 'center';
+            projections.forEach((p, i) => {
+                if (i % Math.ceil(projections.length / 8) === 0 || i === projections.length - 1) {
+                    const x = pad.left + (i / (projections.length - 1)) * cw;
+                    ctx.fillText(p.year, x, h - pad.bottom + 18);
+                }
+            });
+
+            // Legend
+            ctx.font = '11px "IBM Plex Sans Arabic", Arial';
+            const barLabel = isAr ? 'صافي الوفر السنوي' : 'Net Annual Savings';
+            const lineLabel = isAr ? 'الوفر التراكمي' : 'Cumulative Savings';
+            ctx.fillStyle = 'rgba(5, 150, 105, 0.6)'; ctx.fillRect(pad.left, h - 14, 14, 10);
+            ctx.fillStyle = '#374151'; ctx.textAlign = 'left'; ctx.fillText(barLabel, pad.left + 18, h - 5);
+            const xOff = pad.left + 18 + ctx.measureText(barLabel).width + 16;
+            ctx.fillStyle = '#B45309'; ctx.fillRect(xOff, h - 10, 20, 3);
+            ctx.fillStyle = '#374151'; ctx.fillText(lineLabel, xOff + 24, h - 5);
+        }
+
+        function renderHtaProjectionTable(projections) {
+            const container = document.getElementById('htaProjectionTable');
+            if (!container) return;
+            const isAr = document.documentElement.lang === 'ar';
+
+            const headers = isAr
+                ? ['السنة', 'النضج', 'تقنيات مُقيّمة', 'مرفوضة', 'وفر (م.ر.س)', 'تكلفة الهيئة', 'صافي الوفر', 'QALYs', 'وفر تراكمي']
+                : ['Year', 'Maturity', 'Reviewed', 'Rejected', 'Savings (M)', 'Agency Cost', 'Net Savings', 'QALYs', 'Cum. Savings'];
+
+            let html = `<div style="overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius-md);">
+                <table style="width:100%; border-collapse:collapse; font-size:0.8rem;">
+                <thead><tr style="background:#F0FDFA;">`;
+            headers.forEach(h => { html += `<th style="padding:10px 8px; text-align:center; font-weight:700; color:#0F766E; border-bottom:2px solid #0F766E; white-space:nowrap;">${h}</th>`; });
+            html += '</tr></thead><tbody>';
+            projections.forEach((p, i) => {
+                const bg = i % 2 === 0 ? 'white' : '#F9FAFB';
+                html += `<tr style="background:${bg};">
+                    <td style="padding:8px; text-align:center; font-weight:600;">${p.year}</td>
+                    <td style="padding:8px; text-align:center;">${(p.maturityFactor * 100).toFixed(0)}%</td>
+                    <td style="padding:8px; text-align:center;">${p.techReviewed}</td>
+                    <td style="padding:8px; text-align:center; color:#DC2626; font-weight:600;">${p.techRejected}</td>
+                    <td style="padding:8px; text-align:center; color:#059669;">${p.yearSavings.toLocaleString()}</td>
+                    <td style="padding:8px; text-align:center; color:#B45309;">${p.agencyCost.toFixed(0)}</td>
+                    <td style="padding:8px; text-align:center; font-weight:700; color:${p.netSavings >= 0 ? '#059669' : '#DC2626'};">${p.netSavings.toFixed(0)}</td>
+                    <td style="padding:8px; text-align:center; color:#7C3AED;">${p.yearQALYs.toLocaleString()}</td>
+                    <td style="padding:8px; text-align:center; font-weight:700; color:#0F766E;">${(p.cumulativeSavings / 1000).toFixed(2)}B</td>
+                </tr>`;
+            });
+            html += '</tbody></table></div>';
+            container.innerHTML = html;
+        }
+
+        function resetHTA() {
+            document.getElementById('htaHorizon').value = '10';
+            document.getElementById('htaStartYear').value = '2025';
+            document.getElementById('htaMaturity').value = 'moderate';
+            document.getElementById('htaTechAssessed').value = 30;
+            document.getElementById('htaReinvest').value = 60;
+            document.getElementById('htaRejectRate').value = 25;
+            document.getElementById('htaCET').value = 1;
+            resetHtaAssumptions();
+        }
+
+        function exportHTA() {
+            const isAr = document.documentElement.lang === 'ar';
+            const printWindow = window.open('', '_blank');
+            const expCanvas = document.getElementById('htaExpChart');
+            const savCanvas = document.getElementById('htaSavingsChart');
+            const expImg = expCanvas ? expCanvas.toDataURL('image/png') : '';
+            const savImg = savCanvas ? savCanvas.toDataURL('image/png') : '';
+            const tableHtml = document.getElementById('htaProjectionTable')?.innerHTML || '';
+            const kpis = {
+                savings: document.getElementById('htaSavings')?.textContent || '',
+                qalys: document.getElementById('htaQALYs')?.textContent || '',
+                roi: document.getElementById('htaROI')?.textContent || '',
+                costPerQALY: document.getElementById('htaCostPerQALY')?.textContent || '',
+            };
+
+            const bodyHtml = `
+            <div class="kpi-grid">
+                <div class="kpi-card"><div class="kpi-value" style="color:#0F766E;">${kpis.savings}</div><div class="kpi-label">${isAr ? 'الوفورات التراكمية (مليار ر.س)' : 'Cumulative Savings (B SAR)'}</div></div>
+                <div class="kpi-card"><div class="kpi-value" style="color:#059669;">${kpis.qalys}</div><div class="kpi-label">${isAr ? 'QALYs إضافية' : 'Additional QALYs'}</div></div>
+                <div class="kpi-card"><div class="kpi-value" style="color:#B45309;">${kpis.roi}</div><div class="kpi-label">${isAr ? 'عائد الاستثمار' : 'Return on Investment'}</div></div>
+                <div class="kpi-card"><div class="kpi-value" style="color:#7C3AED;">${kpis.costPerQALY}</div><div class="kpi-label">${isAr ? 'التكلفة / QALY' : 'Cost / QALY'}</div></div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+                ${expImg ? `<div><h4 style="font-size:0.85rem;">${isAr ? 'مقارنة الإنفاق' : 'Expenditure Comparison'}</h4><img src="${expImg}"></div>` : ''}
+                ${savImg ? `<div><h4 style="font-size:0.85rem;">${isAr ? 'الوفورات التراكمية' : 'Cumulative Savings'}</h4><img src="${savImg}"></div>` : ''}
+            </div>
+            <h4>${isAr ? 'الإسقاط السنوي' : 'Annual Projections'}</h4>
+            ${tableHtml}`;
+
+            printWindow.document.write(phpsa_pdfShell({
+                title: 'HTA Value Simulator Report',
+                titleAr: 'تقرير محاكي قيمة تقييم التقنيات الصحية (HTA)',
+                subtitle: 'Inspired by iDSI HTA Value Simulator — International Decision Support Initiative / Imperial College London',
+                subtitleAr: 'مستوحى من محاكي قيمة HTA — مبادرة دعم القرار الدولية / إمبريال كوليدج لندن',
+                modelName: 'iDSI HTA Value Simulator — International Decision Support Initiative / Imperial College London',
+                modelNameAr: 'محاكي قيمة HTA — مبادرة دعم القرار الدولية (iDSI) / إمبريال كوليدج لندن',
+                modelUrl: 'https://idsihealth.org/',
+                modelRef: 'Chalkidou K, et al. (2016). "Priority-setting for achieving universal health coverage." Bull World Health Organ, 94(6), 462-467.',
+                accentColor: '#0F766E',
+                bodyHtml
+            }));
+            printWindow.document.close();
+            setTimeout(() => { printWindow.print(); }, 600);
+        }
+
+        // ============================================================
+        // INITIALIZATION
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            initializePolicyLibrary();
+            updateTobaccoSim();
+            refreshStakeholderDropdown();
+            refreshDomainDropdown();
+            initOneHealth();
+            initSpectrum();
+            initHTA();
+        });
+
+
+
+// ══════════ SIMULATOR CODE BLOCK ══════════
+// All simulator JavaScript integrated from PHPSA-MedApp-Platform.html lines 2643-5529
 // ══════════ INIT ══════════
 renderPublicPage();
 </script>
