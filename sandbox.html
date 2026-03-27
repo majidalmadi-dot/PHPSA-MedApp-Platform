@@ -1298,6 +1298,39 @@
             <p class="section-subtitle hidden" lang="en">Interactive model for estimating the impact of tobacco tax policies</p>
         </div>
 
+        <div style="background:linear-gradient(135deg, #065F46, #0F7C7B); color:white; padding:16px 20px; border-radius:var(--radius-md); margin-bottom:1.5rem; display:flex; align-items:flex-start; gap:12px;">
+            <span style="font-size:1.4rem; margin-top:2px;">🎓</span>
+            <div>
+                <div style="font-weight:700; font-size:1rem; margin-bottom:4px;">
+                    <span lang="ar">مبني على نموذج Tobacconomics لمحاكاة ضرائب التبغ</span>
+                    <span lang="en" class="hidden">Built on the Tobacconomics Tax Simulation Model</span>
+                </div>
+                <div style="font-size:0.85rem; opacity:0.9; line-height:1.5;">
+                    <span lang="ar">يستخدم هذا المحاكي منهجية مرونة الطلب السعرية المعتمدة من مجموعة أدوات Tobacconomics (جامعة إلينوي شيكاغو / بلومبرغ للأعمال الخيرية)، والمستخدمة من قبل وزارات المالية في أكثر من 30 دولة لتقدير أثر الضرائب على استهلاك التبغ والإيرادات الحكومية.</span>
+                    <span lang="en" class="hidden">This simulator uses the price elasticity methodology from the Tobacconomics Tax Simulation Toolkit (University of Illinois Chicago / Bloomberg Philanthropies), used by finance ministries in 30+ countries to estimate tobacco tax impacts on consumption and government revenue.</span>
+                </div>
+                <a href="https://www.economicsforhealth.org/research/a-toolkit-on-modeling-the-impacts-of-tobacco-taxes/" target="_blank" rel="noopener" style="color:#A5F3FC; font-size:0.8rem; text-decoration:underline; display:inline-block; margin-top:6px;">
+                    <span lang="ar">🔗 عرض مجموعة أدوات Tobacconomics الأصلية</span>
+                    <span lang="en" class="hidden">🔗 View the original Tobacconomics Toolkit</span>
+                </a>
+            </div>
+        </div>
+
+        <div style="background:var(--light); padding:14px 18px; border-radius:var(--radius-md); margin-bottom:1.5rem; border-right:4px solid var(--accent);">
+            <div style="font-weight:700; color:var(--primary); font-size:0.9rem; margin-bottom:6px;">
+                <span lang="ar">🇸🇦 البيانات الأساسية للمملكة العربية السعودية</span>
+                <span lang="en" class="hidden">🇸🇦 Saudi Arabia Baseline Data</span>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:8px; font-size:0.82rem; color:var(--text-dark);">
+                <div><span lang="ar">معدل انتشار التدخين: <strong>21.4%</strong> (بالغين)</span><span lang="en" class="hidden">Smoking prevalence: <strong>21.4%</strong> (adults)</span></div>
+                <div><span lang="ar">عدد السكان البالغين: <strong>~24.8 مليون</strong></span><span lang="en" class="hidden">Adult population: <strong>~24.8 million</strong></span></div>
+                <div><span lang="ar">عدد المدخنين الحاليين: <strong>~5.3 مليون</strong></span><span lang="en" class="hidden">Current smokers: <strong>~5.3 million</strong></span></div>
+                <div><span lang="ar">متوسط سعر العلبة: <strong>26 ر.س</strong></span><span lang="en" class="hidden">Avg. pack price: <strong>26 SAR</strong></span></div>
+                <div><span lang="ar">الضريبة الانتقائية الحالية: <strong>100%</strong> (منذ 2017)</span><span lang="en" class="hidden">Current excise tax: <strong>100%</strong> (since 2017)</span></div>
+                <div><span lang="ar">هدف رؤية 2030: <strong>5%</strong> انتشار</span><span lang="en" class="hidden">Vision 2030 target: <strong>5%</strong> prevalence</span></div>
+            </div>
+        </div>
+
         <div class="section">
             <div class="tabs">
                 <button class="tab-btn active" onclick="switchTobaccoTab('overview')" lang="ar">نظرة عامة</button>
@@ -1438,6 +1471,23 @@
                 <div id="tobaccoResultsContent"></div>
             </div>
         </div>
+
+        <div style="margin-top:1.5rem; background:var(--light); padding:16px 20px; border-radius:var(--radius-md); font-size:0.82rem; line-height:1.7; color:var(--text-dark);">
+            <div style="font-weight:700; color:var(--primary); margin-bottom:6px; font-size:0.85rem;">
+                <span lang="ar">📐 ملاحظات منهجية</span>
+                <span lang="en" class="hidden">📐 Methodology Notes</span>
+            </div>
+            <div lang="ar">
+                <p style="margin-bottom:8px;">يستخدم هذا المحاكي <strong>نموذج المرونة السعرية للطلب</strong> المعتمد من مجموعة أدوات Tobacconomics. المعادلة الأساسية: <code style="background:#E5E7EB; padding:2px 6px; border-radius:3px;">ΔQ = ε × ΔP</code> حيث ΔQ هو التغير النسبي في الاستهلاك، ε هي مرونة الطلب السعرية، وΔP هو التغير النسبي في السعر.</p>
+                <p style="margin-bottom:8px;"><strong>الافتراضات:</strong> تكلفة الرعاية الصحية لكل مدخن: 8,500 ر.س/سنة (تقدير). معدل الوفيات المنسوبة للتدخين: 15% من المدخنين على مدى العمر. سنوات الحياة المكتسبة لكل مقلع: ~3 سنوات (متوسط مخصوم).</p>
+                <p><strong>المصدر:</strong> Tobacconomics, Institute for Health Research and Policy, University of Illinois Chicago. بتمويل من Bloomberg Philanthropies. <a href="https://www.economicsforhealth.org/research/a-toolkit-on-modeling-the-impacts-of-tobacco-taxes/" target="_blank" style="color:var(--teal);">economicsforhealth.org</a></p>
+            </div>
+            <div lang="en" class="hidden">
+                <p style="margin-bottom:8px;">This simulator uses the <strong>price elasticity of demand model</strong> from the Tobacconomics Toolkit. Core equation: <code style="background:#E5E7EB; padding:2px 6px; border-radius:3px;">ΔQ = ε × ΔP</code> where ΔQ is proportional change in consumption, ε is price elasticity of demand, and ΔP is proportional change in price.</p>
+                <p style="margin-bottom:8px;"><strong>Assumptions:</strong> Healthcare cost per smoker: 8,500 SAR/year (estimate). Smoking-attributable mortality rate: 15% of smokers over lifetime. Life-years gained per quitter: ~3 years (discounted average).</p>
+                <p><strong>Source:</strong> Tobacconomics, Institute for Health Research and Policy, University of Illinois Chicago. Funded by Bloomberg Philanthropies. <a href="https://www.economicsforhealth.org/research/a-toolkit-on-modeling-the-impacts-of-tobacco-taxes/" target="_blank" style="color:var(--teal);">economicsforhealth.org</a></p>
+            </div>
+        </div>
     </section>
 
     <!-- Module 2: OneHealth Health Investment & Scenario Planner -->
@@ -1452,11 +1502,33 @@
             <p class="section-subtitle hidden" lang="en">Interactive model for health investment planning across multiple sectors</p>
         </div>
 
+        <div style="background:linear-gradient(135deg, #1B4332, #2D6A4F); color:white; padding:16px 20px; border-radius:var(--radius-md); margin-bottom:1.5rem; display:flex; align-items:flex-start; gap:12px;">
+            <span style="font-size:1.4rem; margin-top:2px;">🌍</span>
+            <div>
+                <div style="font-weight:700; font-size:1rem; margin-bottom:4px;">
+                    <span lang="ar">مستوحى من أداة OneHealth — منظمة الصحة العالمية</span>
+                    <span lang="en" class="hidden">Inspired by the WHO OneHealth Tool</span>
+                </div>
+                <div style="font-size:0.85rem; opacity:0.9; line-height:1.5;">
+                    <span lang="ar">يستخدم هذا المُخطط نهج التكلفة والأثر المتكامل المستوحى من أداة OneHealth (منظمة الصحة العالمية / وكالات الأمم المتحدة)، المستخدمة في أكثر من 50 دولة لنمذجة تكلفة وأثر توسيع التدخلات الصحية عبر مجالات الأمراض المختلفة. هذه نسخة مبسطة تفاعلية مُكيَّفة للسياق السعودي.</span>
+                    <span lang="en" class="hidden">This planner uses the integrated costing & impact approach inspired by the WHO OneHealth Tool (WHO / UN agencies), used by 50+ countries to model the cost and impact of scaling up health interventions. This is a simplified interactive version adapted for the Saudi context.</span>
+                </div>
+                <a href="https://www.who.int/tools/onehealth" target="_blank" rel="noopener" style="color:#A7F3D0; font-size:0.8rem; text-decoration:underline; display:inline-block; margin-top:6px;">
+                    <span lang="ar">🔗 عرض أداة OneHealth الأصلية (WHO)</span>
+                    <span lang="en" class="hidden">🔗 View the original WHO OneHealth Tool</span>
+                </a>
+            </div>
+        </div>
+
         <div class="section">
             <div class="editable-panel">
                 <details open>
                     <summary lang="ar">معاملات الاستثمار والسيناريوهات</summary>
                     <summary lang="en" class="hidden">Investment Parameters & Scenarios</summary>
+                    <div style="font-size:0.78rem; color:var(--text-light); margin-bottom:12px; line-height:1.6;">
+                        <span lang="ar">يمكنك تعديل أي قيمة أدناه. التغييرات تنعكس فوراً على النتائج. هذه القيم مبنية على بيانات منشورة من وزارة الصحة السعودية ومنظمة الصحة العالمية ودراسة العبء العالمي للأمراض (GBD 2021).</span>
+                        <span lang="en" class="hidden">You can edit any value below. Changes are reflected immediately in the results. These values are based on published data from Saudi MOH, WHO, and the Global Burden of Disease Study (GBD 2021).</span>
+                    </div>
                     <div class="grid" style="grid-template-columns: 1fr 1fr;">
                         <div>
                             <label class="form-label" lang="ar">الميزانية الكلية (مليار ريال)</label>
@@ -1659,6 +1731,25 @@
                 </div>
             </div>
         </div>
+
+        <details style="margin-top:1.5rem; background:var(--light); border-radius:var(--radius-md); padding:16px;">
+            <summary style="font-weight:600; color:var(--primary); cursor:pointer;">
+                <span lang="ar">ℹ️ المنهجية والمصادر</span>
+                <span lang="en" class="hidden">ℹ️ Methodology & Sources</span>
+            </summary>
+            <div style="margin-top:10px; font-size:0.85rem; line-height:1.7; color:var(--text-dark);">
+                <div lang="ar">
+                    <p style="margin-bottom:8px;">يستخدم هذا المُخطط <strong>نهج التكلفة المتكاملة</strong> المستوحى من أداة OneHealth (منظمة الصحة العالمية). يحسب تكلفة توسيع التدخلات الصحية بناءً على: التغطية المستهدفة × تكلفة الوحدة × السكان المؤهلين، مع مراعاة وفورات الحجم وتكاليف البنية التحتية.</p>
+                    <p style="margin-bottom:8px;"><strong>الأثر الصحي:</strong> يُقدَّر باستخدام معدلات فعالية التدخل المنشورة وبيانات عبء المرض في السعودية من دراسة العبء العالمي للأمراض (GBD 2021).</p>
+                    <p><strong>المصدر:</strong> WHO OneHealth Tool — <a href="https://www.who.int/tools/onehealth" target="_blank" style="color:var(--teal);">www.who.int/tools/onehealth</a> | Stenberg K, et al. (2017). "Financing transformative health systems." <em>Lancet Global Health</em>.</p>
+                </div>
+                <div lang="en" class="hidden">
+                    <p style="margin-bottom:8px;">This planner uses an <strong>integrated costing approach</strong> inspired by the WHO OneHealth Tool. It calculates the cost of scaling health interventions based on: target coverage × unit cost × eligible population, accounting for economies of scale and infrastructure costs.</p>
+                    <p style="margin-bottom:8px;"><strong>Health Impact:</strong> Estimated using published intervention effectiveness rates and Saudi disease burden data from the Global Burden of Disease Study (GBD 2021).</p>
+                    <p><strong>Source:</strong> WHO OneHealth Tool — <a href="https://www.who.int/tools/onehealth" target="_blank" style="color:var(--teal);">www.who.int/tools/onehealth</a> | Stenberg K, et al. (2017). "Financing transformative health systems." <em>Lancet Global Health</em>.</p>
+                </div>
+            </div>
+        </details>
     </section>
 
     <!-- Module 3: Spectrum Demographic & Health Projection Suite -->
@@ -1674,6 +1765,24 @@
             <div style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-light);">
                 <span lang="ar">مستوحى من: Spectrum Suite — Avenir Health</span>
                 <span lang="en" class="hidden">Inspired by: Spectrum Suite — Avenir Health</span>
+            </div>
+        </div>
+
+        <div style="background:linear-gradient(135deg, #4338CA, #7C3AED); color:white; padding:16px 20px; border-radius:var(--radius-md); margin-bottom:1.5rem; display:flex; align-items:flex-start; gap:12px;">
+            <span style="font-size:1.4rem; margin-top:2px;">📊</span>
+            <div>
+                <div style="font-weight:700; font-size:1rem; margin-bottom:4px;">
+                    <span lang="ar">مستوحى من Spectrum Suite — Avenir Health</span>
+                    <span lang="en" class="hidden">Inspired by Spectrum Suite — Avenir Health</span>
+                </div>
+                <div style="font-size:0.85rem; opacity:0.9; line-height:1.5;">
+                    <span lang="ar">يوفر هذا المحاكي إسقاطات ديموغرافية وصحية متعددة السنوات مستوحاة من نماذج Spectrum (DemProj، FamPlan، LiST، NCD) المستخدمة من قبل أكثر من 120 حكومة لتغذية الخطط والميزانيات الصحية الوطنية. نسخة تفاعلية مبسطة مكيّفة للسياق السعودي.</span>
+                    <span lang="en" class="hidden">This simulator provides multi-year demographic and health projections inspired by the Spectrum models (DemProj, FamPlan, LiST, NCD) used by 120+ governments to feed national health plans and budgets. A simplified interactive version adapted for the Saudi context.</span>
+                </div>
+                <a href="https://www.avenirhealth.org/software-spectrum.php" target="_blank" rel="noopener" style="color:#C4B5FD; font-size:0.8rem; text-decoration:underline; display:inline-block; margin-top:6px;">
+                    <span lang="ar">🔗 عرض Spectrum Suite الأصلي (Avenir Health)</span>
+                    <span lang="en" class="hidden">🔗 View the original Spectrum Suite (Avenir Health)</span>
+                </a>
             </div>
         </div>
 
@@ -1769,6 +1878,10 @@
                                 <span lang="ar">⚙️ الافتراضات والمعاملات القابلة للتعديل</span>
                                 <span lang="en" class="hidden">⚙️ Editable Assumptions & Parameters</span>
                             </summary>
+                            <p style="font-size:0.8rem; color:var(--text-light); margin:0 0 12px 0; line-height:1.5; padding:0 14px;">
+                                <span lang="ar">البيانات الأساسية مأخوذة من الهيئة العامة للإحصاء (GASTAT 2024)، منظمة الصحة العالمية، و Global Burden of Disease. عدّل أي قيمة لاستكشاف سيناريوهات بديلة. الحقول المعدّلة تظهر بلون مختلف.</span>
+                                <span lang="en" class="hidden">Baseline data sourced from GASTAT 2024, WHO, and Global Burden of Disease. Modify any value to explore alternative scenarios. Modified fields are highlighted.</span>
+                            </p>
                             <div style="padding:14px;">
                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
                                     <div style="font-size:0.78rem; color:var(--text-light);">
@@ -1957,6 +2070,58 @@
                 <p lang="ar">مستوحى من: Spectrum Suite — Avenir Health. المراجع: Stover J, et al. (2010) "Projecting the epidemiological impact of antiretroviral policies in resource constrained settings" AIDS</p>
                 <p lang="en" class="hidden">Inspired by: Spectrum Suite — Avenir Health. Reference: Stover J, et al. (2010) "Projecting the epidemiological impact of antiretroviral policies in resource constrained settings" AIDS</p>
             </div>
+
+            <!-- Methodology Notes for Spectrum -->
+            <div style="margin-top: 2rem; padding: 1.5rem; background: #F3E8FF; border: 1px solid #E9D5FF; border-radius: 8px; border-left: 4px solid #9333EA;">
+                <details style="cursor: pointer;">
+                    <summary style="font-weight: 700; font-size: 0.95rem; color: #7C3AED; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px;">
+                        <span lang="ar">📖 ملاحظات المنهجية والمراجع</span>
+                        <span lang="en" class="hidden">📖 Methodology Notes & References</span>
+                    </summary>
+                    <div style="font-size: 0.85rem; line-height: 1.6; color: #333;">
+                        <div style="margin-bottom: 1rem;">
+                            <div style="font-weight: 700; color: #7C3AED; margin-bottom: 0.5rem;" lang="ar">🔍 النموذج المستخدم</div>
+                            <div style="font-weight: 700; color: #7C3AED; margin-bottom: 0.5rem; display: none;" lang="en" class="hidden">🔍 Model Used</div>
+                            <ul style="margin: 0; padding-left: 1.2rem;" lang="ar">
+                                <li><strong>DemProj:</strong> نموذج المكونات-الأتراب (Cohort Component Model) لإسقاط السكان حسب السن والجنس مع مراعاة معدلات الخصوبة والوفيات والهجرة</li>
+                                <li><strong>FamPlan:</strong> يحسب تأثير الوصول إلى خدمات تنظيم الأسرة على معدلات الخصوبة والفوائد الصحية</li>
+                                <li><strong>LiST (Lives Saved Tool):</strong> يقدر عدد الوفيات التي يمكن تجنبها من خلال تدخلات صحية محددة بناءً على بيانات الفعالية المنشورة</li>
+                                <li><strong>NCD Module:</strong> يسقط عبء الأمراض المزمنة بناءً على أنماط الخطر والديموغرافيا</li>
+                            </ul>
+                            <ul style="margin: 0; padding-left: 1.2rem; display: none;" lang="en" class="hidden">
+                                <li><strong>DemProj:</strong> Cohort-component model projecting population by age and sex, incorporating fertility, mortality, and migration rates</li>
+                                <li><strong>FamPlan:</strong> Calculates impact of family planning services on fertility rates and health benefits</li>
+                                <li><strong>LiST (Lives Saved Tool):</strong> Estimates preventable deaths from targeted health interventions based on published efficacy data</li>
+                                <li><strong>NCD Module:</strong> Projects chronic disease burden based on risk patterns and demographics</li>
+                            </ul>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <div style="font-weight: 700; color: #7C3AED; margin-bottom: 0.5rem;" lang="ar">📊 الحسابات الرئيسية</div>
+                            <div style="font-weight: 700; color: #7C3AED; margin-bottom: 0.5rem; display: none;" lang="en" class="hidden">📊 Key Calculations</div>
+                            <p style="margin: 0;" lang="ar">النمو السكاني = (معدل الخصوبة × حجم السكان) - (معدل الوفيات × حجم السكان) + صافي الهجرة</p>
+                            <p style="margin: 0; display: none;" lang="en" class="hidden">Population Growth = (Fertility Rate × Population) - (Mortality Rate × Population) + Net Migration</p>
+                            <p style="margin: 0.5rem 0 0 0;" lang="ar">الوفيات المتجنبة = حالات الإصابة الأساسية × معدل الفعالية × التغطية</p>
+                            <p style="margin: 0.5rem 0 0 0; display: none;" lang="en" class="hidden">Avoidable Deaths = Baseline Cases × Efficacy Rate × Coverage</p>
+                        </div>
+                        <div>
+                            <div style="font-weight: 700; color: #7C3AED; margin-bottom: 0.5rem;" lang="ar">🔗 المراجع الرئيسية</div>
+                            <div style="font-weight: 700; color: #7C3AED; margin-bottom: 0.5rem; display: none;" lang="en" class="hidden">🔗 Key References</div>
+                            <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.8rem;" lang="ar">
+                                <li>Stover J, et al. (2010) "Projecting the epidemiological impact of antiretroviral policies in resource constrained settings" AIDS 24(14)</li>
+                                <li>Countdown to 2030 Collaboration (2021) "Tracking progress towards universal health coverage" Lancet 396(10261)</li>
+                                <li>Bhutta ZA, et al. (2013) "Countdown to 2015 decade report (2000-10)" Lancet 381(9865)</li>
+                                <li>Saudi General Authority for Statistics (GASTAT) - Population Projections 2024</li>
+                            </ul>
+                            <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.8rem; display: none;" lang="en" class="hidden">
+                                <li>Stover J, et al. (2010) "Projecting the epidemiological impact of antiretroviral policies in resource constrained settings" AIDS 24(14)</li>
+                                <li>Countdown to 2030 Collaboration (2021) "Tracking progress towards universal health coverage" Lancet 396(10261)</li>
+                                <li>Bhutta ZA, et al. (2013) "Countdown to 2015 decade report (2000-10)" Lancet 381(9865)</li>
+                                <li>Saudi General Authority for Statistics (GASTAT) - Population Projections 2024</li>
+                            </ul>
+                        </div>
+                    </div>
+                </details>
+            </div>
         </div>
     </section>
 
@@ -1974,6 +2139,23 @@
                 <span lang="ar">مستوحى من: HTA Value Simulator — iDSI / Imperial College London</span>
                 <span lang="en" class="hidden">Inspired by: HTA Value Simulator — iDSI / Imperial College London</span>
             </div>
+
+            <!-- Attribution Banner for HTA -->
+            <div style="margin-top: 1.5rem; padding: 1rem; background: linear-gradient(135deg, #0F766E, #14B8A6); border-radius: 8px; color: white; font-size: 0.85rem; line-height: 1.6;">
+                <div style="display: flex; align-items: flex-start; gap: 12px;">
+                    <div style="font-size: 1.4rem;">⚖️</div>
+                    <div style="flex: 1;">
+                        <div style="font-weight: 700; margin-bottom: 0.5rem;" lang="ar">تقييم التكنولوجيا الصحية (HTA)</div>
+                        <div style="font-weight: 700; margin-bottom: 0.5rem; display: none;" lang="en" class="hidden">Health Technology Assessment (HTA)</div>
+                        <p style="margin: 0.5rem 0; font-size: 0.8rem;" lang="ar">هذا النموذج مستوحى من معايير تقييم التكنولوجيا الصحية بقيادة معهد iDSI (International Decision Support Initiative) وكلية إمبريال كوليج لندن. يقدم إطار عمل شامل لتقييم فعالية التكاليف والقيمة الاقتصادية للتدخلات الصحية.</p>
+                        <p style="margin: 0.5rem 0; font-size: 0.8rem; display: none;" lang="en" class="hidden">This model is inspired by HTA frameworks led by iDSI (International Decision Support Initiative) and Imperial College London. It provides a comprehensive framework for assessing cost-effectiveness and economic value of health interventions.</p>
+                        <a href="https://idsihealth.org" target="_blank" style="display: inline-block; margin-top: 0.5rem; padding: 6px 12px; background: rgba(255,255,255,0.2); border: 1px solid white; border-radius: 4px; color: white; text-decoration: none; font-size: 0.75rem; font-weight: 700; transition: all 0.3s ease;">
+                            <span lang="ar">🔗 اعرض iDSI</span>
+                            <span lang="en" class="hidden">🔗 Visit iDSI</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="section">
@@ -1981,6 +2163,10 @@
                 <details open>
                     <summary lang="ar">معاملات تقييم التكنولوجيا الصحية</summary>
                     <summary lang="en" class="hidden">HTA Parameters</summary>
+                    <p style="font-size:0.8rem; color:var(--text-light); margin:0 0 12px 0; line-height:1.5; padding:0 14px;">
+                        <span lang="ar">البيانات المأخوذة من وزارة المالية (MOF)، الهيئة العامة للإحصاء (GASTAT)، الهيئة العامة للرعاية الصحية الأولية (CCHI)، منظمة الصحة العالمية، و Global Burden of Disease. عدّل أي معامل لاستكشاف سيناريوهات بديلة. المعاملات المعدّلة تظهر بتمييز بصري.</span>
+                        <span lang="en" class="hidden">Data sourced from MOF, GASTAT, CCHI, WHO, and Global Burden of Disease. Modify any parameter to explore alternative scenarios. Modified parameters are highlighted.</span>
+                    </p>
                     <div class="grid" style="grid-template-columns: 1fr 1fr 1fr;">
                         <div>
                             <label class="form-label" lang="ar">أفق التحليل (سنة)</label>
@@ -2143,6 +2329,58 @@
                 <div style="font-weight: 700; margin-bottom: 0.5rem;" lang="en" class="hidden">HTA Value Simulator</div>
                 <p lang="ar">مستوحى من: HTA Value Simulator — iDSI / Imperial College London. المراجع: Chalkidou K, et al. (2016) "Priority-setting in health systems" British Medical Bulletin</p>
                 <p lang="en" class="hidden">Inspired by: HTA Value Simulator — iDSI / Imperial College London. Reference: Chalkidou K, et al. (2016) "Priority-setting in health systems" British Medical Bulletin</p>
+            </div>
+
+            <!-- Methodology Notes for HTA -->
+            <div style="margin-top: 2rem; padding: 1.5rem; background: #CCFBF1; border: 1px solid #99F6E4; border-radius: 8px; border-left: 4px solid #0F766E;">
+                <details style="cursor: pointer;">
+                    <summary style="font-weight: 700; font-size: 0.95rem; color: #0F766E; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px;">
+                        <span lang="ar">📖 ملاحظات المنهجية والمراجع</span>
+                        <span lang="en" class="hidden">📖 Methodology Notes & References</span>
+                    </summary>
+                    <div style="font-size: 0.85rem; line-height: 1.6; color: #333;">
+                        <div style="margin-bottom: 1rem;">
+                            <div style="font-weight: 700; color: #0F766E; margin-bottom: 0.5rem;" lang="ar">🔍 نموذج القيمة المستخدم</div>
+                            <div style="font-weight: 700; color: #0F766E; margin-bottom: 0.5rem; display: none;" lang="en" class="hidden">🔍 Value Model Used</div>
+                            <p style="margin: 0; text-align: justify;" lang="ar">نموذج تقييم التكنولوجيا الصحية (HTA) يدمج تقييم الفعالية من حيث التكلفة (CEA)، والقيمة الاقتصادية، وتحليل الأثر العام على النظام الصحي. يتم حساب نسبة التكلفة والفائدة (BCR) من خلال مقارنة توفير التكاليف الصحية والإنتاجية مع تكاليف التطبيق الأولية والمتكررة.</p>
+                            <p style="margin: 0.5rem 0 0 0; display: none; text-align: justify;" lang="en" class="hidden">The Health Technology Assessment (HTA) model integrates cost-effectiveness analysis (CEA), economic value, and broader system-wide impact assessment. The Benefit-Cost Ratio (BCR) is calculated by comparing healthcare savings and productivity gains against initial and ongoing implementation costs.</p>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <div style="font-weight: 700; color: #0F766E; margin-bottom: 0.5rem;" lang="ar">📊 الحسابات الرئيسية</div>
+                            <div style="font-weight: 700; color: #0F766E; margin-bottom: 0.5rem; display: none;" lang="en" class="hidden">📊 Key Calculations</div>
+                            <p style="margin: 0;" lang="ar"><strong>نسبة التكلفة والفائدة (BCR):</strong> BCR = (توفير التكاليف الصحية + قيمة الإنتاجية المكتسبة) / (تكاليف التطبيق)</p>
+                            <p style="margin: 0.5rem 0 0 0; display: none;" lang="en" class="hidden"><strong>Benefit-Cost Ratio (BCR):</strong> BCR = (Healthcare Savings + Productivity Value Gained) / (Implementation Costs)</p>
+                            <p style="margin: 0.5rem 0 0 0;" lang="ar"><strong>معدل العائد الداخلي (IRR):</strong> معدل الخصم الذي يجعل القيمة الحالية الصافية = صفر، يعكس العائد السنوي على الاستثمار</p>
+                            <p style="margin: 0.5rem 0 0 0; display: none;" lang="en" class="hidden"><strong>Internal Rate of Return (IRR):</strong> The discount rate at which NPV = 0, reflecting annualized return on investment</p>
+                            <p style="margin: 0.5rem 0 0 0;" lang="ar"><strong>سنة التعادل (Payback Period):</strong> العام الذي تتساوى فيه المنافع المراكمة مع التكاليف المراكمة</p>
+                            <p style="margin: 0.5rem 0 0 0; display: none;" lang="en" class="hidden"><strong>Payback Period:</strong> The year in which cumulative benefits equal cumulative costs</p>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <div style="font-weight: 700; color: #0F766E; margin-bottom: 0.5rem;" lang="ar">💡 تحويل القيم إلى سنوات حياة معدلة (QALYs)</div>
+                            <div style="font-weight: 700; color: #0F766E; margin-bottom: 0.5rem; display: none;" lang="en" class="hidden">💡 Converting Value to QALYs</div>
+                            <p style="margin: 0;" lang="ar">يتم تحويل التوفير المالي إلى سنوات حياة معدلة بالجودة باستخدام عتبة فعالية التكاليف المحلية (حوالي 93,000 ريال سعودي لكل QALY في السعودية). هذا يسمح بمقارنة متسقة عبر التدخلات المختلفة.</p>
+                            <p style="margin: 0.5rem 0 0 0; display: none;" lang="en" class="hidden">Financial savings are converted to Quality-Adjusted Life Years using the local cost-effectiveness threshold (approximately 93,000 SAR per QALY in Saudi Arabia). This enables consistent comparison across different interventions.</p>
+                        </div>
+                        <div>
+                            <div style="font-weight: 700; color: #0F766E; margin-bottom: 0.5rem;" lang="ar">🔗 المراجع الرئيسية</div>
+                            <div style="font-weight: 700; color: #0F766E; margin-bottom: 0.5rem; display: none;" lang="en" class="hidden">🔗 Key References</div>
+                            <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.8rem;" lang="ar">
+                                <li>Chalkidou K, et al. (2016) "Priority-setting in health systems" British Medical Bulletin 118(1)</li>
+                                <li>Drummond MF, et al. (2015) "Methods for the Economic Evaluation of Health Care Programmes" Oxford University Press, 4th Edition</li>
+                                <li>Hutubessy R, et al. (2002) "Generalized cost-effectiveness analysis for national-level priority-setting in the health sector" Cost Effectiveness and Resource Allocation</li>
+                                <li>Saudi Health Council (2023) "Health Technology Assessment Guidelines for Saudi Arabia"</li>
+                                <li>iDSI Resources - Decision Support Tools and Priority-Setting Guidance</li>
+                            </ul>
+                            <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.8rem; display: none;" lang="en" class="hidden">
+                                <li>Chalkidou K, et al. (2016) "Priority-setting in health systems" British Medical Bulletin 118(1)</li>
+                                <li>Drummond MF, et al. (2015) "Methods for the Economic Evaluation of Health Care Programmes" Oxford University Press, 4th Edition</li>
+                                <li>Hutubessy R, et al. (2002) "Generalized cost-effectiveness analysis for national-level priority-setting in the health sector" Cost Effectiveness and Resource Allocation</li>
+                                <li>Saudi Health Council (2023) "Health Technology Assessment Guidelines for Saudi Arabia"</li>
+                                <li>iDSI Resources - Decision Support Tools and Priority-Setting Guidance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </details>
             </div>
         </div>
     </section>
