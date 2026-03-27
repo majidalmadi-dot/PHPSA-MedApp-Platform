@@ -5138,10 +5138,26 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             navigate('overview');
         }
+        // Report height to parent
+        function reportHeight() {
+            var h = document.body.scrollHeight;
+            window.parent.postMessage({type:'iframeHeight', height: h}, '*');
+        }
+        // Report on navigation, resize, and periodically
+        var _origNavigate = window.navigate;
+        if (typeof navigate === 'function') {
+            var _nav = navigate;
+            window.navigate = function(m) { _nav(m); setTimeout(reportHeight, 200); setTimeout(reportHeight, 800); };
+        }
+        window.addEventListener('resize', reportHeight);
+        setInterval(reportHeight, 2000);
+        setTimeout(reportHeight, 500);
+
         // Listen for parent postMessage navigation
         window.addEventListener('message', function(e) {
             if (e.data && e.data.type === 'navigate' && e.data.module) {
                 navigate(e.data.module);
+                setTimeout(reportHeight, 300);
             }
             if (e.data && e.data.type === 'setLang') {
                 const setAr = e.data.lang === 'ar';
@@ -5150,6 +5166,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.querySelectorAll('.ar-text').forEach(el => el.style.display = setAr ? 'inline' : 'none');
                 document.querySelectorAll('.en-text').forEach(el => el.style.display = setAr ? 'none' : 'inline');
                 document.getElementById('langToggle').textContent = setAr ? 'العربية' : 'English';
+                setTimeout(reportHeight, 300);
             }
         });
     } else {

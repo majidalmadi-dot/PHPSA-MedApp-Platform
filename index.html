@@ -1283,7 +1283,7 @@ function renderPubSandbox() {
           <button class="btn btn-sm sandbox-tab" onclick="switchSandboxTo('library')" data-stab="library" style="font-size:12px;padding:6px 16px;border-radius:20px">${isAr()?'مكتبة السياسات':'Policy Library'}</button>
         </div>
       </div>
-      <iframe id="sandbox-iframe" src="" style="width:100%;border:none;min-height:85vh;display:block" allowfullscreen></iframe>
+      <iframe id="sandbox-iframe" src="" style="width:100%;border:none;min-height:1600px;display:block" allowfullscreen></iframe>
     </div>
 
     <!-- SANDBOX OVERVIEW (cards) -->
@@ -1332,6 +1332,14 @@ function renderPubSandbox() {
 }
 
 // Sandbox uses iframe approach — no direct tab switching needed
+
+// Listen for iframe height reports
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.type === 'iframeHeight') {
+    var iframe = document.getElementById('sandbox-iframe');
+    if (iframe) iframe.style.height = (e.data.height + 40) + 'px';
+  }
+});
 
 // Inline sandbox iframe functions
 function openSandboxInline(module) {
