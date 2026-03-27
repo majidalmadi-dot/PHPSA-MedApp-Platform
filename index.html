@@ -951,6 +951,45 @@ function renderPubSandbox() {
   const catColors = {'Public Health':'var(--accent)','Workforce':'var(--info)','Healthcare Access':'#8B5CF6','Healthcare Funding':'#F59E0B','Mental Health':'#EC4899','Research':'#10B981','Healthcare Technology':'#6366F1','Healthcare Reform':'#EF4444','الصحة العامة':'var(--accent)','القوى العاملة':'var(--info)','الوصول للرعاية':'#8B5CF6','تمويل الرعاية':'#F59E0B','الصحة النفسية':'#EC4899','البحث العلمي':'#10B981','التقنية الصحية':'#6366F1','إصلاح الرعاية':'#EF4444'};
 
   return `
+    <!-- POLICY SIMULATORS SECTION -->
+    <section class="section" style="background:var(--surface)">
+      <div class="container">
+        <div class="section-header">
+          <div class="overline">${isAr()?'أدوات تفاعلية':'INTERACTIVE TOOLS'}</div>
+          <h2>${isAr()?'محاكيات السياسات الصحية':'Health Policy Simulators'}</h2>
+          <p>${isAr()?'اختبر تأثير السياسات الصحية عبر 4 محاكيات متخصصة مبنية على منهجيات دولية معتمدة':'Test health policy impact across 4 specialized simulators built on internationally recognized methodologies'}</p>
+        </div>
+        <div class="feature-grid" style="margin-bottom:var(--space-8)">
+          <div class="feature-card" onclick="window.open('sandbox.html','_blank')">
+            <div class="feature-icon">🚬</div>
+            <h3>${isAr()?'محاكي ضريبة التبغ':'Tobacco Tax Simulator'}</h3>
+            <p>${isAr()?'نموذج Tobacconomics — تأثير الضرائب على الاستهلاك والإيرادات والصحة العامة':'Tobacconomics model — impact of taxes on consumption, revenue, and public health'}</p>
+          </div>
+          <div class="feature-card" onclick="window.open('sandbox.html','_blank')">
+            <div class="feature-icon">💰</div>
+            <h3>${isAr()?'تكاليف OneHealth':'OneHealth Costing'}</h3>
+            <p>${isAr()?'نموذج منظمة الصحة العالمية — تكاليف التدخلات الصحية والعوائد المتوقعة':'WHO methodology — health intervention costs and expected returns'}</p>
+          </div>
+          <div class="feature-card" onclick="window.open('sandbox.html','_blank')">
+            <div class="feature-icon">📊</div>
+            <h3>${isAr()?'نموذج Spectrum/LiST':'Spectrum/LiST Model'}</h3>
+            <p>${isAr()?'نموذج Avenir Health — الإسقاطات السكانية وتأثير التدخلات على وفيات الأطفال':'Avenir Health model — population projections and child mortality interventions'}</p>
+          </div>
+          <div class="feature-card" onclick="window.open('sandbox.html','_blank')">
+            <div class="feature-icon">⚖️</div>
+            <h3>${isAr()?'محاكي قيمة HTA':'HTA Value Simulator'}</h3>
+            <p>${isAr()?'نموذج iDSI — قيمة الاستثمار في وكالات تقييم التقنيات الصحية':'iDSI model — value of investing in health technology assessment agencies'}</p>
+          </div>
+        </div>
+        <div style="text-align:center;margin-bottom:var(--space-8)">
+          <a href="sandbox.html" target="_blank" class="btn btn-primary" style="font-size:15px;padding:14px 32px">
+            ${isAr()?'فتح مختبر المحاكاة الكامل →':'Open Full Simulation Lab →'}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- POLICY IDEAS SECTION -->
     <section class="section">
       <div class="container">
         <div class="section-header">
