@@ -1327,98 +1327,11 @@ function renderPubSandbox() {
     </section>
     </div>
 
-    <!-- POLICY IDEAS SECTION -->
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <div class="overline">${isAr()?'محاكيات السياسات':'POLICY SIMULATORS'}</div>
-          <h2>${isAr()?'مختبر السياسات الصحية الديناميكي':'Dynamic Health Policy Simulator Lab'}</h2>
-          <p>${isAr()?'اختبر تأثير السياسات الصحية على المؤشرات الاقتصادية والديموغرافية من خلال محاكيات تفاعلية مبنية على بيانات فعلية.':'Test the impact of health policies on economic and demographic indicators through interactive simulators built on real-world data.'}</p>
-        </div>
+    `;
 
-        <div class="sandbox-container">
-          <div class="sandbox-tabs">
-            <button class="sandbox-tab-btn active" data-tab="overview" onclick="switchSandboxTab('overview')">${isAr()?'نظرة عامة':'Overview'}</button>
-            <button class="sandbox-tab-btn" data-tab="tobacco" onclick="switchSandboxTab('tobacco')">${isAr()?'ضريبة التبغ':'Tobacco Tax'}</button>
-            <button class="sandbox-tab-btn" data-tab="onehealth" onclick="switchSandboxTab('onehealth')">${isAr()?'نموذج One Health':'OneHealth Model'}</button>
-            <button class="sandbox-tab-btn" data-tab="spectrum" onclick="switchSandboxTab('spectrum')">${isAr()?'نموذج Spectrum/LiST':'Spectrum/LiST'}</button>
-            <button class="sandbox-tab-btn" data-tab="hta" onclick="switchSandboxTab('hta')">${isAr()?'محاكي HTA':'HTA Value'}</button>
-          </div>
-
-          <div class="sandbox-tab-content" data-content="overview">
-            <div style="padding:var(--space-8);text-align:center">
-              <h3 style="color:var(--primary);margin-bottom:16px">${isAr()?'اختر محاكاة لبدء الاستكشاف':'Select a Simulator to Begin'}</h3>
-              <p style="color:var(--text-secondary);margin-bottom:24px;max-width:500px;margin-inline:auto">${isAr()?'تقدم هذه المحاكيات أدوات قائمة على البيانات لتقييم تأثير السياسات الصحية على الاقتصاد والصحة العامة والنتائج السكانية.':'These simulators provide data-driven tools to assess the impact of healthcare policies on economic, public health, and population outcomes.'}</p>
-              <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-6);max-width:600px;margin-inline:auto">
-                <div class="card" style="padding:var(--space-6);cursor:pointer;border:2px solid var(--border);transition:all 0.3s" onclick="switchSandboxTab('tobacco')">
-                  <div style="font-size:32px;margin-bottom:12px">🚭</div>
-                  <h4 style="color:var(--primary);margin-bottom:8px">${isAr()?'ضريبة التبغ':'Tobacco Tax'}</h4>
-                  <p style="font-size:13px;color:var(--text-secondary)">${isAr()?'قياس تأثير ضرائب التبغ على الصحة والإيرادات':'Assess tobacco tax impact on health and revenue'}</p>
-                </div>
-                <div class="card" style="padding:var(--space-6);cursor:pointer;border:2px solid var(--border);transition:all 0.3s" onclick="switchSandboxTab('onehealth')">
-                  <div style="font-size:32px;margin-bottom:12px">🏥</div>
-                  <h4 style="color:var(--primary);margin-bottom:8px">${isAr()?'One Health':'OneHealth Model'}</h4>
-                  <p style="font-size:13px;color:var(--text-secondary)">${isAr()?'نموذج التكاليف المتكاملة':'Integrated costing model'}</p>
-                </div>
-                <div class="card" style="padding:var(--space-6);cursor:pointer;border:2px solid var(--border);transition:all 0.3s" onclick="switchSandboxTab('spectrum')">
-                  <div style="font-size:32px;margin-bottom:12px">📊</div>
-                  <h4 style="color:var(--primary);margin-bottom:8px">${isAr()?'Spectrum/LiST':'Spectrum/LiST'}</h4>
-                  <p style="font-size:13px;color:var(--text-secondary)">${isAr()?'تخطيط التدخلات الصحية':'Health intervention planning'}</p>
-                </div>
-                <div class="card" style="padding:var(--space-6);cursor:pointer;border:2px solid var(--border);transition:all 0.3s" onclick="switchSandboxTab('hta')">
-                  <div style="font-size:32px;margin-bottom:12px">💰</div>
-                  <h4 style="color:var(--primary);margin-bottom:8px">${isAr()?'HTA Value':'HTA Value'}</h4>
-                  <p style="font-size:13px;color:var(--text-secondary)">${isAr()?'تقييم التكنولوجيا الصحية':'Health technology assessment'}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="sandbox-tab-content" data-content="tobacco" style="display:none">
-            <div id="tobaccoSimulator"></div>
-          </div>
-
-          <div class="sandbox-tab-content" data-content="onehealth" style="display:none">
-            <div id="onehealthSimulator"></div>
-          </div>
-
-          <div class="sandbox-tab-content" data-content="spectrum" style="display:none">
-            <div id="spectrumSimulator"></div>
-          </div>
-
-          <div class="sandbox-tab-content" data-content="hta" style="display:none">
-            <div id="htaSimulator"></div>
-          </div>
-        </div>
-      </div>
-    </section>`;
 }
 
-let currentSandboxTab = 'overview';
-function switchSandboxTab(tab) {
-  currentSandboxTab = tab;
-  document.querySelectorAll('.sandbox-tab-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.tab === tab);
-  });
-  document.querySelectorAll('.sandbox-tab-content').forEach(content => {
-    content.style.display = content.dataset.content === tab ? '' : 'none';
-  });
-}
-
-function filterSandbox() {
-  const q = document.getElementById('sandboxSearch').value.toLowerCase();
-  document.querySelectorAll('.sandbox-card').forEach(c => {
-    c.style.display = c.textContent.toLowerCase().includes(q) ? '' : 'none';
-  });
-}
-function filterSandboxCat(btn, cat) {
-  document.querySelectorAll('.sandbox-filter').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  btn.classList.add('badge-navy');
-  document.querySelectorAll('.sandbox-card').forEach(c => {
-    c.style.display = (!cat || c.dataset.cat === cat) ? '' : 'none';
-  });
-}
+// Sandbox uses iframe approach — no direct tab switching needed
 
 // Inline sandbox iframe functions
 function openSandboxInline(module) {
@@ -1438,7 +1351,7 @@ function openSandboxInline(module) {
   document.querySelectorAll('.sandbox-tab').forEach(t => t.classList.remove('active'));
   const activeTab = document.querySelector('[data-stab="'+(module||'overview')+'"]');
   if (activeTab) activeTab.classList.add('active');
-  window.scrollTo({top: 0, behavior: 'smooth'});
+  document.documentElement.scrollTop = 0;
 }
 function closeSandboxIframe() {
   const wrap = document.getElementById('sandbox-iframe-wrap');
@@ -1869,7 +1782,7 @@ function exitDashboard() {
   renderPublicPage();
 }
 
-function scrollTo(sel) {
+function scrollToEl(sel) {
   const el = document.querySelector(sel);
   if (el) el.scrollIntoView({behavior:'smooth'});
 }
@@ -4076,18 +3989,7 @@ ${recsEl ? recsEl.innerHTML.replace(/background:white/g, 'background:#FFF7ED') :
             setTimeout(() => { printWindow.print(); }, 600);
         }
 
-        // ============================================================
-        // INITIALIZATION
-        // ============================================================
-        document.addEventListener('DOMContentLoaded', function() {
-            initializePolicyLibrary();
-            updateTobaccoSim();
-            refreshStakeholderDropdown();
-            refreshDomainDropdown();
-            initOneHealth();
-            initSpectrum();
-            initHTA();
-        });
+        // Simulators now run inside the sandbox.html iframe — no direct init needed
 
 
 
