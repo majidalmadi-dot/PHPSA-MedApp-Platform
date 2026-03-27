@@ -2268,7 +2268,7 @@
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
             const dpr = window.devicePixelRatio || 1;
-            const w = canvas.offsetWidth;
+            const w = canvas.offsetWidth || canvas.parentElement?.offsetWidth || 800;
             const h = 220;
             canvas.width = w * dpr;
             canvas.height = h * dpr;
@@ -5090,6 +5090,14 @@ function navigate(module) {
     if (sidebar && window.innerWidth <= 768) {
         sidebar.classList.remove('active');
     }
+
+    // Redraw charts after section becomes visible
+    setTimeout(function() {
+        if (module === 'tobacco' && typeof updateTobaccoSim === 'function') updateTobaccoSim();
+        if (module === 'onehealth' && typeof updateOneHealth === 'function') updateOneHealth();
+        if (module === 'spectrum' && typeof updateSpectrum === 'function') updateSpectrum();
+        if (module === 'hta' && typeof updateHTA === 'function') updateHTA();
+    }, 100);
 }
 
 // Mobile hamburger menu
