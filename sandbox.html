@@ -1074,6 +1074,96 @@
             height: 2px;
             background: white;
         }
+
+        /* Enhanced KPI card styling */
+        .kpi-card {
+            background: white;
+            border: 1px solid var(--border, #E5E7EB);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .kpi-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        .kpi-number {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #0F766E;
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+        .kpi-label {
+            font-size: 0.78rem;
+            color: #6B7280;
+            line-height: 1.3;
+        }
+        .kpi-grid {
+            display: grid;
+            gap: 12px;
+            margin-top: 1rem;
+        }
+        /* Enhanced editable panel */
+        .editable-panel details summary {
+            cursor: pointer;
+            font-weight: 700;
+            padding: 8px 0;
+            color: #0F766E;
+        }
+        .editable-panel details summary:hover {
+            color: #0B5A56;
+        }
+        /* Improved range slider styling */
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #D1D5DB;
+            outline: none;
+            margin: 8px 0;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #0F7C7B;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #0F7C7B;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        }
+        /* Improved param value display */
+        .param-value {
+            display: inline-block;
+            min-width: 50px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #0B1F3B;
+        }
+        /* Chart container improvement */
+        canvas {
+            max-width: 100%;
+        }
+        /* Projection table improvements */
+        .editable-panel {
+            border: 1px solid var(--border, #E5E7EB);
+            border-radius: 10px;
+            padding: 4px 16px;
+            background: white;
+        }
     </style>
 </head>
 <body>
@@ -1262,9 +1352,32 @@
                     </details>
                 </div>
 
-                <div class="kpi-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <!-- Transparent Tobacco Baseline Assumptions -->
+                <div class="editable-panel" style="margin-top:1rem; border:1px solid #BAE6FD; border-radius:10px; background:#F0F9FF; padding:0;">
+                    <details>
+                        <summary style="padding:12px 16px; cursor:pointer; font-weight:700; color:#0F766E; font-size:0.9rem;">
+                            <span lang="ar">⚙️ افتراضات خط الأساس السعودي (قابلة للتعديل)</span>
+                            <span lang="en" class="hidden">⚙️ Saudi Baseline Assumptions (Editable)</span>
+                        </summary>
+                        <div style="padding:0 16px 16px 16px;">
+                            <p style="font-size:0.78rem; color:#6B7280; margin:0 0 12px 0;">
+                                <span lang="ar">هذه القيم مبنية على بيانات صحية سعودية. عدّل أي قيمة لتحليل سيناريوهات بديلة. القيم المعدّلة تظهر بخلفية صفراء.</span>
+                                <span lang="en" class="hidden">These values are based on Saudi health data. Edit any value to explore alternative scenarios. Modified values are highlighted in yellow.</span>
+                            </p>
+                            <div id="tobaccoAssumpGrid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:8px;"></div>
+                            <div style="margin-top:12px; text-align:center;">
+                                <button onclick="resetTobaccoAssumptions()" style="padding:6px 20px; font-size:0.8rem; border:1px solid #DC2626; color:#DC2626; background:white; border-radius:20px; cursor:pointer; font-family:var(--font-sans);">
+                                    <span lang="ar">🔄 إعادة تعيين</span>
+                                    <span lang="en" class="hidden">🔄 Reset to Defaults</span>
+                                </button>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="kpi-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top:1rem;">
                     <div class="kpi-card">
-                        <div class="kpi-number" id="tobaccoNewPrice">26.0</div>
+                        <div class="kpi-number" id="tobaccoNewPrice">—</div>
                         <div class="kpi-label" lang="ar">السعر الجديد (ريال)</div>
                         <div class="kpi-label hidden" lang="en">New Price (SAR)</div>
                     </div>
@@ -1647,11 +1760,54 @@
 
                 <div id="specLiSTSliders" style="margin-top: 2rem; display:none;"></div>
                 <div id="specDemTable" style="margin-top: 2rem; display:none;"></div>
-                <div id="specAssumptionsGrid" style="margin-top: 2rem; display:none;"></div>
-                <div id="specAssumpDemGrid" style="display:none;"></div>
-                <div id="specAssumpMortGrid" style="display:none;"></div>
-                <div id="specAssumpNCDGrid" style="display:none;"></div>
-                <div id="specAssumpRHGrid" style="display:none;"></div>
+
+                <!-- Editable Assumptions Panel -->
+                <div style="margin-top: 2rem;">
+                    <div class="editable-panel">
+                        <details>
+                            <summary style="cursor:pointer; font-weight:700; font-size:0.9rem; color:var(--primary); padding:10px 14px; display:flex; align-items:center; gap:8px;">
+                                <span lang="ar">⚙️ الافتراضات والمعاملات القابلة للتعديل</span>
+                                <span lang="en" class="hidden">⚙️ Editable Assumptions & Parameters</span>
+                            </summary>
+                            <div style="padding:14px;">
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                                    <div style="font-size:0.78rem; color:var(--text-light);">
+                                        <span lang="ar">🟡 الحقول المعدلة مميزة باللون الأصفر</span>
+                                        <span lang="en" class="hidden">🟡 Modified fields highlighted in yellow</span>
+                                    </div>
+                                    <button onclick="resetSpecAssumptions()" style="padding:4px 12px; border:1px solid var(--border); border-radius:6px; background:#fff; cursor:pointer; font-size:0.75rem; font-family:var(--font-sans);">
+                                        <span lang="ar">↩️ إعادة تعيين</span>
+                                        <span lang="en" class="hidden">↩️ Reset Defaults</span>
+                                    </button>
+                                </div>
+
+                                <div style="font-weight:700; font-size:0.82rem; color:var(--primary); margin-bottom:8px; border-bottom:2px solid var(--primary); padding-bottom:4px;">
+                                    <span lang="ar">👥 الديموغرافيا</span>
+                                    <span lang="en" class="hidden">👥 Demographics</span>
+                                </div>
+                                <div id="specAssumpDemGrid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:8px; margin-bottom:16px;"></div>
+
+                                <div style="font-weight:700; font-size:0.82rem; color:#DC2626; margin-bottom:8px; border-bottom:2px solid #DC2626; padding-bottom:4px;">
+                                    <span lang="ar">💀 الوفيات</span>
+                                    <span lang="en" class="hidden">💀 Mortality</span>
+                                </div>
+                                <div id="specAssumpMortGrid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:8px; margin-bottom:16px;"></div>
+
+                                <div style="font-weight:700; font-size:0.82rem; color:#7C3AED; margin-bottom:8px; border-bottom:2px solid #7C3AED; padding-bottom:4px;">
+                                    <span lang="ar">🏥 الأمراض غير المعدية</span>
+                                    <span lang="en" class="hidden">🏥 Non-Communicable Diseases</span>
+                                </div>
+                                <div id="specAssumpNCDGrid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:8px; margin-bottom:16px;"></div>
+
+                                <div style="font-weight:700; font-size:0.82rem; color:#0284C7; margin-bottom:8px; border-bottom:2px solid #0284C7; padding-bottom:4px;">
+                                    <span lang="ar">🤱 الصحة الإنجابية</span>
+                                    <span lang="en" class="hidden">🤱 Reproductive Health</span>
+                                </div>
+                                <div id="specAssumpRHGrid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:8px;"></div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
             </div>
 
             <div id="specPanel_famplan" class="tab-content">
@@ -2233,6 +2389,51 @@
             packPrice: 26,        // Current pack price SAR
             packsPerYear: 365,    // Packs per smoker per year
         };
+
+        const SAUDI_BASELINE_DEFAULTS = JSON.parse(JSON.stringify(SAUDI_BASELINE));
+        const tobaccoAssumpFields = [
+            { key: 'adultPop', labelAr: 'السكان البالغون', labelEn: 'Adult Population', step: 100000 },
+            { key: 'prevalence', labelAr: 'معدل انتشار التدخين', labelEn: 'Smoking Prevalence', step: 0.01 },
+            { key: 'smokers', labelAr: 'عدد المدخنين', labelEn: 'Current Smokers', step: 100000 },
+            { key: 'healthCostPerSmoker', labelAr: 'التكلفة الصحية / مدخن (ر.س/سنة)', labelEn: 'Health Cost/Smoker (SAR/yr)', step: 500 },
+            { key: 'mortalityRate', labelAr: 'معدل الوفاة المنسوبة للتدخين', labelEn: 'Smoking-Attributable Mortality', step: 0.01 },
+            { key: 'lifeYearsPerQuitter', labelAr: 'سنوات العمر المكتسبة / مقلع', labelEn: 'Life-Years Gained per Quitter', step: 0.5 },
+        ];
+
+        function renderTobaccoAssumptions() {
+            const isAr = document.documentElement.lang === 'ar';
+            const grid = document.getElementById('tobaccoAssumpGrid');
+            if (!grid) return;
+            grid.innerHTML = tobaccoAssumpFields.map(f => {
+                const val = SAUDI_BASELINE[f.key];
+                const dflt = SAUDI_BASELINE_DEFAULTS[f.key];
+                const isModified = val !== dflt;
+                return `<div>
+                    <label style="font-size:0.7rem; color:${isModified ? '#DC2626' : 'var(--text-light)'}; display:block; margin-bottom:2px;">
+                        ${isAr ? f.labelAr : f.labelEn}${isModified ? ' ✏️' : ''}
+                    </label>
+                    <input type="number" value="${val}" step="${f.step}"
+                        onchange="onTobaccoAssumpChange('${f.key}', this.value)"
+                        style="width:100%; padding:5px 8px; border:1px solid ${isModified ? '#F59E0B' : 'var(--border)'}; border-radius:6px; font-size:0.82rem; font-family:var(--font-sans); box-sizing:border-box; background:${isModified ? '#FFFBEB' : 'white'};">
+                </div>`;
+            }).join('');
+        }
+
+        function onTobaccoAssumpChange(key, value) {
+            const numVal = parseFloat(value);
+            if (isNaN(numVal)) return;
+            SAUDI_BASELINE[key] = numVal;
+            if (key === 'prevalence') SAUDI_BASELINE.smokers = Math.round(SAUDI_BASELINE.adultPop * numVal);
+            if (key === 'adultPop') SAUDI_BASELINE.smokers = Math.round(numVal * SAUDI_BASELINE.prevalence);
+            renderTobaccoAssumptions();
+            updateTobaccoSim();
+        }
+
+        function resetTobaccoAssumptions() {
+            Object.keys(SAUDI_BASELINE_DEFAULTS).forEach(k => { SAUDI_BASELINE[k] = SAUDI_BASELINE_DEFAULTS[k]; });
+            renderTobaccoAssumptions();
+            updateTobaccoSim();
+        }
 
         function updateTobaccoSim() {
             // Read inputs
@@ -5116,6 +5317,11 @@ ${recsEl ? recsEl.innerHTML.replace(/background:white/g, 'background:#FFF7ED') :
             initOneHealth();
             initSpectrum();
             initHTA();
+            renderTobaccoAssumptions();
+            renderOhAssumptions();
+            renderSpecAssumptions();
+            renderHtaAssumptions();
+            updateTobaccoSim();
         });
 
     </script>
@@ -5147,9 +5353,9 @@ function navigate(module) {
 
     // Redraw charts after section becomes visible
     setTimeout(function() {
-        if (module === 'tobacco' && typeof updateTobaccoSim === 'function') updateTobaccoSim();
-        if (module === 'onehealth' && typeof updateOneHealth === 'function') updateOneHealth();
-        if (module === 'spectrum' && typeof updateSpectrum === 'function') updateSpectrum();
+        if (module === 'tobacco') { if (typeof renderTobaccoAssumptions === 'function') renderTobaccoAssumptions(); if (typeof updateTobaccoSim === 'function') updateTobaccoSim(); }
+        if (module === 'onehealth') { if (typeof renderOhAssumptions === 'function') renderOhAssumptions(); if (typeof updateOneHealth === 'function') updateOneHealth(); }
+        if (module === 'spectrum') { if (typeof renderSpecAssumptions === 'function') renderSpecAssumptions(); if (typeof updateSpectrum === 'function') updateSpectrum(); }
         if (module === 'hta' && typeof initHTA === 'function') initHTA();
     }, 100);
 }
