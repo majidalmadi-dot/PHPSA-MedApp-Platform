@@ -1263,9 +1263,13 @@
                 <h3 id="card4title">محاكي قيمة HTA</h3>
                 <p id="card4desc">أداة تقييم التقنيات الصحية لتحليل فعالية التكلفة والقيمة الاجتماعية للتدخلات.</p>
             </div>
+            <div class="overview-card" onclick="navigate('stakeholder')">
+                <h3 id="card5title">محلل أصحاب المصلحة والجدوى السياسية</h3>
+                <p id="card5desc">تحليل مواقف الجهات والقوى السياسية تجاه السياسة الصحية باستخدام إطار PolicyMaker.</p>
+            </div>
             <div class="overview-card" onclick="navigate('library')">
-                <h3 id="card5title">مكتبة السياسات</h3>
-                <p id="card5desc">مجموعة شاملة من السياسات الصحية والعامة مع أدوات البحث والتصفية المتقدمة.</p>
+                <h3 id="card6title">مكتبة السياسات</h3>
+                <p id="card6desc">مجموعة شاملة من السياسات الصحية والعامة مع أدوات البحث والتصفية المتقدمة.</p>
             </div>
         </div>
 
@@ -2385,7 +2389,220 @@
         </div>
     </section>
 
-    <!-- Module 5: Policy Library -->
+    <!-- Module 5: Stakeholder & Political Feasibility Analyzer -->
+    <section id="module-stakeholder" class="module-section">
+        <div class="section">
+                <div class="section-title">
+                    <span class="section-title-icon">🏛️</span>
+                    <span lang="ar">محلل أصحاب المصلحة والجدوى السياسية</span>
+                    <span lang="en" class="hidden">Stakeholder & Political Feasibility Analyzer</span>
+                </div>
+
+                <!-- Attribution Banner -->
+                <div style="background:linear-gradient(135deg, #7C2D12, #A56A4A); color:white; padding:16px 20px; border-radius:var(--radius-md); margin-bottom:1.5rem; display:flex; align-items:flex-start; gap:12px;">
+                    <span style="font-size:1.4rem; margin-top:2px;">🎓</span>
+                    <div>
+                        <div style="font-weight:700; font-size:1rem; margin-bottom:4px;">
+                            <span lang="ar">مبني على منهجية PolicyMaker 4.0 — جامعة هارفارد</span>
+                            <span lang="en" class="hidden">Built on PolicyMaker 4.0 Methodology — Harvard University</span>
+                        </div>
+                        <div style="font-size:0.85rem; opacity:0.9; line-height:1.5;">
+                            <span lang="ar">يستخدم هذا المحلل إطار التحليل السياسي لأصحاب المصلحة من برنامج PolicyMaker 4.0 الذي طوره البروفيسور مايكل رايش في كلية هارفارد تي إتش تشان للصحة العامة. يُستخدم لتقييم الجدوى السياسية لسياسات الإصلاح الصحي من خلال رسم خريطة مواقف أصحاب المصلحة وقوتهم وبناء استراتيجيات التحالف.</span>
+                            <span lang="en" class="hidden">This analyzer uses the stakeholder political analysis framework from PolicyMaker 4.0, developed by Prof. Michael Reich at the Harvard T.H. Chan School of Public Health. It assesses the political feasibility of health reform policies by mapping stakeholder positions, power, and building coalition strategies.</span>
+                        </div>
+                        <a href="https://michaelrreich.com/policymaker-software" target="_blank" rel="noopener" style="color:#FED7AA; font-size:0.8rem; text-decoration:underline; display:inline-block; margin-top:6px;">
+                            <span lang="ar">🔗 عرض برنامج PolicyMaker 4.0 الأصلي (هارفارد)</span>
+                            <span lang="en" class="hidden">🔗 View the original PolicyMaker 4.0 software (Harvard)</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Step 1: Select Policy -->
+                <div style="margin-bottom:1.5rem;">
+                    <div style="font-weight:700; color:var(--teal); font-size:0.9rem; margin-bottom:0.75rem; text-transform:uppercase; letter-spacing:0.5px;">
+                        <span lang="ar">الخطوة 1: حدد السياسة المراد تحليلها</span>
+                        <span lang="en" class="hidden">Step 1: Define the Policy Under Analysis</span>
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                        <div class="form-group">
+                            <label style="font-size:0.75rem; color:var(--text-light); display:block; margin-bottom:3px;">
+                                <span lang="ar">اسم السياسة</span><span lang="en" class="hidden">Policy Name</span>
+                            </label>
+                            <input type="text" id="pmPolicyName" class="form-input" style="width:100%; max-width:100%; box-sizing:border-box;" placeholder="" oninput="updatePolicyMaker()">
+                        </div>
+                        <div class="form-group">
+                            <label style="font-size:0.75rem; color:var(--text-light); display:block; margin-bottom:3px;">
+                                <span lang="ar">المجال</span><span lang="en" class="hidden">Domain</span>
+                            </label>
+                            <select id="pmPolicyDomain" class="form-select" onchange="updatePolicyMaker()" style="width:100%; max-width:100%; box-sizing:border-box;">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Add Stakeholders -->
+                <div style="margin-bottom:1.5rem;">
+                    <div style="font-weight:700; color:var(--teal); font-size:0.9rem; margin-bottom:0.75rem; text-transform:uppercase; letter-spacing:0.5px;">
+                        <span lang="ar">الخطوة 2: أضف أصحاب المصلحة</span>
+                        <span lang="en" class="hidden">Step 2: Add Stakeholders</span>
+                    </div>
+                    <!-- Row 1: Stakeholder selector + Position -->
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px;">
+                        <div>
+                            <label style="font-size:0.75rem; color:var(--text-light); display:block; margin-bottom:3px;">
+                                <span lang="ar">اختر الجهة</span><span lang="en" class="hidden">Select Stakeholder</span>
+                            </label>
+                            <select id="pmStakeholderSelect" class="form-select" style="padding:8px; max-width:100%; box-sizing:border-box;" onchange="onStakeholderSelectChange()">
+                            </select>
+                        </div>
+                        <div id="pmCustomNameWrapper" style="display:none;">
+                            <label style="font-size:0.75rem; color:var(--text-light); display:block; margin-bottom:3px;">
+                                <span lang="ar">اسم الجهة</span><span lang="en" class="hidden">Stakeholder Name</span>
+                            </label>
+                            <input type="text" id="pmStakeholderName" class="form-input" style="padding:8px; max-width:100%; box-sizing:border-box;" placeholder="">
+                        </div>
+                    </div>
+                    <!-- Row 2: Position + Power + Interest + Add button -->
+                    <div style="display:grid; grid-template-columns:1fr 1fr 1fr auto; gap:8px; align-items:end; margin-bottom:10px;">
+                        <div>
+                            <label style="font-size:0.75rem; color:var(--text-light); display:block; margin-bottom:3px;">
+                                <span lang="ar">الموقف</span><span lang="en" class="hidden">Position</span>
+                            </label>
+                            <select id="pmStakeholderPosition" class="form-select" style="padding:8px; max-width:100%; box-sizing:border-box;">
+                                <option value="strong_support">مؤيد بقوة / Strong Support</option>
+                                <option value="moderate_support">مؤيد / Moderate Support</option>
+                                <option value="neutral" selected>محايد / Neutral</option>
+                                <option value="moderate_oppose">معارض / Moderate Opposition</option>
+                                <option value="strong_oppose">معارض بقوة / Strong Opposition</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-size:0.75rem; color:var(--text-light); display:block; margin-bottom:3px;">
+                                <span lang="ar">القوة</span><span lang="en" class="hidden">Power</span>
+                            </label>
+                            <select id="pmStakeholderPower" class="form-select" style="padding:8px; max-width:100%; box-sizing:border-box;">
+                                <option value="high">عالية / High</option>
+                                <option value="medium" selected>متوسطة / Medium</option>
+                                <option value="low">منخفضة / Low</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-size:0.75rem; color:var(--text-light); display:block; margin-bottom:3px;">
+                                <span lang="ar">الاهتمام</span><span lang="en" class="hidden">Interest</span>
+                            </label>
+                            <select id="pmStakeholderInterest" class="form-select" style="padding:8px; max-width:100%; box-sizing:border-box;">
+                                <option value="high">عالي / High</option>
+                                <option value="medium" selected>متوسط / Medium</option>
+                                <option value="low">منخفض / Low</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" onclick="addStakeholder()" style="padding:8px 16px; white-space:nowrap;">
+                                <span lang="ar">+ أضف</span><span lang="en" class="hidden">+ Add</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Stakeholder list -->
+                    <div id="pmStakeholderList" style="margin-bottom:1rem;"></div>
+                </div>
+
+                <!-- Step 3: Results Dashboard -->
+                <div id="pmResultsSection" style="display:none;">
+                    <div style="font-weight:700; color:var(--teal); font-size:0.9rem; margin-bottom:0.75rem; text-transform:uppercase; letter-spacing:0.5px;">
+                        <span lang="ar">الخطوة 3: تحليل الجدوى السياسية</span>
+                        <span lang="en" class="hidden">Step 3: Political Feasibility Analysis</span>
+                    </div>
+
+                    <!-- Feasibility Score -->
+                    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:1.5rem;">
+                        <div style="background:white; border:2px solid var(--border); border-radius:var(--radius-md); padding:20px; text-align:center;">
+                            <div style="font-size:0.8rem; color:var(--text-light); margin-bottom:6px;">
+                                <span lang="ar">مؤشر الجدوى السياسية</span><span lang="en" class="hidden">Political Feasibility Index</span>
+                            </div>
+                            <div style="font-size:2.2rem; font-weight:800;" id="pmFeasibilityScore">—</div>
+                            <div style="font-size:0.75rem; margin-top:4px;" id="pmFeasibilityLabel">—</div>
+                        </div>
+                        <div style="background:white; border:1px solid var(--border); border-radius:var(--radius-md); padding:20px; text-align:center;">
+                            <div style="font-size:0.8rem; color:var(--text-light); margin-bottom:6px;">
+                                <span lang="ar">توازن القوى</span><span lang="en" class="hidden">Power Balance</span>
+                            </div>
+                            <div style="font-size:1.8rem; font-weight:700;" id="pmPowerBalance">—</div>
+                            <div style="font-size:0.75rem; color:var(--text-light); margin-top:4px;" id="pmPowerLabel">—</div>
+                        </div>
+                        <div style="background:white; border:1px solid var(--border); border-radius:var(--radius-md); padding:20px; text-align:center;">
+                            <div style="font-size:0.8rem; color:var(--text-light); margin-bottom:6px;">
+                                <span lang="ar">حالة التحالف</span><span lang="en" class="hidden">Coalition Status</span>
+                            </div>
+                            <div style="font-size:1.8rem; font-weight:700;" id="pmCoalitionStatus">—</div>
+                            <div style="font-size:0.75rem; color:var(--text-light); margin-top:4px;" id="pmCoalitionLabel">—</div>
+                        </div>
+                    </div>
+
+                    <!-- Position Map (Canvas) -->
+                    <div style="background:white; border:1px solid var(--border); border-radius:var(--radius-md); padding:16px; margin-bottom:1.5rem;">
+                        <div style="font-size:0.85rem; font-weight:600; color:var(--primary); margin-bottom:8px;">
+                            <span lang="ar">خريطة مواقف أصحاب المصلحة (نموذج PolicyMaker)</span>
+                            <span lang="en" class="hidden">Stakeholder Position Map (PolicyMaker Model)</span>
+                        </div>
+                        <canvas id="pmPositionMap" height="320" style="width:100%; display:block;"></canvas>
+                    </div>
+
+                    <!-- Power-Interest Grid -->
+                    <div style="background:white; border:1px solid var(--border); border-radius:var(--radius-md); padding:16px; margin-bottom:1.5rem;">
+                        <div style="font-size:0.85rem; font-weight:600; color:var(--primary); margin-bottom:8px;">
+                            <span lang="ar">مصفوفة القوة والاهتمام</span>
+                            <span lang="en" class="hidden">Power–Interest Grid</span>
+                        </div>
+                        <canvas id="pmPowerGrid" height="300" style="width:100%; display:block;"></canvas>
+                    </div>
+
+                    <!-- Strategic Recommendations -->
+                    <div style="background:var(--light); border-radius:var(--radius-md); padding:18px; margin-bottom:1.5rem;">
+                        <div style="font-size:0.85rem; font-weight:700; color:var(--primary); margin-bottom:10px;">
+                            <span lang="ar">🎯 التوصيات الاستراتيجية</span>
+                            <span lang="en" class="hidden">🎯 Strategic Recommendations</span>
+                        </div>
+                        <div id="pmRecommendations" style="font-size:0.88rem; line-height:1.8; color:var(--text-dark);"></div>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div style="display:flex; gap:var(--spacing-md); flex-wrap:wrap;">
+                    <button class="btn btn-primary" onclick="resetPolicyMaker()">
+                        <span lang="ar">إعادة تعيين</span>
+                        <span lang="en" class="hidden">Reset</span>
+                    </button>
+                    <button class="btn btn-secondary" onclick="exportPolicyMaker()">
+                        <span lang="ar">📄 تصدير PDF</span>
+                        <span lang="en" class="hidden">📄 Export PDF</span>
+                    </button>
+                    <button class="btn btn-secondary" onclick="loadExampleScenario()" style="background:var(--accent); color:white;">
+                        <span lang="ar">تحميل سيناريو نموذجي</span>
+                        <span lang="en" class="hidden">Load Example Scenario</span>
+                    </button>
+                </div>
+
+                <!-- Methodology -->
+                <div style="margin-top:1.5rem; background:var(--light); padding:16px 20px; border-radius:var(--radius-md); font-size:0.82rem; line-height:1.7; color:var(--text-dark);">
+                    <div style="font-weight:700; color:var(--primary); margin-bottom:6px; font-size:0.85rem;">
+                        <span lang="ar">📐 ملاحظات منهجية</span>
+                        <span lang="en" class="hidden">📐 Methodology Notes</span>
+                    </div>
+                    <div lang="ar">
+                        <p style="margin-bottom:8px;">يستخدم هذا المحلل <strong>إطار التحليل السياسي لأصحاب المصلحة</strong> من برنامج PolicyMaker 4.0 (البروفيسور مايكل رايش، كلية هارفارد للصحة العامة). يقيّم الإطار ثلاثة أبعاد لكل صاحب مصلحة: <strong>الموقف</strong> (من معارض بقوة إلى مؤيد بقوة)، <strong>القوة</strong> (القدرة على التأثير في القرار)، و<strong>الاهتمام</strong> (مدى أهمية السياسة لهم).</p>
+                        <p style="margin-bottom:8px;"><strong>مؤشر الجدوى السياسية:</strong> يُحسب كمعدل مرجح بالقوة لمواقف جميع أصحاب المصلحة (من -100 إلى +100). القيم الموجبة تشير إلى جدوى سياسية عالية، والسالبة تشير إلى مقاومة مرجحة.</p>
+                        <p><strong>المصدر:</strong> Reich, M.R. (1996). "Applied political analysis for health policy reform." <em>Current Issues in Public Health</em>, 2, 186-191. البرنامج متاح مجاناً من <a href="https://michaelrreich.com/policymaker-software" target="_blank" style="color:var(--teal);">michaelrreich.com/policymaker-software</a></p>
+                    </div>
+                    <div lang="en" class="hidden">
+                        <p style="margin-bottom:8px;">This analyzer uses the <strong>stakeholder political analysis framework</strong> from PolicyMaker 4.0 (Prof. Michael Reich, Harvard T.H. Chan School of Public Health). The framework assesses three dimensions per stakeholder: <strong>Position</strong> (strong opposition to strong support), <strong>Power</strong> (ability to influence the decision), and <strong>Interest</strong> (how important the policy is to them).</p>
+                        <p style="margin-bottom:8px;"><strong>Political Feasibility Index:</strong> Calculated as a power-weighted average of all stakeholder positions (from -100 to +100). Positive values indicate high political feasibility; negative values indicate likely resistance.</p>
+                        <p><strong>Source:</strong> Reich, M.R. (1996). "Applied political analysis for health policy reform." <em>Current Issues in Public Health</em>, 2, 186-191. Software available free at <a href="https://michaelrreich.com/policymaker-software" target="_blank" style="color:var(--teal);">michaelrreich.com/policymaker-software</a></p>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Module 6: Policy Library -->
     <section id="module-library" class="module-section">
         <div class="section">
             <div class="section-title">
@@ -5595,6 +5812,7 @@ function navigate(module) {
         if (module === 'onehealth') { if (typeof renderOhAssumptions === 'function') renderOhAssumptions(); if (typeof updateOneHealth === 'function') updateOneHealth(); }
         if (module === 'spectrum') { if (typeof renderSpecAssumptions === 'function') renderSpecAssumptions(); if (typeof updateSpectrum === 'function') updateSpectrum(); }
         if (module === 'hta' && typeof initHTA === 'function') initHTA();
+        if (module === 'stakeholder') { if (typeof refreshStakeholderDropdown === 'function') refreshStakeholderDropdown(); if (typeof refreshDomainDropdown === 'function') refreshDomainDropdown(); }
     }, 100);
 }
 
@@ -5679,6 +5897,7 @@ document.addEventListener('DOMContentLoaded', function() {
         navigate('overview');
     }
 });
+
 </script>
 
 </body>
