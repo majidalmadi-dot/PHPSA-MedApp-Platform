@@ -165,6 +165,9 @@ ul,ol { list-style:none }
 .feature-card:hover .feature-icon { background:var(--accent); color:#fff; transform:scale(1.05) }
 .feature-card h3 { font-size:18px; font-weight:700; color:var(--primary); margin-bottom:var(--space-2) }
 .feature-card p { font-size:14px; color:var(--text-secondary); line-height:1.7 }
+.sandbox-tab { background:var(--bg-secondary); color:var(--text-secondary); border:1px solid var(--border); transition:all .2s }
+.sandbox-tab.active { background:var(--accent); color:#fff; border-color:var(--accent) }
+.sandbox-tab:hover:not(.active) { background:var(--border); color:var(--primary) }
 
 /* ══════════ STATS COUNTER ══════════ */
 .stats-bar { background:var(--primary); padding:var(--space-12) 0 }
@@ -951,6 +954,26 @@ function renderPubSandbox() {
   const catColors = {'Public Health':'var(--accent)','Workforce':'var(--info)','Healthcare Access':'#8B5CF6','Healthcare Funding':'#F59E0B','Mental Health':'#EC4899','Research':'#10B981','Healthcare Technology':'#6366F1','Healthcare Reform':'#EF4444','الصحة العامة':'var(--accent)','القوى العاملة':'var(--info)','الوصول للرعاية':'#8B5CF6','تمويل الرعاية':'#F59E0B','الصحة النفسية':'#EC4899','البحث العلمي':'#10B981','التقنية الصحية':'#6366F1','إصلاح الرعاية':'#EF4444'};
 
   return `
+    <!-- SANDBOX IFRAME (hidden by default) -->
+    <div id="sandbox-iframe-wrap" style="display:none">
+      <div class="container" style="padding-top:var(--space-6);padding-bottom:var(--space-4)">
+        <button class="btn btn-outline" onclick="closeSandboxIframe()" style="font-size:13px;padding:8px 20px;margin-bottom:var(--space-4)">
+          ${isAr()?'→ العودة لمختبر السياسات':'← Back to Policy Lab'}
+        </button>
+        <div id="sandbox-tab-bar" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:var(--space-4)">
+          <button class="btn btn-sm sandbox-tab active" onclick="switchSandboxTo('overview')" data-stab="overview" style="font-size:12px;padding:6px 16px;border-radius:20px">${isAr()?'نظرة عامة':'Overview'}</button>
+          <button class="btn btn-sm sandbox-tab" onclick="switchSandboxTo('tobacco')" data-stab="tobacco" style="font-size:12px;padding:6px 16px;border-radius:20px">${isAr()?'ضريبة التبغ':'Tobacco Tax'}</button>
+          <button class="btn btn-sm sandbox-tab" onclick="switchSandboxTo('onehealth')" data-stab="onehealth" style="font-size:12px;padding:6px 16px;border-radius:20px">${isAr()?'OneHealth':'OneHealth'}</button>
+          <button class="btn btn-sm sandbox-tab" onclick="switchSandboxTo('spectrum')" data-stab="spectrum" style="font-size:12px;padding:6px 16px;border-radius:20px">${isAr()?'Spectrum/LiST':'Spectrum/LiST'}</button>
+          <button class="btn btn-sm sandbox-tab" onclick="switchSandboxTo('hta')" data-stab="hta" style="font-size:12px;padding:6px 16px;border-radius:20px">${isAr()?'HTA':'HTA'}</button>
+          <button class="btn btn-sm sandbox-tab" onclick="switchSandboxTo('library')" data-stab="library" style="font-size:12px;padding:6px 16px;border-radius:20px">${isAr()?'مكتبة السياسات':'Policy Library'}</button>
+        </div>
+      </div>
+      <iframe id="sandbox-iframe" src="" style="width:100%;border:none;min-height:85vh;display:block" allowfullscreen></iframe>
+    </div>
+
+    <!-- SANDBOX OVERVIEW (cards) -->
+    <div id="sandbox-overview-wrap">
     <!-- POLICY SIMULATORS SECTION -->
     <section class="section" style="background:var(--surface)">
       <div class="container">
@@ -960,34 +983,35 @@ function renderPubSandbox() {
           <p>${isAr()?'اختبر تأثير السياسات الصحية عبر 4 محاكيات متخصصة مبنية على منهجيات دولية معتمدة':'Test health policy impact across 4 specialized simulators built on internationally recognized methodologies'}</p>
         </div>
         <div class="feature-grid" style="margin-bottom:var(--space-8)">
-          <div class="feature-card" onclick="window.open('sandbox.html','_blank')">
+          <div class="feature-card" onclick="openSandboxInline('tobacco')">
             <div class="feature-icon">🚬</div>
             <h3>${isAr()?'محاكي ضريبة التبغ':'Tobacco Tax Simulator'}</h3>
             <p>${isAr()?'نموذج Tobacconomics — تأثير الضرائب على الاستهلاك والإيرادات والصحة العامة':'Tobacconomics model — impact of taxes on consumption, revenue, and public health'}</p>
           </div>
-          <div class="feature-card" onclick="window.open('sandbox.html','_blank')">
+          <div class="feature-card" onclick="openSandboxInline('onehealth')">
             <div class="feature-icon">💰</div>
             <h3>${isAr()?'تكاليف OneHealth':'OneHealth Costing'}</h3>
             <p>${isAr()?'نموذج منظمة الصحة العالمية — تكاليف التدخلات الصحية والعوائد المتوقعة':'WHO methodology — health intervention costs and expected returns'}</p>
           </div>
-          <div class="feature-card" onclick="window.open('sandbox.html','_blank')">
+          <div class="feature-card" onclick="openSandboxInline('spectrum')">
             <div class="feature-icon">📊</div>
             <h3>${isAr()?'نموذج Spectrum/LiST':'Spectrum/LiST Model'}</h3>
             <p>${isAr()?'نموذج Avenir Health — الإسقاطات السكانية وتأثير التدخلات على وفيات الأطفال':'Avenir Health model — population projections and child mortality interventions'}</p>
           </div>
-          <div class="feature-card" onclick="window.open('sandbox.html','_blank')">
+          <div class="feature-card" onclick="openSandboxInline('hta')">
             <div class="feature-icon">⚖️</div>
             <h3>${isAr()?'محاكي قيمة HTA':'HTA Value Simulator'}</h3>
             <p>${isAr()?'نموذج iDSI — قيمة الاستثمار في وكالات تقييم التقنيات الصحية':'iDSI model — value of investing in health technology assessment agencies'}</p>
           </div>
         </div>
         <div style="text-align:center;margin-bottom:var(--space-8)">
-          <a href="sandbox.html" target="_blank" class="btn btn-primary" style="font-size:15px;padding:14px 32px">
+          <button class="btn btn-primary" style="font-size:15px;padding:14px 32px" onclick="openSandboxInline('overview')">
             ${isAr()?'فتح مختبر المحاكاة الكامل →':'Open Full Simulation Lab →'}
-          </a>
+          </button>
         </div>
       </div>
     </section>
+    </div>
 
     <!-- POLICY IDEAS SECTION -->
     <section class="section">
@@ -1068,6 +1092,44 @@ function filterSandboxCat(btn, cat) {
   document.querySelectorAll('.sandbox-card').forEach(c => {
     c.style.display = (!cat || c.dataset.cat === cat) ? '' : 'none';
   });
+}
+
+// Inline sandbox iframe functions
+function openSandboxInline(module) {
+  const wrap = document.getElementById('sandbox-iframe-wrap');
+  const overview = document.getElementById('sandbox-overview-wrap');
+  const iframe = document.getElementById('sandbox-iframe');
+  if (!wrap || !iframe) return;
+  overview.style.display = 'none';
+  wrap.style.display = 'block';
+  const lang = isAr() ? 'ar' : 'en';
+  iframe.src = 'sandbox.html#' + (module || 'overview');
+  iframe.onload = function() {
+    iframe.contentWindow.postMessage({type:'setLang', lang: lang}, '*');
+    iframe.contentWindow.postMessage({type:'navigate', module: module || 'overview'}, '*');
+  };
+  // Update tab bar active state
+  document.querySelectorAll('.sandbox-tab').forEach(t => t.classList.remove('active'));
+  const activeTab = document.querySelector('[data-stab="'+(module||'overview')+'"]');
+  if (activeTab) activeTab.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+function closeSandboxIframe() {
+  const wrap = document.getElementById('sandbox-iframe-wrap');
+  const overview = document.getElementById('sandbox-overview-wrap');
+  const iframe = document.getElementById('sandbox-iframe');
+  if (wrap) wrap.style.display = 'none';
+  if (overview) overview.style.display = '';
+  if (iframe) iframe.src = '';
+}
+function switchSandboxTo(module) {
+  const iframe = document.getElementById('sandbox-iframe');
+  if (iframe && iframe.contentWindow) {
+    iframe.contentWindow.postMessage({type:'navigate', module: module}, '*');
+  }
+  document.querySelectorAll('.sandbox-tab').forEach(t => t.classList.remove('active'));
+  const activeTab = document.querySelector('[data-stab="'+module+'"]');
+  if (activeTab) activeTab.classList.add('active');
 }
 
 function renderPubExperts() {

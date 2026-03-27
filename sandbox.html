@@ -36,6 +36,13 @@
             --radius-lg: 0.75rem;
         }
 
+        /* IFRAME MODE: hide chrome when embedded */
+        body.iframe-mode header.phpsa-header,
+        body.iframe-mode .phpsa-sidebar,
+        body.iframe-mode .back-link { display: none !important; }
+        body.iframe-mode .phpsa-main { margin: 0 !important; padding: var(--spacing-lg) !important; width: 100% !important; }
+        body.iframe-mode { background: transparent; }
+
         * {
             margin: 0;
             padding: 0;
@@ -4255,8 +4262,33 @@ document.getElementById('langToggle')?.addEventListener('click', function() {
 
 // Initialize DOMContentLoaded event (from original)
 document.addEventListener('DOMContentLoaded', function() {
-    // Set initial active state
-    navigate('overview');
+    // Detect iframe mode
+    if (window.parent !== window) {
+        document.body.classList.add('iframe-mode');
+        // Navigate to module from hash (e.g. sandbox.html#tobacco)
+        const hash = window.location.hash.replace('#', '');
+        if (hash && document.getElementById('module-' + hash)) {
+            navigate(hash);
+        } else {
+            navigate('overview');
+        }
+        // Listen for parent postMessage navigation
+        window.addEventListener('message', function(e) {
+            if (e.data && e.data.type === 'navigate' && e.data.module) {
+                navigate(e.data.module);
+            }
+            if (e.data && e.data.type === 'setLang') {
+                const setAr = e.data.lang === 'ar';
+                document.documentElement.lang = setAr ? 'ar' : 'en';
+                document.documentElement.dir = setAr ? 'rtl' : 'ltr';
+                document.querySelectorAll('.ar-text').forEach(el => el.style.display = setAr ? 'inline' : 'none');
+                document.querySelectorAll('.en-text').forEach(el => el.style.display = setAr ? 'none' : 'inline');
+                document.getElementById('langToggle').textContent = setAr ? 'العربية' : 'English';
+            }
+        });
+    } else {
+        navigate('overview');
+    }
 });
 </script>
 
