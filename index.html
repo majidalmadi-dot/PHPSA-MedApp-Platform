@@ -298,7 +298,22 @@ ul,ol { list-style:none }
   .dash-sidebar.open { inset-inline-start:0 }
   .kpi-row { grid-template-columns:repeat(2,1fr) }
   .cards-grid { grid-template-columns:1fr }
+  /* Dashboard header: stack on mobile */
+  .header-actions { flex-wrap:wrap; gap:6px }
+  .header-actions input[type="text"] { display:none }
+  .dash-back-btn { display:flex !important }
 }
+
+/* ══════════ MOBILE MENU ══════════ */
+.mobile-menu { display:none; position:fixed; top:var(--header-h); inset-inline-start:0; inset-inline-end:0; background:var(--primary); z-index:100; padding:var(--space-4) var(--space-6); flex-direction:column; gap:var(--space-2); box-shadow:0 8px 24px rgba(0,0,0,.3); max-height:calc(100vh - var(--header-h)); overflow-y:auto }
+.mobile-menu.open { display:flex }
+.mobile-menu-link { color:rgba(255,255,255,.85); font-size:15px; font-weight:500; padding:12px 16px; border-radius:var(--radius-sm); transition:all .2s; border:none; background:none; text-align:inherit; cursor:pointer; font-family:inherit }
+.mobile-menu-link:hover,.mobile-menu-link:active { color:#fff; background:rgba(255,255,255,.12) }
+.mobile-menu-divider { height:1px; background:rgba(255,255,255,.12); margin:var(--space-2) 0 }
+
+/* Dashboard back button (always visible on mobile) */
+.dash-back-btn { display:none; align-items:center; gap:6px; color:#fff; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); border-radius:var(--radius-sm); padding:8px 16px; font-size:14px; font-weight:600; cursor:pointer; font-family:inherit; white-space:nowrap }
+.dash-back-btn:active { background:rgba(255,255,255,.2) }
 
 /* ══════════ ANIMATIONS ══════════ */
 @keyframes fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
@@ -686,6 +701,22 @@ canvas {
   </div>
 </header>
 
+<!-- MOBILE MENU (public site) -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-link" data-pub="home" onclick="showPublicPage('home');closeMobileMenu()" data-ar="الرئيسية" data-en="Home">الرئيسية</button>
+  <button class="mobile-menu-link" data-pub="news" onclick="showPublicPage('news');closeMobileMenu()" data-ar="أخبار الجمعية" data-en="PHPSA News">أخبار الجمعية</button>
+  <button class="mobile-menu-link" data-pub="publications" onclick="showPublicPage('publications');closeMobileMenu()" data-ar="المنشورات" data-en="Publications">المنشورات</button>
+  <button class="mobile-menu-link" data-pub="intl" onclick="showPublicPage('intl');closeMobileMenu()" data-ar="جمعيات دولية" data-en="International Societies">جمعيات دولية</button>
+  <button class="mobile-menu-link" data-pub="ksa-policies" onclick="showPublicPage('ksa-policies');closeMobileMenu()" data-ar="سياسات صحية سعودية" data-en="KSA Health Policies">سياسات صحية سعودية</button>
+  <button class="mobile-menu-link" data-pub="sandbox" onclick="showPublicPage('sandbox');closeMobileMenu()" data-ar="مختبر السياسات" data-en="Policy Sandbox">مختبر السياسات</button>
+  <button class="mobile-menu-link" data-pub="experts" onclick="showPublicPage('experts');closeMobileMenu()" data-ar="مجتمع الخبراء" data-en="Expert Community">مجتمع الخبراء</button>
+  <button class="mobile-menu-link" data-pub="about" onclick="showPublicPage('about');closeMobileMenu()" data-ar="عن الجمعية" data-en="About Us">عن الجمعية</button>
+  <div class="mobile-menu-divider"></div>
+  <button class="mobile-menu-link" onclick="enterDashboard();closeMobileMenu()" style="color:var(--accent-light);font-weight:600">
+    <span data-ar="الدخول للمنصة →" data-en="Enter Platform →">الدخول للمنصة →</span>
+  </button>
+</div>
+
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
@@ -760,6 +791,9 @@ canvas {
       <button class="btn-ghost" style="color:rgba(255,255,255,.7);font-size:13px" onclick="exitDashboard()">
         ← <span data-ar="الموقع العام" data-en="Public Site">الموقع العام</span>
       </button>
+      <button class="dash-back-btn" onclick="exitDashboard()">
+        ← <span data-ar="رجوع" data-en="Back">رجوع</span>
+      </button>
       <div class="user-pill">
         <div class="avatar">م</div>
         <span class="name" data-ar="أ.د. ماجد" data-en="Prof. Majid">أ.د. ماجد</span>
@@ -781,6 +815,19 @@ canvas {
 // ════════════════════════════════════════════
 // PHPSA MedApp Platform — Application Logic
 // ════════════════════════════════════════════
+
+// ══════════ MOBILE MENU ══════════
+function closeMobileMenu() {
+  document.getElementById('mobileMenu')?.classList.remove('open');
+}
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.querySelector('.menu-btn');
+  if (menu && menu.classList.contains('open') && !menu.contains(e.target) && !btn?.contains(e.target)) {
+    menu.classList.remove('open');
+  }
+});
 
 let currentLang = 'ar';
 let currentPage = 'dashboard';

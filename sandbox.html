@@ -1037,12 +1037,19 @@
         /* Responsive */
         @media (max-width: 768px) {
             .phpsa-sidebar {
-                transform: translateX(-100%);
+                position: fixed;
+                top: 64px;
+                inset-inline-start: 0;
                 width: 100%;
                 max-width: 260px;
+                height: calc(100vh - 64px);
+                transform: translateX(calc(-100% * var(--dir-mult, -1)));
                 transition: transform 200ms;
                 z-index: 200;
+                box-shadow: 0 4px 24px rgba(0,0,0,.2);
             }
+            [dir="rtl"] .phpsa-sidebar { --dir-mult: 1; }
+            [dir="ltr"] .phpsa-sidebar { --dir-mult: -1; }
 
             .phpsa-sidebar.active {
                 transform: translateX(0);
@@ -1056,6 +1063,19 @@
             .hamburger {
                 display: flex;
             }
+        }
+
+        /* Mobile overlay to close sidebar */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            top: 64px;
+            background: rgba(0,0,0,.3);
+            z-index: 199;
+        }
+        .sidebar-overlay.active {
+            display: block;
         }
 
         .hamburger {
@@ -1183,6 +1203,10 @@
         </div>
     </div>
     <div class="header-right">
+        <a href="./" id="backToSite" class="back-to-site" style="display:none; align-items:center; gap:4px; color:rgba(255,255,255,.85); font-size:13px; font-weight:600; text-decoration:none; padding:6px 14px; border:1px solid rgba(255,255,255,.2); border-radius:8px; background:rgba(255,255,255,.08);">
+            <span class="ar-text">← رجوع للموقع</span>
+            <span class="en-text" style="display:none">← Back to Site</span>
+        </a>
         <button class="language-toggle" id="langToggle">العربية</button>
         <div class="user-pill">
             <div class="user-avatar">ا</div>
@@ -1190,6 +1214,9 @@
         </div>
     </div>
 </header>
+
+<!-- SIDEBAR OVERLAY (mobile) -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
 <!-- SIDEBAR -->
 <aside class="phpsa-sidebar" id="sidebar">
@@ -5817,8 +5844,21 @@ function navigate(module) {
 }
 
 // Mobile hamburger menu
+function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('active');
+    document.getElementById('sidebarOverlay').classList.remove('active');
+}
 document.getElementById('hamburger')?.addEventListener('click', function() {
-    document.getElementById('sidebar').classList.toggle('active');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
+});
+// Close sidebar when a nav item is clicked (mobile)
+document.querySelectorAll('.side-item').forEach(item => {
+    item.addEventListener('click', function() {
+        if (window.innerWidth <= 768) closeSidebar();
+    });
 });
 
 // Language toggle with platform text
@@ -5855,6 +5895,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Detect iframe mode
     if (window.parent !== window) {
         document.body.classList.add('iframe-mode');
+    } else {
+        // Standalone mode — show back-to-site button
+        const backBtn = document.getElementById('backToSite');
+        if (backBtn) backBtn.style.display = 'flex';
+    }
+    if (window.parent !== window) {
         // Navigate to module from hash (e.g. sandbox.html#tobacco)
         const hash = window.location.hash.replace('#', '');
         if (hash && document.getElementById('module-' + hash)) {
