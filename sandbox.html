@@ -1829,7 +1829,7 @@
                         <div>
                             <label class="form-label" lang="ar">أفق التحليل (سنة)</label>
                             <label class="form-label hidden" lang="en">Analysis Horizon (yrs)</label>
-                            <select id="htaHorizon" class="form-select">
+                            <select id="htaHorizon" class="form-select" onchange="updateHTA()">
                                 <option value="5">5</option>
                                 <option value="10" selected>10</option>
                                 <option value="15">15</option>
@@ -1839,7 +1839,7 @@
                         <div>
                             <label class="form-label" lang="ar">سنة البداية</label>
                             <label class="form-label hidden" lang="en">Start Year</label>
-                            <select id="htaStartYear" class="form-select">
+                            <select id="htaStartYear" class="form-select" onchange="updateHTA()">
                                 <option value="2025">2025</option>
                                 <option value="2026" selected>2026</option>
                                 <option value="2027">2027</option>
@@ -1849,7 +1849,7 @@
                         <div>
                             <label class="form-label" lang="ar">سرعة النضج</label>
                             <label class="form-label hidden" lang="en">Maturity Speed</label>
-                            <select id="htaMaturity" class="form-select">
+                            <select id="htaMaturity" class="form-select" onchange="updateHTA()">
                                 <option value="slow" lang="ar">بطيء / Slow</option>
                                 <option value="moderate" selected lang="ar">معتدل / Moderate</option>
                                 <option value="fast" lang="ar">سريع / Fast</option>
@@ -1858,25 +1858,25 @@
                         <div>
                             <label class="form-label" lang="ar">التكنولوجيات المقيمة (%)</label>
                             <label class="form-label hidden" lang="en">Technologies Assessed (%)</label>
-                            <input type="range" id="htaTechAssessed" class="form-input" min="5" max="80" value="40" oninput="updateHTAMetrics()">
+                            <input type="range" id="htaTechAssessed" class="form-input" min="5" max="80" value="40" oninput="updateHTA()">
                             <span id="htaTechVal">40</span>
                         </div>
                         <div>
                             <label class="form-label" lang="ar">إعادة الاستثمار (%)</label>
                             <label class="form-label hidden" lang="en">Reinvestment (%)</label>
-                            <input type="range" id="htaReinvest" class="form-input" min="0" max="100" value="50" oninput="updateHTAMetrics()">
+                            <input type="range" id="htaReinvest" class="form-input" min="0" max="100" value="50" oninput="updateHTA()">
                             <span id="htaReinvestVal">50</span>
                         </div>
                         <div>
                             <label class="form-label" lang="ar">معدل الرفض (%)</label>
                             <label class="form-label hidden" lang="en">Rejection Rate (%)</label>
-                            <input type="range" id="htaRejectRate" class="form-input" min="5" max="60" value="20" oninput="updateHTAMetrics()">
+                            <input type="range" id="htaRejectRate" class="form-input" min="5" max="60" value="20" oninput="updateHTA()">
                             <span id="htaRejectVal">20</span>
                         </div>
                         <div>
                             <label class="form-label" lang="ar">حد الفعالية من حيث التكلفة</label>
                             <label class="form-label hidden" lang="en">Cost-Effectiveness Threshold</label>
-                            <select id="htaCET" class="form-select" oninput="updateHTAMetrics()">
+                            <select id="htaCET" class="form-select" oninput="updateHTA()">
                                 <option value="0.5">0.5x GDP/capita</option>
                                 <option value="1" selected>1x GDP/capita</option>
                                 <option value="1.5">1.5x GDP/capita</option>
@@ -1888,26 +1888,70 @@
                 </details>
             </div>
 
-            <div class="kpi-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <!-- Transparent Model Assumptions Panel -->
+            <div class="editable-panel" style="margin-top:1.5rem; border:1px solid #BAE6FD; border-radius:10px; background:#F0F9FF; padding:0;">
+                <details>
+                    <summary style="padding:12px 16px; cursor:pointer; font-weight:700; color:#0F766E; font-size:0.9rem;">
+                        <span lang="ar">⚙️ افتراضات النموذج الأساسية (قابلة للتعديل)</span>
+                        <span lang="en" class="hidden">⚙️ Core Model Assumptions (Editable)</span>
+                    </summary>
+                    <div style="padding:0 16px 16px 16px;">
+                        <p style="font-size:0.78rem; color:#6B7280; margin:0 0 12px 0;">
+                            <span lang="ar">هذه القيم الأساسية تشكّل النموذج الاقتصادي. يمكنك تعديل أي قيمة لتحليل سيناريوهات مختلفة. القيم المعدّلة تظهر بخلفية صفراء.</span>
+                            <span lang="en" class="hidden">These baseline values drive the economic model. Edit any value to explore different scenarios. Modified values are highlighted in yellow.</span>
+                        </p>
+
+                        <!-- Spending Assumptions -->
+                        <div style="font-size:0.8rem; font-weight:700; color:#0B1F3B; margin:10px 0 6px 0; padding:6px 8px; background:#E0F2FE; border-radius:6px;">
+                            <span lang="ar">💰 افتراضات الإنفاق الصحي</span>
+                            <span lang="en" class="hidden">💰 Health Spending Assumptions</span>
+                        </div>
+                        <div id="htaAssumpSpendGrid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:8px;"></div>
+
+                        <!-- Agency Assumptions -->
+                        <div style="font-size:0.8rem; font-weight:700; color:#0B1F3B; margin:14px 0 6px 0; padding:6px 8px; background:#E0F2FE; border-radius:6px;">
+                            <span lang="ar">🏛️ افتراضات هيئة التقييم</span>
+                            <span lang="en" class="hidden">🏛️ HTA Agency Assumptions</span>
+                        </div>
+                        <div id="htaAssumpAgencyGrid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:8px;"></div>
+
+                        <!-- Outcome Assumptions -->
+                        <div style="font-size:0.8rem; font-weight:700; color:#0B1F3B; margin:14px 0 6px 0; padding:6px 8px; background:#E0F2FE; border-radius:6px;">
+                            <span lang="ar">📊 افتراضات المخرجات والسكان</span>
+                            <span lang="en" class="hidden">📊 Population & Outcome Assumptions</span>
+                        </div>
+                        <div id="htaAssumpOutcomeGrid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:8px;"></div>
+
+                        <div style="margin-top:12px; text-align:center;">
+                            <button onclick="resetHtaAssumptions()" style="padding:6px 20px; font-size:0.8rem; border:1px solid #DC2626; color:#DC2626; background:white; border-radius:20px; cursor:pointer; font-family:var(--font-sans);">
+                                <span lang="ar">🔄 إعادة تعيين الافتراضات</span>
+                                <span lang="en" class="hidden">🔄 Reset Assumptions to Defaults</span>
+                            </button>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="kpi-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top:1.5rem;">
                 <div class="kpi-card">
-                    <div class="kpi-number" id="htaSavings">185 B SAR</div>
-                    <div class="kpi-label" lang="ar">الادخار التراكمي</div>
-                    <div class="kpi-label hidden" lang="en">Cumulative Savings</div>
+                    <div class="kpi-number" id="htaSavings">—</div>
+                    <div class="kpi-label" lang="ar">الادخار التراكمي (مليار ر.س)</div>
+                    <div class="kpi-label hidden" lang="en">Cumulative Savings (B SAR)</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-number" id="htaQALYs">3.8 M</div>
+                    <div class="kpi-number" id="htaQALYs">—</div>
                     <div class="kpi-label" lang="ar">سنوات الحياة الصحية المكتسبة</div>
                     <div class="kpi-label hidden" lang="en">QALYs Gained</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-number" id="htaROI">6.4x</div>
+                    <div class="kpi-number" id="htaROI">—</div>
                     <div class="kpi-label" lang="ar">العائد على الاستثمار</div>
                     <div class="kpi-label hidden" lang="en">Return on Investment</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-number" id="htaCostPerQALY">48K SAR</div>
-                    <div class="kpi-label" lang="ar">التكلفة لكل QALY</div>
-                    <div class="kpi-label hidden" lang="en">Cost per QALY</div>
+                    <div class="kpi-number" id="htaCostPerQALY">—</div>
+                    <div class="kpi-label" lang="ar">التكلفة لكل QALY (ر.س)</div>
+                    <div class="kpi-label hidden" lang="en">Cost per QALY (SAR)</div>
                 </div>
             </div>
 
@@ -5096,7 +5140,7 @@ function navigate(module) {
         if (module === 'tobacco' && typeof updateTobaccoSim === 'function') updateTobaccoSim();
         if (module === 'onehealth' && typeof updateOneHealth === 'function') updateOneHealth();
         if (module === 'spectrum' && typeof updateSpectrum === 'function') updateSpectrum();
-        if (module === 'hta' && typeof updateHTA === 'function') updateHTA();
+        if (module === 'hta' && typeof initHTA === 'function') initHTA();
     }, 100);
 }
 
