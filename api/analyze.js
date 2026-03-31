@@ -114,8 +114,11 @@ OUTPUT: Return ONLY a valid JSON object with this exact structure:
     }
 
     const data = await response.json();
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-    if (!text) return res.status(500).json({ error: 'No response from Gemini' });
+    // Gemini 2.5 Flash returns multiple parts (thinking + response). Find the text part.
+    const parts = data.candidates?.[0]?.content?.parts || [];
+    const textPart = parts.filter(p => p.text && !p.thought).pop() || parts.find(p => p.text);
+    const text = textPart?.text;
+    if (!text) return res.status(500).json({ error: 'No response from Gemini', parts: parts.map(p => Object.keys(p)) });
 
     // Parse and return
     let result;
