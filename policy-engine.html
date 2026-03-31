@@ -782,15 +782,15 @@
                     </div>
                 </div>
                 <div class="input-col">
-                    <h2>Configuration</h2>
-                    <div class="form-group">
-                        <label for="apiKey">Claude API Key</label>
-                        <input type="password" id="apiKey" placeholder="sk-ant-...">
-                        <p style="font-size: 0.85em; color: #999; margin-top: 8px;">Your API key is used only for this session and never stored.</p>
+                    <h2>About the Engine</h2>
+                    <div style="background: var(--cream); padding: 20px; border-radius: 8px; margin: 0 0 20px 0; border-left: 4px solid var(--copper);">
+                        <p style="font-size: 0.9em; color: var(--navy); font-weight: 600; margin-bottom: 10px;">PHPSA Policy Assessment Engine</p>
+                        <p style="font-size: 0.85em; color: #666; margin-bottom: 12px;">Transform any Saudi health policy document into a structured, evidence-grounded implementation readiness assessment using our 6-stage AI pipeline.</p>
+                        <p style="font-size: 0.85em; color: #666;">Powered by Google Gemini 2.0 Flash — benchmarked against 4 official Saudi policy frameworks + WHO/OECD standards.</p>
                     </div>
-                    <div style="background: var(--cream); padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid var(--copper);">
-                        <p style="font-size: 0.9em; color: var(--navy); font-weight: 600; margin-bottom: 10px;">About PHPSA</p>
-                        <p style="font-size: 0.85em; color: #666;">Transform any Saudi health policy document into a structured, evidence-grounded implementation readiness assessment using our 6-stage AI pipeline.</p>
+                    <div style="background: linear-gradient(135deg, var(--navy), #1a3856); padding: 16px; border-radius: 8px; margin-bottom: 20px; color: white;">
+                        <p style="font-size: 0.85em; font-weight: 600; margin-bottom: 6px;">6 Analysis Stages</p>
+                        <p style="font-size: 0.8em; opacity: 0.85;">Extraction → Quality (9 domains) → Feasibility (6 axes) → Benchmarking → Gap Analysis → Verdict</p>
                     </div>
                     <button id="sampleBtn" class="btn-outline" style="width: 100%; margin-bottom: 15px;">Load Sample Policy</button>
                 </div>
@@ -973,7 +973,7 @@
         // State management
         let appState = {
             policyText: '',
-            apiKey: '',
+
             assessmentData: null,
             currentTab: 'overview',
             charts: {}
@@ -982,7 +982,7 @@
         // DOM References
         const elements = {
             policyText: document.getElementById('policyText'),
-            apiKey: document.getElementById('apiKey'),
+
             startBtn: document.getElementById('startBtn'),
             sampleBtn: document.getElementById('sampleBtn'),
             inputScreen: document.getElementById('inputScreen'),
@@ -1029,47 +1029,6 @@ KPIs: 30% reduction in hospital-acquired MRSA by 2027, 50% of hospitals with fun
 9. Equity Considerations
 Strategy mentions rural hospital inclusion but lacks specific mechanisms for migrant worker healthcare facilities and primary care centers in underserved governorates.`;
 
-        const SYSTEM_PROMPT = `You are a team of three expert Saudi health policy analysts:
-1. Senior Health Policy Analyst - evaluates against Saudi MoH, SHC, PHA standards and Vision 2030
-2. Feasibility Assessor - assesses implementation against Saudi 2025 health system realities
-3. Benchmarking Specialist - cites alignment against Saudi and international health policy frameworks
-
-CRITICAL RULES (from Mizan methodology):
-1. Evidence only - every claim must be traceable to provided policy text
-2. Quotes must be verbatim from the policy document
-3. Benchmark citations reference real Saudi framework documents
-4. Verdict is deterministic - apply thresholds in exact order
-5. Scores are half-steps ONLY: 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0
-6. Missing elements must be specific, not generic
-7. Output ONLY pure JSON - no preamble, no markdown fences
-8. Absent domain caps score at 1.5 maximum
-9. Justifications are bi-directional - strengths AND gaps
-10. Arabic text is valid - extract, quote, reference as-is
-
-DOMAIN WEIGHTS (for quality):
-- Problem Definition: 1.0×
-- Evidence Base: 1.0×
-- Strategic Alignment: 1.2×
-- Policy Design Quality: 1.0×
-- Implementation Planning: 1.1×
-- Governance & Accountability: 1.0×
-- Financing & Sustainability: 1.3×
-- Monitoring & Evaluation: 1.0×
-- Equity & Health in All Policies: 0.9×
-
-FEASIBILITY AXES (equal weight 1.0×):
-- Technical feasibility
-- Political feasibility
-- Operational feasibility
-- Administrative feasibility
-- Financial feasibility
-- Equity/Social feasibility
-
-BENCHMARK FRAMEWORKS:
-Saudi: Health Policy Maker's Manual (SHC/WB 2022), Policy Impact Assessment Guideline (PHA 2023), Evidence-Based Public Health Policy Manual (PHA 2022), Health in All Policies Development Guide (Ministerial 2022)
-International: WHO Global Action Plan on AMR, World Bank Health Policy Framework, OECD Health at a Glance, WHO Health Systems Framework
-
-Return ONLY valid JSON matching the schema provided, with no additional text.`;
 
         // Event listeners
         elements.startBtn.addEventListener('click', startAssessment);
@@ -1082,10 +1041,6 @@ Return ONLY valid JSON matching the schema provided, with no additional text.`;
             updateStartButtonState();
         });
 
-        elements.apiKey.addEventListener('input', () => {
-            appState.apiKey = elements.apiKey.value;
-            updateStartButtonState();
-        });
 
         // Tab switching
         document.querySelectorAll('.tab-button').forEach(btn => {
@@ -1100,7 +1055,7 @@ Return ONLY valid JSON matching the schema provided, with no additional text.`;
         });
 
         function updateStartButtonState() {
-            const ready = appState.policyText.trim().length > 0 && appState.apiKey.trim().length > 0;
+            const ready = appState.policyText.trim().length > 0;
             elements.startBtn.disabled = !ready;
         }
 
@@ -1178,48 +1133,29 @@ Return ONLY valid JSON matching the schema provided, with no additional text.`;
         }
 
         async function callClaudeAPI() {
-            const response = await fetch('https://api.anthropic.com/v1/messages', {
+            const response = await fetch('/api/analyze', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'x-api-key': appState.apiKey,
-                    'anthropic-version': '2023-06-01',
-                    'anthropic-dangerous-direct-browser-access': 'true'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    model: 'claude-sonnet-4-20250514',
-                    max_tokens: 8000,
-                    system: SYSTEM_PROMPT,
-                    messages: [
-                        {
-                            role: 'user',
-                            content: `Analyze this Saudi health policy document and return ONLY valid JSON with all 6 assessment stages:\n\n${appState.policyText}`
-                        }
-                    ]
+                    policyText: appState.policyText
                 })
             });
 
             if (!response.ok) {
-                const err = await response.json();
-                throw new Error(`API Error (${response.status}): ${err.error?.message || 'Unknown error'}`);
+                const err = await response.json().catch(() => ({}));
+                throw new Error(`API Error (${response.status}): ${err.error || 'Unknown error'}`);
             }
 
             const data = await response.json();
-            let jsonText = data.content[0].text.trim();
 
-            // Strip markdown fences if present
-            if (jsonText.startsWith('```json')) {
-                jsonText = jsonText.replace(/^```json\s*/, '').replace(/\s*```$/, '');
-            } else if (jsonText.startsWith('```')) {
-                jsonText = jsonText.replace(/^```\s*/, '').replace(/\s*```$/, '');
+            // The proxy returns parsed JSON directly
+            if (data.error) {
+                throw new Error(data.error);
             }
 
-            try {
-                return JSON.parse(jsonText);
-            } catch (e) {
-                console.error('Failed to parse API response:', jsonText);
-                throw new Error('Invalid JSON response from API');
-            }
+            return data;
         }
 
         function computeVerdict(data) {
