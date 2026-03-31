@@ -101,8 +101,9 @@ OUTPUT: Return ONLY a valid JSON object with this exact structure:
           contents: [{ parts: [{ text: `Analyze the following Saudi health policy document and produce the complete 6-stage assessment as JSON:\n\n${policyText}` }] }],
           generationConfig: {
             temperature: 0.2,
-            maxOutputTokens: 8192,
-            responseMimeType: "application/json"
+            maxOutputTokens: 65536,
+            responseMimeType: "application/json",
+            thinkingConfig: { thinkingBudget: 2048 }
           }
         })
       }
@@ -126,7 +127,7 @@ OUTPUT: Return ONLY a valid JSON object with this exact structure:
       const cleaned = text.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
       result = JSON.parse(cleaned);
     } catch (e) {
-      return res.status(500).json({ error: 'Failed to parse AI response', raw: text.substring(0, 500) });
+      return res.status(500).json({ error: 'Failed to parse AI response', rawLength: text.length, raw: text.substring(0, 500), rawEnd: text.substring(text.length - 200) });
     }
 
     return res.status(200).json(result);
