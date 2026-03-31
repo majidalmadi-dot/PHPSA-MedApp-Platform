@@ -351,73 +351,6 @@
             animation: fadeIn 0.3s ease;
         }
 
-        /* Executive Summary Styles */
-        .exec-summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .exec-card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .exec-card h3 {
-            color: var(--navy);
-            margin-bottom: 15px;
-            font-size: 1.1em;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .strength-item, .gap-item {
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border-gray);
-        }
-
-        .strength-item:last-child, .gap-item:last-child {
-            border-bottom: none;
-        }
-
-        .item-score {
-            font-weight: 700;
-            color: var(--teal);
-            margin-left: 5px;
-        }
-
-        .verdict-status-box {
-            background: linear-gradient(135deg, var(--green) 0%, #1b5e20 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .verdict-status-box.conditional {
-            background: linear-gradient(135deg, var(--amber) 0%, #f57c00 100%);
-        }
-
-        .verdict-status-box.not-ready {
-            background: linear-gradient(135deg, var(--red) 0%, #b71c1c 100%);
-        }
-
-        .status-label {
-            font-size: 0.9em;
-            opacity: 0.9;
-            margin-bottom: 5px;
-        }
-
-        .status-verdict {
-            font-size: 1.5em;
-            font-weight: 700;
-        }
-
         /* KPI Strip */
         .kpi-strip {
             display: grid;
@@ -445,34 +378,6 @@
             font-size: 1.8em;
             font-weight: 700;
             color: var(--navy);
-        }
-
-        /* Data Table Styles */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            margin-bottom: 30px;
-        }
-
-        .data-table th {
-            background: var(--navy);
-            color: white;
-            padding: 15px;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        .data-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid var(--border-gray);
-        }
-
-        .data-table tbody tr:hover {
-            background-color: var(--light-gray);
         }
 
         /* Domain Cards */
@@ -570,13 +475,6 @@
             color: #555;
         }
 
-        /* Chart Container */
-        .chart-container {
-            position: relative;
-            height: 500px;
-            margin-bottom: 30px;
-        }
-
         /* Benchmark Table */
         .benchmark-table {
             width: 100%;
@@ -601,16 +499,140 @@
             border-bottom: 1px solid var(--border-gray);
         }
 
-        .chart-info {
-            padding: 15px;
+        .benchmark-table tr:hover {
             background: var(--cream);
-            border-radius: 8px;
-            margin-top: 10px;
-            font-size: 0.9em;
-            color: #666;
         }
 
-        /* Responsive Design */
+        .alignment-high {
+            color: var(--green);
+            font-weight: 600;
+        }
+
+        .alignment-moderate {
+            color: var(--amber);
+            font-weight: 600;
+        }
+
+        .alignment-low {
+            color: var(--red);
+            font-weight: 600;
+        }
+
+        /* Gap Cards */
+        .gap-section {
+            margin-bottom: 30px;
+        }
+
+        .gap-section h3 {
+            font-size: 1.1em;
+            color: var(--navy);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .gap-badge {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .gap-badge.critical {
+            background: var(--red);
+        }
+
+        .gap-badge.moderate {
+            background: var(--amber);
+        }
+
+        .gap-badge.minor {
+            background: #2196F3;
+        }
+
+        .gap-card {
+            background: white;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border-left: 4px solid;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .gap-card.critical {
+            border-left-color: var(--red);
+        }
+
+        .gap-card.moderate {
+            border-left-color: var(--amber);
+        }
+
+        .gap-card.minor {
+            border-left-color: #2196F3;
+        }
+
+        .gap-label {
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .gap-text {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+        }
+
+        .timeline-group {
+            margin-bottom: 30px;
+        }
+
+        .timeline-group h3 {
+            font-size: 1.1em;
+            color: var(--navy);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .recommendation-card {
+            background: white;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border-left: 4px solid var(--teal);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .rec-action {
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .rec-meta {
+            font-size: 0.9em;
+            color: #999;
+        }
+
+        /* Charts */
+        .chart-container {
+            position: relative;
+            height: 550px;
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        /* Responsive */
         @media (max-width: 1024px) {
             .input-section {
                 grid-template-columns: 1fr;
@@ -621,7 +643,7 @@
             }
 
             .domain-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
         }
 
@@ -630,714 +652,913 @@
                 font-size: 1.6em;
             }
 
-            .tabs {
-                flex-wrap: wrap;
-            }
-
-            .tab-button {
-                padding: 12px 15px;
-                font-size: 0.9em;
+            .input-section {
+                grid-template-columns: 1fr;
             }
 
             .progress-stages {
                 grid-template-columns: 1fr;
             }
 
-            .data-table {
+            textarea {
+                min-height: 200px;
+            }
+
+            .domain-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .kpi-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tabs {
+                flex-wrap: wrap;
+            }
+
+            .benchmark-table {
                 font-size: 0.9em;
             }
 
-            .data-table th, .data-table td {
+            .benchmark-table th, .benchmark-table td {
                 padding: 10px;
             }
         }
 
-        /* Print Styles */
+        /* Print */
         @media print {
             body {
                 background: white;
+                font-family: 'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
             }
 
-            .button-group, .tabs {
+            [dir="rtl"], *:lang(ar) {
+                direction: rtl;
+                text-align: right;
+            }
+
+            .tabs, .button-group, .btn-primary, .btn-secondary, .btn-outline {
                 display: none;
             }
 
-            .verdict-banner, .exec-card, .domain-card, .data-table {
-                page-break-inside: avoid;
+            .screen {
+                display: block !important;
             }
 
-            .data-table {
-                font-family: 'Noto Sans Arabic', 'Segoe UI', 'Tahoma', sans-serif;
+            .screen:not(.active) {
+                display: none !important;
+            }
+
+            .tab-content {
+                display: block !important;
             }
 
             header {
-                margin-bottom: 20px;
+                margin: 0;
+                page-break-after: avoid;
             }
+
+            .verdict-banner {
+                page-break-after: avoid;
+            }
+
+            .domain-card, .gap-card, .recommendation-card {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid var(--border-gray);
+            }
+
+            .chart-container {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #999;
+            font-size: 0.9em;
+            border-top: 1px solid var(--border-gray);
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Error message */
+        .error-message {
+            background: #ffebee;
+            color: var(--red);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--red);
+        }
+
+        /* Loading state */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>مسبار السياسات</h1>
-            <div class="subtitle">PHPSA Policy Assessment Engine</div>
-        </header>
+    <header>
+        <h1>PHPSA</h1>
+        <div class="subtitle">مسبار السياسات | Policy Assessment Engine</div>
+    </header>
 
-        <!-- Input Screen -->
-        <div class="screen active" id="inputScreen">
+    <div class="container">
+        <!-- Screen 1: Input -->
+        <div id="inputScreen" class="screen active">
             <div class="input-section">
                 <div class="input-col">
-                    <h2>Policy Assessment</h2>
+                    <h2>Policy Document</h2>
+                    <p style="color: #666; margin-bottom: 15px;">Paste your Saudi health policy document below (Arabic or English)</p>
                     <div class="form-group">
-                        <label for="policyText">Policy Document Text:</label>
-                        <textarea id="policyText" placeholder="Paste your policy document here..."></textarea>
+                        <label for="policyText">Policy Text</label>
+                        <textarea id="policyText" placeholder="Paste the full policy document here..."></textarea>
                     </div>
                 </div>
                 <div class="input-col">
-                    <h2>About This Assessment</h2>
-                    <div class="quote-box">
-                        <strong>مسبار السياسات (Policy Probe)</strong> is a comprehensive assessment engine that evaluates policy documents across:
-                        <br><br>
-                        <strong>Extraction → Quality (10 domains) → Feasibility (6 axes) → Benchmarking → Gap Analysis → Verdict</strong>
-                        <br><br>
-                        The system analyzes compliance with Saudi Arabia's Vision 2030, regulatory alignment, implementation feasibility, and strategic impact to provide actionable insights.
+                    <h2>About the Engine</h2>
+                    <div style="background: var(--cream); padding: 20px; border-radius: 8px; margin: 0 0 20px 0; border-left: 4px solid var(--copper);">
+                        <p style="font-size: 0.9em; color: var(--navy); font-weight: 600; margin-bottom: 10px;">PHPSA Policy Assessment Engine</p>
+                        <p style="font-size: 0.85em; color: #666; margin-bottom: 12px;">Transform any Saudi health policy document into a structured, evidence-grounded implementation readiness assessment using our 6-stage AI pipeline.</p>
+                        <p style="font-size: 0.85em; color: #666;">Powered by Google Gemini 2.5 Flash — benchmarked against 4 official Saudi policy frameworks + WHO/OECD standards.</p>
                     </div>
-                    <div style="margin-top: 20px;">
-                        <h3 style="color: var(--navy); font-size: 1em; margin-bottom: 10px;">Assessment Pipeline:</h3>
+                    <div style="background: linear-gradient(135deg, var(--navy), #1a3856); padding: 16px; border-radius: 8px; margin-bottom: 20px; color: white;">
+                        <p style="font-size: 0.85em; font-weight: 600; margin-bottom: 6px;">6 Analysis Stages</p>
+                        <p style="font-size: 0.8em; opacity: 0.85;">Extraction → Quality (10 domains) → Feasibility (6 axes) → Benchmarking → Gap Analysis → Verdict</p>
                     </div>
-                    <div class="pipeline-icons">
-                        <div class="pipeline-stage">
-                            <div class="stage-icon">📝</div>
-                            <div class="stage-label">Extract</div>
-                        </div>
-                        <div class="stage-arrow">→</div>
-                        <div class="pipeline-stage">
-                            <div class="stage-icon">⭐</div>
-                            <div class="stage-label">Quality</div>
-                        </div>
-                        <div class="stage-arrow">→</div>
-                        <div class="pipeline-stage">
-                            <div class="stage-icon">⚙️</div>
-                            <div class="stage-label">Feasibility</div>
-                        </div>
-                        <div class="stage-arrow">→</div>
-                        <div class="pipeline-stage">
-                            <div class="stage-icon">📊</div>
-                            <div class="stage-label">Benchmark</div>
-                        </div>
-                        <div class="stage-arrow">→</div>
-                        <div class="pipeline-stage">
-                            <div class="stage-icon">🔍</div>
-                            <div class="stage-label">Gaps</div>
-                        </div>
-                        <div class="stage-arrow">→</div>
-                        <div class="pipeline-stage">
-                            <div class="stage-icon">✅</div>
-                            <div class="stage-label">Verdict</div>
-                        </div>
-                    </div>
+                    <button id="sampleBtn" class="btn-outline" style="width: 100%; margin-bottom: 15px;">Load Sample Policy</button>
+                </div>
+            </div>
+
+            <div class="pipeline-icons">
+                <div class="pipeline-stage">
+                    <div class="stage-icon">📄</div>
+                    <div class="stage-label">Extraction</div>
+                </div>
+                <div class="stage-arrow">→</div>
+                <div class="pipeline-stage">
+                    <div class="stage-icon">✓</div>
+                    <div class="stage-label">Quality</div>
+                </div>
+                <div class="stage-arrow">→</div>
+                <div class="pipeline-stage">
+                    <div class="stage-icon">⚡</div>
+                    <div class="stage-label">Feasibility</div>
+                </div>
+                <div class="stage-arrow">→</div>
+                <div class="pipeline-stage">
+                    <div class="stage-icon">📊</div>
+                    <div class="stage-label">Benchmarking</div>
+                </div>
+                <div class="stage-arrow">→</div>
+                <div class="pipeline-stage">
+                    <div class="stage-icon">⚠️</div>
+                    <div class="stage-label">Gaps</div>
+                </div>
+                <div class="stage-arrow">→</div>
+                <div class="pipeline-stage">
+                    <div class="stage-icon">🎯</div>
+                    <div class="stage-label">Verdict</div>
                 </div>
             </div>
 
             <div class="button-group">
-                <button class="btn-primary" onclick="analyzePolicy()">Analyze Policy</button>
-                <button class="btn-outline" onclick="loadSamplePolicy()">Load Sample</button>
+                <button id="startBtn" class="btn-primary" disabled>Start Assessment</button>
             </div>
         </div>
 
-        <!-- Progress Screen -->
-        <div class="screen" id="progressScreen">
+        <!-- Screen 2: Progress -->
+        <div id="progressScreen" class="screen">
             <div class="progress-container">
-                <h2>Analyzing Your Policy...</h2>
                 <div class="spinner"></div>
-                <div class="timer">Processing...</div>
+                <h2>Analyzing Policy Document</h2>
+                <p style="color: #666; margin-bottom: 30px;">Running 6-stage assessment pipeline...</p>
+                
                 <div class="progress-stages">
-                    <div class="progress-stage complete">
-                        <h3>📝 Extract</h3>
-                        <p>Entities identified</p>
+                    <div class="progress-stage" id="stage0">
+                        <h3>📄 Extraction</h3>
+                        <p>Analyzing document structure</p>
                     </div>
-                    <div class="progress-stage complete">
-                        <h3>⭐ Quality</h3>
-                        <p>Domains assessed</p>
+                    <div class="progress-stage" id="stage1">
+                        <h3>✓ Quality</h3>
+                        <p>Assessing policy quality</p>
                     </div>
-                    <div class="progress-stage complete">
-                        <h3>⚙️ Feasibility</h3>
-                        <p>Axes evaluated</p>
+                    <div class="progress-stage" id="stage2">
+                        <h3>⚡ Feasibility</h3>
+                        <p>Evaluating feasibility</p>
                     </div>
-                    <div class="progress-stage complete">
-                        <h3>📊 Benchmark</h3>
-                        <p>Aligned</p>
+                    <div class="progress-stage" id="stage3">
+                        <h3>📊 Benchmarking</h3>
+                        <p>Benchmark alignment</p>
                     </div>
-                    <div class="progress-stage complete">
-                        <h3>🔍 Gaps</h3>
-                        <p>Identified</p>
+                    <div class="progress-stage" id="stage4">
+                        <h3>⚠️ Gaps</h3>
+                        <p>Identifying gaps</p>
                     </div>
-                    <div class="progress-stage active">
-                        <h3>✅ Verdict</h3>
-                        <p>Computing verdict...</p>
+                    <div class="progress-stage" id="stage5">
+                        <h3>🎯 Verdict</h3>
+                        <p>Computing verdict</p>
                     </div>
                 </div>
+
+                <div class="timer">Elapsed: <span id="timer">0:00</span></div>
             </div>
         </div>
 
-        <!-- Dashboard Screen -->
-        <div class="screen" id="dashboardScreen">
-            <div id="verdictBanner" class="verdict-banner"></div>
+        <!-- Screen 3: Dashboard -->
+        <div id="dashboardScreen" class="screen">
+            <div id="errorContainer"></div>
 
-            <!-- Tabs -->
+            <div id="verdictBanner" class="verdict-banner">
+                <div class="verdict-score" id="verdictStatus">Implementation Ready</div>
+                <div id="verdictStatement">All critical criteria met for implementation.</div>
+            </div>
+
             <div class="tabs">
-                <button class="tab-button active" onclick="switchTab(event, 'executive')">Executive Summary</button>
-                <button class="tab-button" onclick="switchTab(event, 'quality')">Quality Analysis</button>
-                <button class="tab-button" onclick="switchTab(event, 'feasibility')">Feasibility Analysis</button>
-                <button class="tab-button" onclick="switchTab(event, 'benchmarking')">Benchmarking</button>
-                <button class="tab-button" onclick="switchTab(event, 'gaps')">Gap Analysis</button>
-                <button class="tab-button" onclick="switchTab(event, 'recommendations')">Recommendations</button>
+                <button class="tab-button active" data-tab="execsummary">Executive Summary</button>
+                <button class="tab-button" data-tab="overview">Overview</button>
+                <button class="tab-button" data-tab="quality">Quality</button>
+                <button class="tab-button" data-tab="feasibility">Feasibility</button>
+                <button class="tab-button" data-tab="benchmarking">Benchmarking</button>
+                <button class="tab-button" data-tab="gaps">Gaps</button>
+                <button class="tab-button" data-tab="recommendations">Recommendations</button>
             </div>
 
             <!-- Executive Summary Tab -->
-            <div id="executive" class="tab-content active">
-                <div id="verdictStatusBox" class="verdict-status-box">
-                    <div class="status-label">Assessment Verdict</div>
-                    <div class="status-verdict" id="statusVerdictText">READY FOR IMPLEMENTATION</div>
+            <div id="execsummary" class="tab-content active">
+                <div style="display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 30px;">
+                    <div id="execVerdictBox" style="background: var(--navy); color: white; padding: 25px; border-radius: 12px; text-align: center;">
+                        <div style="font-size: 0.85em; opacity: 0.8; margin-bottom: 8px;">ASSESSMENT VERDICT</div>
+                        <div id="execVerdictStatus" style="font-size: 1.8em; font-weight: 700;"></div>
+                        <div id="execVerdictStatement" style="font-size: 0.95em; opacity: 0.9; margin-top: 8px;"></div>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
+                    <div style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-top: 4px solid var(--green);">
+                        <h3 style="color: var(--green); font-size: 1em; margin-bottom: 12px;">&#9733; Top 3 Strengths</h3>
+                        <div id="execStrengths" style="font-size: 0.9em; color: #555;"></div>
+                    </div>
+                    <div style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-top: 4px solid var(--red);">
+                        <h3 style="color: var(--red); font-size: 1em; margin-bottom: 12px;">&#9888; Top 3 Critical Gaps</h3>
+                        <div id="execGaps" style="font-size: 0.9em; color: #555;"></div>
+                    </div>
+                </div>
+                <div style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-top: 4px solid var(--teal);">
+                    <h3 style="color: var(--teal); font-size: 1em; margin-bottom: 12px;">&#10148; Primary Strategic Recommendation</h3>
+                    <div id="execRecommendation" style="font-size: 0.9em; color: #555;"></div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 20px;">
+                    <div style="background: white; padding: 15px; border-radius: 8px; text-align: center; border-left: 4px solid var(--teal); box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                        <div style="font-size: 0.8em; color: #999;">Quality</div>
+                        <div id="execQuality" style="font-size: 1.6em; font-weight: 700; color: var(--navy);"></div>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; text-align: center; border-left: 4px solid var(--copper); box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                        <div style="font-size: 0.8em; color: #999;">Feasibility</div>
+                        <div id="execFeasibility" style="font-size: 1.6em; font-weight: 700; color: var(--navy);"></div>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; text-align: center; border-left: 4px solid var(--red); box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                        <div style="font-size: 0.8em; color: #999;">Critical Gaps</div>
+                        <div id="execCritical" style="font-size: 1.6em; font-weight: 700; color: var(--navy);"></div>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; text-align: center; border-left: 4px solid var(--green); box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                        <div style="font-size: 0.8em; color: #999;">Domains</div>
+                        <div id="execDomains" style="font-size: 1.6em; font-weight: 700; color: var(--navy);"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Overview Tab -->
+            <div id="overview" class="tab-content">
+                <div class="kpi-strip">
+                    <div class="kpi-card">
+                        <div class="kpi-label">Overall Score</div>
+                        <div class="kpi-value" id="overallScore">0.0</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Quality Score</div>
+                        <div class="kpi-value" id="qualityScore">0.0</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Feasibility Score</div>
+                        <div class="kpi-value" id="feasibilityScore">0.0</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Critical Gaps</div>
+                        <div class="kpi-value" id="criticalGaps">0</div>
+                    </div>
                 </div>
 
-                <div class="exec-summary-grid">
-                    <div class="exec-card">
-                        <h3>⭐ Top 3 Strengths</h3>
-                        <div id="topStrengths"></div>
-                    </div>
-                    <div class="exec-card">
-                        <h3>⚠️ Top 3 Critical Gaps</h3>
-                        <div id="topGaps"></div>
-                    </div>
-                    <div class="exec-card">
-                        <h3>🎯 Primary Strategic Recommendation</h3>
-                        <div id="primaryRecommendation"></div>
-                    </div>
+                <h3 style="margin-top: 30px; margin-bottom: 20px; font-size: 1.1em; color: var(--navy); font-weight: 600;">Quality Dimensions Radar</h3>
+                <div class="chart-container">
+                    <canvas id="qualityRadar"></canvas>
+                </div>
+
+                <h3 style="margin-top: 30px; margin-bottom: 20px; font-size: 1.1em; color: var(--navy); font-weight: 600;">Feasibility Axes Radar</h3>
+                <div class="chart-container">
+                    <canvas id="feasibilityRadar"></canvas>
                 </div>
             </div>
 
             <!-- Quality Tab -->
             <div id="quality" class="tab-content">
-                <h2>Quality Assessment (10 Domains)</h2>
-                <div class="chart-container">
-                    <canvas id="qualityChart"></canvas>
-                </div>
-                <div class="chart-info">
-                    Solid line represents domain scores; dashed line shows minimum acceptable threshold (3.5/5.0).
-                </div>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Domain</th>
-                            <th>Score</th>
-                            <th>Weight</th>
-                            <th>Key Strength</th>
-                            <th>Key Gap</th>
-                            <th>Key Missing Element</th>
-                        </tr>
-                    </thead>
-                    <tbody id="qualityTable"></tbody>
-                </table>
+                <div class="domain-grid" id="qualityDomains"></div>
             </div>
 
             <!-- Feasibility Tab -->
             <div id="feasibility" class="tab-content">
-                <h2>Feasibility Assessment (6 Axes)</h2>
-                <div class="chart-container">
-                    <canvas id="feasibilityChart"></canvas>
-                </div>
-                <div class="chart-info">
-                    Solid line represents axis scores; dashed line shows minimum acceptable threshold (3.5/5.0).
-                </div>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Axis</th>
-                            <th>Score</th>
-                            <th>Weight</th>
-                            <th>Key Barrier</th>
-                            <th>Key Enabler</th>
-                            <th>Saudi Context</th>
-                        </tr>
-                    </thead>
-                    <tbody id="feasibilityTable"></tbody>
-                </table>
+                <div class="domain-grid" id="feasibilityAxes"></div>
             </div>
 
             <!-- Benchmarking Tab -->
             <div id="benchmarking" class="tab-content">
-                <h2>Benchmarking Analysis</h2>
                 <table class="benchmark-table">
                     <thead>
                         <tr>
-                            <th>Benchmark Category</th>
-                            <th>Score</th>
-                            <th>Status</th>
-                            <th>Reference</th>
+                            <th>Framework / Standard</th>
+                            <th>Type</th>
+                            <th>Requirement</th>
+                            <th>Alignment</th>
+                            <th>Notes</th>
                         </tr>
                     </thead>
-                    <tbody id="benchmarkingTable"></tbody>
+                    <tbody id="benchmarkTable"></tbody>
                 </table>
             </div>
 
-            <!-- Gap Analysis Tab -->
+            <!-- Gaps Tab -->
             <div id="gaps" class="tab-content">
-                <h2>Gap Analysis</h2>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Severity</th>
-                            <th>Domain</th>
-                            <th>Description</th>
-                            <th>Recommendation</th>
-                            <th>Benchmark Reference</th>
-                        </tr>
-                    </thead>
-                    <tbody id="gapsTable"></tbody>
-                </table>
+                <div id="gapsContent"></div>
             </div>
 
             <!-- Recommendations Tab -->
             <div id="recommendations" class="tab-content">
-                <h2>Action Recommendations</h2>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Timeline</th>
-                            <th>Action</th>
-                            <th>Linked Gap</th>
-                            <th>Responsible</th>
-                        </tr>
-                    </thead>
-                    <tbody id="recsTable"></tbody>
-                </table>
+                <div id="recommendationsContent"></div>
             </div>
 
-            <div class="button-group" style="margin-top: 30px;">
-                <button class="btn-primary" onclick="exportPDF()">Export as PDF</button>
-                <button class="btn-secondary" onclick="goBack()">Back to Input</button>
+            <div class="button-group" style="margin-top: 40px;">
+                <button id="exportBtn" class="btn-secondary">Export as PDF</button>
+                <button id="newAssessmentBtn" class="btn-outline">New Assessment</button>
             </div>
         </div>
     </div>
 
+    <footer>
+        <p>Powered by PHPSA | جمعية سياسات الصحة العامة</p>
+        <p><a href="#">www.phpsa.org</a></p>
+    </footer>
+
     <script>
-        // Application State
-        const appState = {
-            currentScreen: 'inputScreen',
-            assessmentResult: null,
+        // State management
+        let appState = {
+            policyText: '',
+
+            assessmentData: null,
+            currentTab: 'execsummary',
             charts: {}
         };
 
         // DOM References
-        const screens = {
-            input: document.getElementById('inputScreen'),
-            progress: document.getElementById('progressScreen'),
-            dashboard: document.getElementById('dashboardScreen')
-        };
-
         const elements = {
             policyText: document.getElementById('policyText'),
+
+            startBtn: document.getElementById('startBtn'),
+            sampleBtn: document.getElementById('sampleBtn'),
+            inputScreen: document.getElementById('inputScreen'),
+            progressScreen: document.getElementById('progressScreen'),
+            dashboardScreen: document.getElementById('dashboardScreen'),
+            errorContainer: document.getElementById('errorContainer'),
+            timer: document.getElementById('timer'),
             verdictBanner: document.getElementById('verdictBanner'),
-            qualityTable: document.getElementById('qualityTable'),
-            feasibilityTable: document.getElementById('feasibilityTable'),
-            gapsTable: document.getElementById('gapsTable'),
-            recsTable: document.getElementById('recsTable'),
-            benchmarkingTable: document.getElementById('benchmarkingTable'),
-            topStrengths: document.getElementById('topStrengths'),
-            topGaps: document.getElementById('topGaps'),
-            primaryRecommendation: document.getElementById('primaryRecommendation'),
-            verdictStatusBox: document.getElementById('verdictStatusBox'),
-            statusVerdictText: document.getElementById('statusVerdictText')
+            verdictStatus: document.getElementById('verdictStatus'),
+            verdictStatement: document.getElementById('verdictStatement'),
+            exportBtn: document.getElementById('exportBtn'),
+            newAssessmentBtn: document.getElementById('newAssessmentBtn')
         };
 
-        // Sample Policy Text
-        const samplePolicy = `Vision 2030 Policy Document: Digital Transformation Initiative
+        // Sample policy
+        const SAMPLE_POLICY = `National Strategy for Antimicrobial Resistance Containment in Saudi Arabia (2024-2030)
 
-Executive Summary:
-This policy aims to accelerate digital transformation across government and private sectors...
+Issued by: Saudi National Action Committee on AMR (NAC-AMR), Ministry of Health
 
-Strategic Objectives:
-1. Build digital infrastructure supporting 95% population coverage
-2. Enable e-commerce platforms for SMEs nationwide
-3. Implement cybersecurity standards across all sectors
-4. Develop digital literacy programs for workforce
+1. Problem Definition
+Antimicrobial resistance (AMR) poses a critical threat to public health in Saudi Arabia. Hospital-acquired infections with multi-drug resistant organisms increased 23% between 2019-2023. The economic burden exceeds SAR 2.1 billion annually in extended hospitalizations and alternative treatments.
 
-Implementation Framework:
-Phase 1: Infrastructure development and stakeholder engagement
-Phase 2: Digital service deployment and user training
-Phase 3: Integration and optimization
+2. Strategic Alignment  
+This strategy aligns with Vision 2030 Health Sector Transformation Program targets for healthcare quality improvement. It supports WHO Global Action Plan on AMR (2015) pillars and Saudi National Health Security Strategy objectives.
 
-Budget Allocation: SAR 50 billion over 5 years
-Timeline: 2024-2029
-Responsible Ministry: Ministry of Communications and Information Technology`;
+3. Evidence Base
+Based on systematic review of 47 studies from Saudi healthcare facilities (2018-2023), WHO GLASS surveillance data, and SFDA antimicrobial consumption reports. Key findings: carbapenem resistance in Klebsiella pneumoniae reached 38% in tertiary hospitals.
 
-        // Load Sample Policy
-        function loadSamplePolicy() {
-            elements.policyText.value = samplePolicy;
+4. Policy Design
+Four strategic pillars: (1) Strengthened surveillance through SFDA-linked antimicrobial consumption tracking, (2) Antimicrobial Stewardship Programs (ASP) mandatory in all CBAHI-accredited facilities by 2026, (3) Infection Prevention and Control (IPC) standards enforcement, (4) Public awareness campaigns targeting antibiotic misuse.
+
+5. Implementation Plan
+Phase 1 (2024-2025): Establish AMR surveillance network across 50 sentinel sites. Phase 2 (2025-2027): Mandate ASP in all hospitals >100 beds. Phase 3 (2027-2030): Community-level interventions and veterinary sector integration.
+
+6. Governance
+NAC-AMR reports to the Saudi Health Council. Regional AMR committees in all 13 health regions. SFDA leads pharmaceutical regulation component. Quarterly progress reports to Deputy Minister.
+
+7. Financing
+Phase 1 budget: SAR 180 million from MoH allocation. No dedicated funding identified for Phases 2-3. Cost-effectiveness analysis pending for community interventions.
+
+8. Monitoring & Evaluation
+KPIs: 30% reduction in hospital-acquired MRSA by 2027, 50% of hospitals with functional ASP by 2026, antimicrobial consumption reduced 20% by 2030. Annual progress review by NAC-AMR.
+
+9. Equity Considerations
+Strategy mentions rural hospital inclusion but lacks specific mechanisms for migrant worker healthcare facilities and primary care centers in underserved governorates.`;
+
+
+        // Event listeners
+        elements.startBtn.addEventListener('click', startAssessment);
+        elements.sampleBtn.addEventListener('click', loadSample);
+        elements.exportBtn.addEventListener('click', exportPDF);
+        elements.newAssessmentBtn.addEventListener('click', resetAssessment);
+
+        elements.policyText.addEventListener('input', () => {
+            appState.policyText = elements.policyText.value;
+            updateStartButtonState();
+        });
+
+
+        // Tab switching
+        document.querySelectorAll('.tab-button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                e.target.classList.add('active');
+                const tabName = e.target.getAttribute('data-tab');
+                document.getElementById(tabName).classList.add('active');
+                appState.currentTab = tabName;
+            });
+        });
+
+        function updateStartButtonState() {
+            const ready = appState.policyText.trim().length > 0;
+            elements.startBtn.disabled = !ready;
+        }
+
+        function loadSample() {
+            elements.policyText.value = SAMPLE_POLICY;
+            appState.policyText = SAMPLE_POLICY;
+            updateStartButtonState();
             elements.policyText.focus();
         }
 
-        // Analyze Policy
-        async function analyzePolicy() {
-            const text = elements.policyText.value.trim();
-            if (!text) {
-                alert('Please enter or paste a policy document');
-                return;
-            }
+        function switchScreen(screenName) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenName + 'Screen').classList.add('active');
+        }
 
+        async function startAssessment() {
             switchScreen('progress');
+            elements.errorContainer.innerHTML = '';
+
+            const startTime = Date.now();
+            let timerInterval = setInterval(() => {
+                const elapsed = Math.floor((Date.now() - startTime) / 1000);
+                const mins = Math.floor(elapsed / 60);
+                const secs = elapsed % 60;
+                elements.timer.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+            }, 100);
 
             try {
-                const response = await fetch('/api/analyze', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ policy_text: text })
-                });
+                // Animate stages
+                updateStageProgress(0, 'active');
+                await sleep(800);
 
-                if (!response.ok) throw new Error('API Error');
-                appState.assessmentResult = await response.json();
-                populateDashboard();
+                const assessmentData = await callClaudeAPI();
+                
+                updateStageProgress(0, 'complete');
+                updateStageProgress(1, 'active');
+                await sleep(800);
+
+                updateStageProgress(1, 'complete');
+                updateStageProgress(2, 'active');
+                await sleep(800);
+
+                updateStageProgress(2, 'complete');
+                updateStageProgress(3, 'active');
+                await sleep(800);
+
+                updateStageProgress(3, 'complete');
+                updateStageProgress(4, 'active');
+                await sleep(800);
+
+                updateStageProgress(4, 'complete');
+                updateStageProgress(5, 'active');
+                await sleep(1000);
+
+                // Verify verdict deterministically
+                assessmentData.verdict = computeVerdict(assessmentData);
+
+                appState.assessmentData = assessmentData;
+                clearInterval(timerInterval);
+                
+                renderDashboard(assessmentData);
                 switchScreen('dashboard');
+
             } catch (error) {
-                console.error('Analysis failed:', error);
-                alert('Analysis failed. Using sample data for demonstration.');
-                appState.assessmentResult = generateSampleResult();
-                populateDashboard();
-                switchScreen('dashboard');
+                clearInterval(timerInterval);
+                showError(error.message);
+                switchScreen('input');
             }
         }
 
-        // Generate Sample Result
-        function generateSampleResult() {
+        function updateStageProgress(stageNum, state) {
+            const el = document.getElementById('stage' + stageNum);
+            el.classList.remove('active', 'complete');
+            if (state) el.classList.add(state);
+        }
+
+        async function callClaudeAPI() {
+            const response = await fetch('/api/analyze', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    policyText: appState.policyText
+                })
+            });
+
+            if (!response.ok) {
+                const err = await response.json().catch(() => ({}));
+                throw new Error(`API Error (${response.status}): ${err.error || 'Unknown error'}`);
+            }
+
+            const data = await response.json();
+
+            // The proxy returns parsed JSON directly
+            if (data.error) {
+                throw new Error(data.error);
+            }
+
+            return data;
+        }
+
+        function computeVerdict(data) {
+            const criticalGaps = (data.gaps?.critical || []).length;
+            const qualityScore = data.quality?.weighted_mean || 0;
+            const feasibilityScore = data.feasibility?.weighted_mean || 0;
+
+            let status = 'ready';
+            let conditions = [];
+
+            if (criticalGaps > 2) {
+                status = 'not_ready';
+            } else if (qualityScore >= 3.8 && feasibilityScore >= 3.5 && criticalGaps === 0) {
+                status = 'ready';
+            } else {
+                status = 'conditional';
+                if (qualityScore < 3.8) conditions.push(`Quality score below 3.8 (currently ${qualityScore.toFixed(1)})`);
+                if (feasibilityScore < 3.5) conditions.push(`Feasibility score below 3.5 (currently ${feasibilityScore.toFixed(1)})`);
+                if (criticalGaps > 0) conditions.push(`${criticalGaps} critical gap(s) present`);
+            }
+
+            const overallScore = (qualityScore * 0.5 + feasibilityScore * 0.5);
+
             return {
-                verdict: 'ready',
-                quality_scores: {
-                    'Clarity & Structure': 4.2,
-                    'Alignment with Vision 2030': 4.5,
-                    'Stakeholder Engagement': 3.8,
-                    'Risk Assessment': 3.2,
-                    'Financial Feasibility': 4.0,
-                    'Monitoring & Evaluation': 3.5,
-                    'Equity & Inclusion': 3.9,
-                    'Environmental Impact': 4.1,
-                    'Scalability': 4.3,
-                    'Policy Impact': 4.0
-                },
-                feasibility_scores: {
-                    'Technical Feasibility': 4.1,
-                    'Organizational Readiness': 3.6,
-                    'Financial Resources': 3.9,
-                    'Timeline Viability': 3.8,
-                    'Regulatory Alignment': 4.2,
-                    'Change Management': 3.4
-                },
-                benchmarking: {
-                    'Vision 2030 Alignment': 85,
-                    'International Best Practices': 78,
-                    'Regulatory Compliance': 82,
-                    'Saudi Context Relevance': 88
-                },
-                gaps: [
-                    { severity: 'high', domain: 'Risk Assessment', description: 'Insufficient cybersecurity risk mitigation strategies', recommendation: 'Engage cybersecurity experts for comprehensive risk assessment', benchmark_ref: 'ISO 27001' },
-                    { severity: 'high', domain: 'Change Management', description: 'Limited change management framework for stakeholders', recommendation: 'Develop comprehensive change management plan with stakeholder communication strategy', benchmark_ref: 'COBIT 5' },
-                    { severity: 'medium', domain: 'Monitoring & Evaluation', description: 'Weak performance metrics and monitoring mechanisms', recommendation: 'Establish clear KPIs with quarterly review cycle', benchmark_ref: 'Balanced Scorecard' }
-                ],
-                recommendations: [
-                    { timeline: 'Immediate (Month 1)', action: 'Establish governance committee and conduct stakeholder workshops', gap: 'Change Management', responsible: 'Ministry of Communications' },
-                    { timeline: 'Short-term (Months 2-3)', action: 'Complete cybersecurity risk assessment and mitigation plan', gap: 'Risk Assessment', responsible: 'CISA / Joint Committee' },
-                    { timeline: 'Medium-term (Months 4-6)', action: 'Deploy digital infrastructure in Phase 1 zones', gap: 'Technical Feasibility', responsible: 'Technical Implementation Team' }
-                ]
+                status: status === 'ready' ? 'ready' : status === 'conditional' ? 'conditional' : 'not_ready',
+                quality_score: qualityScore,
+                feasibility_score: feasibilityScore,
+                critical_gaps_count: criticalGaps,
+                overall_score: overallScore,
+                statement: getVerdictStatement(status, conditions),
+                conditions: conditions
             };
         }
 
-        // Populate Dashboard
-        function populateDashboard() {
-            const result = appState.assessmentResult;
-            populateVerdictBanner(result.verdict);
-            populateExecutiveSummary(result);
-            populateQualityTab(result);
-            populateFeasibilityTab(result);
-            populateBenchmarkingTab(result);
-            populateGapsTab(result);
-            populateRecommendationsTab(result);
-            renderCharts(result);
-        }
-
-        // Populate Verdict Banner
-        function populateVerdictBanner(verdict) {
-            let message = '';
-            let className = '';
-
-            if (verdict === 'ready') {
-                message = '✅ READY FOR IMPLEMENTATION - Policy demonstrates strong alignment and feasibility';
-                className = 'ready';
-            } else if (verdict === 'conditional') {
-                message = '⚠️ CONDITIONAL APPROVAL - Address identified gaps before implementation';
-                className = 'conditional';
+        function getVerdictStatement(status, conditions) {
+            if (status === 'ready') {
+                return 'All critical criteria met for implementation. Policy is evidence-based, feasible, and aligned with Saudi health standards.';
+            } else if (status === 'conditional') {
+                return `Implementation conditionally ready pending resolution of: ${conditions.join('; ')}.`;
             } else {
-                message = '❌ NOT READY - Significant revisions needed before consideration';
-                className = 'not-ready';
+                return 'Policy requires substantial revision before implementation. Critical gaps must be addressed.';
             }
-
-            elements.verdictBanner.className = `verdict-banner ${className}`;
-            elements.verdictBanner.innerHTML = message;
         }
 
-        // Populate Executive Summary
-        function populateExecutiveSummary(result) {
-            const qualityScores = result.quality_scores;
-            const sortedDomains = Object.entries(qualityScores)
-                .sort((a, b) => b[1] - a[1]);
+        function renderDashboard(data) {
+            // Verdict banner
+            const verdict = data.verdict;
+            let verdictClass = verdict.status === 'ready' ? 'ready' : verdict.status === 'conditional' ? 'conditional' : 'not-ready';
+            elements.verdictBanner.className = 'verdict-banner ' + verdictClass;
+            
+            const statusText = verdict.status === 'ready' ? 'Implementation Ready ✓' : 
+                             verdict.status === 'conditional' ? 'Conditionally Ready ⚠️' : 
+                             'Not Ready ✗';
+            elements.verdictStatus.textContent = statusText;
+            elements.verdictStatement.textContent = verdict.statement;
 
-            const top3Strengths = sortedDomains.slice(0, 3);
-            const top3Gaps = sortedDomains.slice(-3).reverse();
+            // KPIs
+            document.getElementById('overallScore').textContent = verdict.overall_score.toFixed(1);
+            document.getElementById('qualityScore').textContent = verdict.quality_score.toFixed(1);
+            document.getElementById('feasibilityScore').textContent = verdict.feasibility_score.toFixed(1);
+            document.getElementById('criticalGaps').textContent = verdict.critical_gaps_count;
 
-            let strengthsHtml = '';
-            top3Strengths.forEach(([domain, score]) => {
-                strengthsHtml += `<div class="strength-item"><strong>${domain}</strong><span class="item-score">${score.toFixed(1)}/5.0</span></div>`;
-            });
-            elements.topStrengths.innerHTML = strengthsHtml;
+            // Quality domains
+            const qualityHTML = (data.quality?.domains || []).map(d => {
+                const scoreClass = d.score >= 4 ? 'green' : d.score >= 2.5 ? 'amber' : 'red';
+                const quotesHTML = (d.evidence_quotes || []).map(q => `<div class="quote-box">"${q}"</div>`).join('');
+                const strengthsHTML = (d.strengths || []).length > 0 ? 
+                    `<div class="section-title">Strengths</div><ul class="item-list">${d.strengths.map(s => `<li>${s}</li>`).join('')}</ul>` : '';
+                const gapsHTML = (d.gaps || []).length > 0 ? 
+                    `<div class="section-title">Gaps</div><ul class="item-list">${d.gaps.map(g => `<li>${g}</li>`).join('')}</ul>` : '';
+                const missingHTML = (d.missing_elements || []).length > 0 ? 
+                    `<div class="section-title">Missing Elements</div><ul class="item-list">${d.missing_elements.map(m => `<li>${m}</li>`).join('')}</ul>` : '';
 
-            let gapsHtml = '';
-            top3Gaps.forEach(([domain, score]) => {
-                gapsHtml += `<div class="gap-item"><strong>${domain}</strong><span class="item-score">${score.toFixed(1)}/5.0</span></div>`;
-            });
-            elements.topGaps.innerHTML = gapsHtml;
+                return `
+                    <div class="domain-card">
+                        <div class="domain-header">
+                            <div>
+                                <div class="domain-name">${d.name}</div>
+                                ${d.name_ar ? `<div style="font-size: 0.85em; color: #999; margin-top: 3px;">${d.name_ar}</div>` : ''}
+                                <div class="weight-label">Weight: ${d.weight}×</div>
+                            </div>
+                            <div class="score-badge ${scoreClass}">${d.score.toFixed(1)}</div>
+                        </div>
+                        ${quotesHTML}
+                        ${strengthsHTML}
+                        ${gapsHTML}
+                        ${missingHTML}
+                    </div>
+                `;
+            }).join('');
+            document.getElementById('qualityDomains').innerHTML = qualityHTML;
 
-            if (result.recommendations && result.recommendations.length > 0) {
-                const primary = result.recommendations[0];
-                const recHtml = `<div><strong>${primary.action}</strong><br><small style="color: #999;">Timeline: ${primary.timeline}</small></div>`;
-                elements.primaryRecommendation.innerHTML = recHtml;
-            }
+            // Feasibility axes
+            const feasibilityHTML = (data.feasibility?.axes || []).map(a => {
+                const scoreClass = a.score >= 4 ? 'green' : a.score >= 2.5 ? 'amber' : 'red';
+                const barrierHTML = (a.barriers || []).length > 0 ? 
+                    `<div class="section-title">Barriers</div><ul class="item-list">${a.barriers.map(b => `<li>${b}</li>`).join('')}</ul>` : '';
+                const enablerHTML = (a.enablers || []).length > 0 ? 
+                    `<div class="section-title">Enablers</div><ul class="item-list">${a.enablers.map(e => `<li>${e}</li>`).join('')}</ul>` : '';
+                const contextHTML = a.saudi_context ? `<div class="section-title">Saudi 2025 Context</div><p style="font-size: 0.9em; color: #666;">${a.saudi_context}</p>` : '';
 
-            const statusClass = result.verdict === 'ready' ? '' : (result.verdict === 'conditional' ? 'conditional' : 'not-ready');
-            elements.verdictStatusBox.className = `verdict-status-box ${statusClass}`;
-            const verdictText = result.verdict === 'ready' ? 'READY FOR IMPLEMENTATION' :
-                               (result.verdict === 'conditional' ? 'CONDITIONAL APPROVAL' : 'NOT READY');
-            elements.statusVerdictText.textContent = verdictText;
+                return `
+                    <div class="domain-card">
+                        <div class="domain-header">
+                            <div>
+                                <div class="domain-name">${a.name}</div>
+                                ${a.name_ar ? `<div style="font-size: 0.85em; color: #999; margin-top: 3px;">${a.name_ar}</div>` : ''}
+                            </div>
+                            <div class="score-badge ${scoreClass}">${a.score.toFixed(1)}</div>
+                        </div>
+                        ${barrierHTML}
+                        ${enablerHTML}
+                        ${contextHTML}
+                    </div>
+                `;
+            }).join('');
+            document.getElementById('feasibilityAxes').innerHTML = feasibilityHTML;
+
+            // Benchmarking table
+            const benchmarkHTML = (data.benchmarking?.findings || []).map(f => {
+                const alignClass = f.alignment === 'high' ? 'alignment-high' : 
+                                  f.alignment === 'moderate' ? 'alignment-moderate' : 
+                                  'alignment-low';
+                return `
+                    <tr>
+                        <td><strong>${f.source}</strong></td>
+                        <td>${f.source_type === 'saudi' ? '🇸🇦 Saudi' : '🌍 International'}</td>
+                        <td>${f.requirement}</td>
+                        <td class="${alignClass}">${f.alignment.charAt(0).toUpperCase() + f.alignment.slice(1)}</td>
+                        <td>${f.notes}</td>
+                    </tr>
+                `;
+            }).join('');
+            document.getElementById('benchmarkTable').innerHTML = benchmarkHTML;
+
+            // Gaps
+            const gapsContent = `
+                ${renderGapSection(data.gaps?.critical, 'critical', 'Critical Gaps')}
+                ${renderGapSection(data.gaps?.moderate, 'moderate', 'Moderate Gaps')}
+                ${renderGapSection(data.gaps?.minor, 'minor', 'Minor Gaps')}
+            `;
+            document.getElementById('gapsContent').innerHTML = gapsContent;
+
+            // Recommendations
+            const recsContent = `
+                ${renderTimelineSection(data.recommendations?.immediate, 'Immediate Actions')}
+                ${renderTimelineSection(data.recommendations?.short_term, 'Short-term (1-3 months)')}
+                ${renderTimelineSection(data.recommendations?.medium_term, 'Medium-term (3-6 months)')}
+            `;
+            document.getElementById('recommendationsContent').innerHTML = recsContent;
+
+            // Executive Summary
+            renderExecSummary(data);
+
+            // Charts
+            renderCharts(data);
         }
 
-        // Populate Quality Tab
-        function populateQualityTab(result) {
-            let html = '';
-            const qualityScores = result.quality_scores;
-            const domains = Object.keys(qualityScores);
-
-            domains.forEach(domain => {
-                const score = qualityScores[domain];
-                const weight = (score / 5 * 100).toFixed(0);
-                html += `<tr>
-                    <td>${domain}</td>
-                    <td><strong>${score.toFixed(1)}/5.0</strong></td>
-                    <td>${weight}%</td>
-                    <td>Strong framework</td>
-                    <td>Implementation detail</td>
-                    <td>Monitoring mechanism</td>
-                </tr>`;
-            });
-
-            elements.qualityTable.innerHTML = html;
+        function renderGapSection(gaps, severity, title) {
+            if (!gaps || gaps.length === 0) return '';
+            const badgeClass = severity === 'critical' ? 'critical' : severity === 'moderate' ? 'moderate' : 'minor';
+            return `
+                <div class="gap-section">
+                    <h3><span class="gap-badge ${badgeClass}"></span>${title}</h3>
+                    ${gaps.map(g => `
+                        <div class="gap-card ${severity}">
+                            <div class="gap-label">${g.description}</div>
+                            <div class="gap-text"><strong>Affected Domain:</strong> ${g.domain}</div>
+                            <div class="gap-text"><strong>Recommendation:</strong> ${g.recommendation}</div>
+                            <div class="gap-text"><strong>Benchmark Reference:</strong> ${g.benchmark_ref}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
         }
 
-        // Populate Feasibility Tab
-        function populateFeasibilityTab(result) {
-            let html = '';
-            const feasibilityScores = result.feasibility_scores;
-
-            Object.entries(feasibilityScores).forEach(([axis, score]) => {
-                const weight = (score / 5 * 100).toFixed(0);
-                html += `<tr>
-                    <td>${axis}</td>
-                    <td><strong>${score.toFixed(1)}/5.0</strong></td>
-                    <td>${weight}%</td>
-                    <td>Resource constraint</td>
-                    <td>Capability available</td>
-                    <td>Saudi-specific advantage</td>
-                </tr>`;
-            });
-
-            elements.feasibilityTable.innerHTML = html;
+        function renderTimelineSection(recs, title) {
+            if (!recs || recs.length === 0) return '';
+            return `
+                <div class="timeline-group">
+                    <h3>${title}</h3>
+                    ${recs.map(r => `
+                        <div class="recommendation-card">
+                            <div class="rec-action">${r.action}</div>
+                            <div class="rec-meta">
+                                <strong>Linked Gap:</strong> ${r.linked_gap}<br>
+                                <strong>Responsible:</strong> ${r.responsible}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
         }
 
-        // Populate Benchmarking Tab
-        function populateBenchmarkingTab(result) {
-            let html = '';
-            Object.entries(result.benchmarking).forEach(([category, score]) => {
-                const status = score >= 80 ? 'Exceeds' : (score >= 70 ? 'Meets' : 'Below');
-                html += `<tr>
-                    <td>${category}</td>
-                    <td><strong>${score}%</strong></td>
-                    <td>${status}</td>
-                    <td>Best Practice Standard</td>
-                </tr>`;
-            });
+        function renderExecSummary(data) {
+            const verdict = data.verdict;
+            const execBox = document.getElementById('execVerdictBox');
+            if (verdict.status === 'ready') execBox.style.background = 'linear-gradient(135deg, #2E7D32, #1b5e20)';
+            else if (verdict.status === 'conditional') execBox.style.background = 'linear-gradient(135deg, #F57F17, #f57c00)';
+            else execBox.style.background = 'linear-gradient(135deg, #C62828, #b71c1c)';
 
-            elements.benchmarkingTable.innerHTML = html;
+            const statusLabel = verdict.status === 'ready' ? 'IMPLEMENTATION READY' :
+                               verdict.status === 'conditional' ? 'CONDITIONALLY READY' : 'NOT READY';
+            document.getElementById('execVerdictStatus').textContent = statusLabel;
+            document.getElementById('execVerdictStatement').textContent = verdict.statement;
+
+            // Scores
+            document.getElementById('execQuality').textContent = verdict.quality_score?.toFixed(1) || '—';
+            document.getElementById('execFeasibility').textContent = verdict.feasibility_score?.toFixed(1) || '—';
+            document.getElementById('execCritical').textContent = verdict.critical_gaps_count || 0;
+            document.getElementById('execDomains').textContent = (data.quality?.domains || []).length;
+
+            // Top 3 strengths (highest scoring domains)
+            const domains = [...(data.quality?.domains || [])].sort((a, b) => b.score - a.score);
+            const top3 = domains.slice(0, 3);
+            document.getElementById('execStrengths').innerHTML = top3.map((d, i) =>
+                '<div style="margin-bottom: 8px; padding: 8px; background: #f8f8f8; border-radius: 6px;"><strong>' + (i+1) + '. ' + d.name + '</strong> <span style="color: var(--green); font-weight: 700;">(' + d.score.toFixed(1) + '/5.0)</span>' +
+                (d.strengths?.[0] ? '<br><span style="color: #777; font-size: 0.85em;">' + d.strengths[0] + '</span>' : '') + '</div>'
+            ).join('');
+
+            // Top 3 critical gaps
+            const critGaps = (data.gaps?.critical || []).slice(0, 3);
+            document.getElementById('execGaps').innerHTML = critGaps.length > 0 ? critGaps.map((g, i) =>
+                '<div style="margin-bottom: 8px; padding: 8px; background: #fff5f5; border-radius: 6px; border-left: 3px solid var(--red);"><strong>' + (i+1) + '. ' + g.domain + '</strong><br><span style="color: #777; font-size: 0.85em;">' + g.description + '</span></div>'
+            ).join('') : '<em style="color: #999;">No critical gaps identified</em>';
+
+            // Primary recommendation
+            const topRec = (data.recommendations?.immediate || [])[0];
+            document.getElementById('execRecommendation').innerHTML = topRec ?
+                '<div style="padding: 10px; background: #f0fafa; border-radius: 6px;"><strong>' + topRec.action + '</strong>' +
+                '<br><span style="color: #777; font-size: 0.85em;">Responsible: ' + topRec.responsible + '</span></div>' :
+                '<em style="color: #999;">No immediate recommendations</em>';
         }
 
-        // Populate Gaps Tab
-        function populateGapsTab(result) {
-            let html = '';
-            result.gaps.forEach(gap => {
-                const severityClass = gap.severity === 'high' ? 'red' : (gap.severity === 'medium' ? 'amber' : 'green');
-                html += `<tr>
-                    <td><span style="color: var(--${severityClass}); font-weight: 600;">${gap.severity.toUpperCase()}</span></td>
-                    <td>${gap.domain}</td>
-                    <td>${gap.description}</td>
-                    <td>${gap.recommendation}</td>
-                    <td>${gap.benchmark_ref}</td>
-                </tr>`;
-            });
+        function renderCharts(data) {
+            // Quality radar
+            const qualityLabels = (data.quality?.domains || []).map(d => d.name);
+            const qualityScores = (data.quality?.domains || []).map(d => d.score);
 
-            elements.gapsTable.innerHTML = html;
-        }
-
-        // Populate Recommendations Tab
-        function populateRecommendationsTab(result) {
-            let html = '';
-            result.recommendations.forEach(rec => {
-                html += `<tr>
-                    <td>${rec.timeline}</td>
-                    <td>${rec.action}</td>
-                    <td>${rec.gap}</td>
-                    <td>${rec.responsible}</td>
-                </tr>`;
-            });
-
-            elements.recsTable.innerHTML = html;
-        }
-
-        // Render Charts
-        function renderCharts(result) {
-            const qualityCtx = document.getElementById('qualityChart').getContext('2d');
-            const feasibilityCtx = document.getElementById('feasibilityChart').getContext('2d');
-
-            const qualityDomains = Object.keys(result.quality_scores);
-            const qualityValues = Object.values(result.quality_scores);
-            const benchmarkThreshold = Array(qualityDomains.length).fill(3.5);
-
-            const feasibilityAxes = Object.keys(result.feasibility_scores);
-            const feasibilityValues = Object.values(result.feasibility_scores);
-            const feasibilityThreshold = Array(feasibilityAxes.length).fill(3.5);
-
+            const qualityCtx = document.getElementById('qualityRadar').getContext('2d');
             if (appState.charts.quality) appState.charts.quality.destroy();
             appState.charts.quality = new Chart(qualityCtx, {
                 type: 'radar',
                 data: {
-                    labels: qualityDomains,
-                    datasets: [
-                        {
-                            label: 'Domain Score',
-                            data: qualityValues,
-                            borderColor: 'var(--teal)',
-                            backgroundColor: 'rgba(15, 124, 123, 0.1)',
-                            borderWidth: 2,
-                            pointRadius: 4,
-                            pointBackgroundColor: 'var(--teal)'
-                        },
-                        {
-                            label: 'Minimum Threshold (3.5)',
-                            data: benchmarkThreshold,
-                            borderColor: 'rgba(198, 40, 40, 0.4)',
-                            borderDash: [5, 5],
-                            backgroundColor: 'rgba(198, 40, 40, 0.05)',
-                            borderWidth: 2,
-                            pointRadius: 2,
-                            pointBackgroundColor: 'rgba(198, 40, 40, 0.5)'
-                        }
-                    ]
+                    labels: qualityLabels,
+                    datasets: [{
+                        label: 'Quality Score',
+                        data: qualityScores,
+                        borderColor: '#0F7C7B',
+                        backgroundColor: 'rgba(15, 124, 123, 0.15)',
+                        borderWidth: 2,
+                        pointRadius: 5,
+                        pointBackgroundColor: '#0F7C7B',
+                        tension: 0.3
+                    }, {
+                        label: 'Minimum Threshold (3.5)',
+                        data: qualityLabels.map(() => 3.5),
+                        borderColor: 'rgba(198, 40, 40, 0.5)',
+                        backgroundColor: 'rgba(198, 40, 40, 0.05)',
+                        borderWidth: 2,
+                        borderDash: [6, 4],
+                        pointRadius: 0,
+                        fill: true
+                    }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: true, position: 'top' }
-                    },
                     scales: {
                         r: {
-                            beginAtZero: true,
+                            min: 0,
                             max: 5,
                             ticks: { stepSize: 1 }
                         }
+                    },
+                    plugins: {
+                        legend: { display: true }
                     }
                 }
             });
 
+            // Feasibility radar
+            const feasLabels = (data.feasibility?.axes || []).map(a => a.name);
+            const feasScores = (data.feasibility?.axes || []).map(a => a.score);
+
+            const feasCtx = document.getElementById('feasibilityRadar').getContext('2d');
             if (appState.charts.feasibility) appState.charts.feasibility.destroy();
-            appState.charts.feasibility = new Chart(feasibilityCtx, {
+            appState.charts.feasibility = new Chart(feasCtx, {
                 type: 'radar',
                 data: {
-                    labels: feasibilityAxes,
-                    datasets: [
-                        {
-                            label: 'Axis Score',
-                            data: feasibilityValues,
-                            borderColor: 'var(--copper)',
-                            backgroundColor: 'rgba(165, 106, 74, 0.1)',
-                            borderWidth: 2,
-                            pointRadius: 4,
-                            pointBackgroundColor: 'var(--copper)'
-                        },
-                        {
-                            label: 'Minimum Threshold (3.5)',
-                            data: feasibilityThreshold,
-                            borderColor: 'rgba(198, 40, 40, 0.4)',
-                            borderDash: [5, 5],
-                            backgroundColor: 'rgba(198, 40, 40, 0.05)',
-                            borderWidth: 2,
-                            pointRadius: 2,
-                            pointBackgroundColor: 'rgba(198, 40, 40, 0.5)'
-                        }
-                    ]
+                    labels: feasLabels,
+                    datasets: [{
+                        label: 'Feasibility Score',
+                        data: feasScores,
+                        borderColor: '#A56A4A',
+                        backgroundColor: 'rgba(165, 106, 74, 0.15)',
+                        borderWidth: 2,
+                        pointRadius: 5,
+                        pointBackgroundColor: '#A56A4A',
+                        tension: 0.3
+                    }, {
+                        label: 'Minimum Threshold (3.5)',
+                        data: feasLabels.map(() => 3.5),
+                        borderColor: 'rgba(198, 40, 40, 0.5)',
+                        backgroundColor: 'rgba(198, 40, 40, 0.05)',
+                        borderWidth: 2,
+                        borderDash: [6, 4],
+                        pointRadius: 0,
+                        fill: true
+                    }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: true, position: 'top' }
-                    },
                     scales: {
                         r: {
-                            beginAtZero: true,
+                            min: 0,
                             max: 5,
                             ticks: { stepSize: 1 }
                         }
+                    },
+                    plugins: {
+                        legend: { display: true }
                     }
                 }
             });
         }
 
-        // Screen Navigation
-        function switchScreen(screenName) {
-            Object.values(screens).forEach(s => s.classList.remove('active'));
-            screens[screenName].classList.add('active');
-            appState.currentScreen = screenName;
+        function exportPDF() {
+            window.print();
         }
 
-        function goBack() {
-            elements.policyText.value = '';
+        function resetAssessment() {
+            appState = {
+                policyText: appState.policyText,
+                apiKey: appState.apiKey,
+                assessmentData: null,
+                currentTab: 'execsummary',
+                charts: {}
+            };
             switchScreen('input');
         }
 
-        // Tab Switching
-        function switchTab(e, tabName) {
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-
-            e.target.classList.add('active');
-            document.getElementById(tabName).classList.add('active');
+        function showError(message) {
+            elements.errorContainer.innerHTML = `<div class="error-message">${message}</div>`;
         }
 
-        // Export PDF
-        function exportPDF() {
-            document.documentElement.dir = 'rtl';
-            window.print();
-            document.documentElement.dir = 'ltr';
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
         }
 
         // Initialize
-        loadSamplePolicy();
+        updateStartButtonState();
     </script>
 </body>
 </html>
