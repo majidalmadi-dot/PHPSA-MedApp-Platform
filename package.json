@@ -1,0 +1,1 @@
+{ "name": "phpsa-medapp-platform", "private": true, "type": "module", "scripts": { "test": "node --test test/assess.test.mjs" } }
