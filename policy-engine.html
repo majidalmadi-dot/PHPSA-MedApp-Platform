@@ -1271,21 +1271,21 @@ Strategy mentions rural hospital inclusion but lacks specific mechanisms for mig
             // Quality domains
             const qualityHTML = (data.quality?.domains || []).map(d => {
                 const scoreClass = d.score >= 4 ? 'green' : d.score >= 2.5 ? 'amber' : 'red';
-                const quotesHTML = (d.evidence_quotes || []).map(q => `<div class="quote-box">"${q}"</div>`).join('');
+                const quotesHTML = (d.evidence_quotes || []).map(q => `<div class="quote-box">"${esc(q)}"</div>`).join('');
                 const strengthsHTML = (d.strengths || []).length > 0 ? 
-                    `<div class="section-title">Strengths</div><ul class="item-list">${d.strengths.map(s => `<li>${s}</li>`).join('')}</ul>` : '';
+                    `<div class="section-title">Strengths</div><ul class="item-list">${d.strengths.map(s => `<li>${esc(s)}</li>`).join('')}</ul>` : '';
                 const gapsHTML = (d.gaps || []).length > 0 ? 
-                    `<div class="section-title">Gaps</div><ul class="item-list">${d.gaps.map(g => `<li>${g}</li>`).join('')}</ul>` : '';
+                    `<div class="section-title">Gaps</div><ul class="item-list">${d.gaps.map(g => `<li>${esc(g)}</li>`).join('')}</ul>` : '';
                 const missingHTML = (d.missing_elements || []).length > 0 ? 
-                    `<div class="section-title">Missing Elements</div><ul class="item-list">${d.missing_elements.map(m => `<li>${m}</li>`).join('')}</ul>` : '';
+                    `<div class="section-title">Missing Elements</div><ul class="item-list">${d.missing_elements.map(m => `<li>${esc(m)}</li>`).join('')}</ul>` : '';
 
                 return `
                     <div class="domain-card">
                         <div class="domain-header">
                             <div>
-                                <div class="domain-name">${d.name}</div>
-                                ${d.name_ar ? `<div style="font-size: 0.85em; color: #999; margin-top: 3px;">${d.name_ar}</div>` : ''}
-                                <div class="weight-label">Weight: ${d.weight}×</div>
+                                <div class="domain-name">${esc(d.name)}</div>
+                                ${d.name_ar ? `<div style="font-size: 0.85em; color: #999; margin-top: 3px;">${esc(d.name_ar)}</div>` : ''}
+                                <div class="weight-label">Weight: ${Number(d.weight)}×</div>
                             </div>
                             <div class="score-badge ${scoreClass}">${d.score.toFixed(1)}</div>
                         </div>
@@ -1302,17 +1302,17 @@ Strategy mentions rural hospital inclusion but lacks specific mechanisms for mig
             const feasibilityHTML = (data.feasibility?.axes || []).map(a => {
                 const scoreClass = a.score >= 4 ? 'green' : a.score >= 2.5 ? 'amber' : 'red';
                 const barrierHTML = (a.barriers || []).length > 0 ? 
-                    `<div class="section-title">Barriers</div><ul class="item-list">${a.barriers.map(b => `<li>${b}</li>`).join('')}</ul>` : '';
+                    `<div class="section-title">Barriers</div><ul class="item-list">${a.barriers.map(b => `<li>${esc(b)}</li>`).join('')}</ul>` : '';
                 const enablerHTML = (a.enablers || []).length > 0 ? 
-                    `<div class="section-title">Enablers</div><ul class="item-list">${a.enablers.map(e => `<li>${e}</li>`).join('')}</ul>` : '';
-                const contextHTML = a.saudi_context ? `<div class="section-title">Saudi 2025 Context</div><p style="font-size: 0.9em; color: #666;">${a.saudi_context}</p>` : '';
+                    `<div class="section-title">Enablers</div><ul class="item-list">${a.enablers.map(e => `<li>${esc(e)}</li>`).join('')}</ul>` : '';
+                const contextHTML = a.saudi_context ? `<div class="section-title">Saudi 2025 Context</div><p style="font-size: 0.9em; color: #666;">${esc(a.saudi_context)}</p>` : '';
 
                 return `
                     <div class="domain-card">
                         <div class="domain-header">
                             <div>
-                                <div class="domain-name">${a.name}</div>
-                                ${a.name_ar ? `<div style="font-size: 0.85em; color: #999; margin-top: 3px;">${a.name_ar}</div>` : ''}
+                                <div class="domain-name">${esc(a.name)}</div>
+                                ${a.name_ar ? `<div style="font-size: 0.85em; color: #999; margin-top: 3px;">${esc(a.name_ar)}</div>` : ''}
                             </div>
                             <div class="score-badge ${scoreClass}">${a.score.toFixed(1)}</div>
                         </div>
@@ -1331,11 +1331,11 @@ Strategy mentions rural hospital inclusion but lacks specific mechanisms for mig
                                   'alignment-low';
                 return `
                     <tr>
-                        <td><strong>${f.source}</strong></td>
+                        <td><strong>${esc(f.source)}</strong></td>
                         <td>${f.source_type === 'saudi' ? '🇸🇦 Saudi' : '🌍 International'}</td>
-                        <td>${f.requirement}</td>
-                        <td class="${alignClass}">${f.alignment.charAt(0).toUpperCase() + f.alignment.slice(1)}</td>
-                        <td>${f.notes}</td>
+                        <td>${esc(f.requirement)}</td>
+                        <td class="${alignClass}">${esc(String(f.alignment).charAt(0).toUpperCase() + String(f.alignment).slice(1))}</td>
+                        <td>${esc(f.notes)}</td>
                     </tr>
                 `;
             }).join('');
@@ -1372,10 +1372,10 @@ Strategy mentions rural hospital inclusion but lacks specific mechanisms for mig
                     <h3><span class="gap-badge ${badgeClass}"></span>${title}</h3>
                     ${gaps.map(g => `
                         <div class="gap-card ${severity}">
-                            <div class="gap-label">${g.description}</div>
-                            <div class="gap-text"><strong>Affected Domain:</strong> ${g.domain}</div>
-                            <div class="gap-text"><strong>Recommendation:</strong> ${g.recommendation}</div>
-                            <div class="gap-text"><strong>Benchmark Reference:</strong> ${g.benchmark_ref}</div>
+                            <div class="gap-label">${esc(g.description)}</div>
+                            <div class="gap-text"><strong>Affected Domain:</strong> ${esc(g.domain)}</div>
+                            <div class="gap-text"><strong>Recommendation:</strong> ${esc(g.recommendation)}</div>
+                            <div class="gap-text"><strong>Benchmark Reference:</strong> ${esc(g.benchmark_ref)}</div>
                         </div>
                     `).join('')}
                 </div>
@@ -1389,10 +1389,10 @@ Strategy mentions rural hospital inclusion but lacks specific mechanisms for mig
                     <h3>${title}</h3>
                     ${recs.map(r => `
                         <div class="recommendation-card">
-                            <div class="rec-action">${r.action}</div>
+                            <div class="rec-action">${esc(r.action)}</div>
                             <div class="rec-meta">
-                                <strong>Linked Gap:</strong> ${r.linked_gap}<br>
-                                <strong>Responsible:</strong> ${r.responsible}
+                                <strong>Linked Gap:</strong> ${esc(r.linked_gap)}<br>
+                                <strong>Responsible:</strong> ${esc(r.responsible)}
                             </div>
                         </div>
                     `).join('')}
@@ -1422,21 +1422,21 @@ Strategy mentions rural hospital inclusion but lacks specific mechanisms for mig
             const domains = [...(data.quality?.domains || [])].sort((a, b) => b.score - a.score);
             const top3 = domains.slice(0, 3);
             document.getElementById('execStrengths').innerHTML = top3.map((d, i) =>
-                '<div style="margin-bottom: 8px; padding: 8px; background: #f8f8f8; border-radius: 6px;"><strong>' + (i+1) + '. ' + d.name + '</strong> <span style="color: var(--green); font-weight: 700;">(' + d.score.toFixed(1) + '/5.0)</span>' +
-                (d.strengths?.[0] ? '<br><span style="color: #777; font-size: 0.85em;">' + d.strengths[0] + '</span>' : '') + '</div>'
+                '<div style="margin-bottom: 8px; padding: 8px; background: #f8f8f8; border-radius: 6px;"><strong>' + (i+1) + '. ' + esc(d.name) + '</strong> <span style="color: var(--green); font-weight: 700;">(' + d.score.toFixed(1) + '/5.0)</span>' +
+                (d.strengths?.[0] ? '<br><span style="color: #777; font-size: 0.85em;">' + esc(d.strengths[0]) + '</span>' : '') + '</div>'
             ).join('');
 
             // Top 3 critical gaps
             const critGaps = (data.gaps?.critical || []).slice(0, 3);
             document.getElementById('execGaps').innerHTML = critGaps.length > 0 ? critGaps.map((g, i) =>
-                '<div style="margin-bottom: 8px; padding: 8px; background: #fff5f5; border-radius: 6px; border-left: 3px solid var(--red);"><strong>' + (i+1) + '. ' + g.domain + '</strong><br><span style="color: #777; font-size: 0.85em;">' + g.description + '</span></div>'
+                '<div style="margin-bottom: 8px; padding: 8px; background: #fff5f5; border-radius: 6px; border-left: 3px solid var(--red);"><strong>' + (i+1) + '. ' + esc(g.domain) + '</strong><br><span style="color: #777; font-size: 0.85em;">' + esc(g.description) + '</span></div>'
             ).join('') : '<em style="color: #999;">No critical gaps identified</em>';
 
             // Primary recommendation
             const topRec = (data.recommendations?.immediate || [])[0];
             document.getElementById('execRecommendation').innerHTML = topRec ?
-                '<div style="padding: 10px; background: #f0fafa; border-radius: 6px;"><strong>' + topRec.action + '</strong>' +
-                '<br><span style="color: #777; font-size: 0.85em;">Responsible: ' + topRec.responsible + '</span></div>' :
+                '<div style="padding: 10px; background: #f0fafa; border-radius: 6px;"><strong>' + esc(topRec.action) + '</strong>' +
+                '<br><span style="color: #777; font-size: 0.85em;">Responsible: ' + esc(topRec.responsible) + '</span></div>' :
                 '<em style="color: #999;">No immediate recommendations</em>';
         }
 
@@ -1549,8 +1549,10 @@ Strategy mentions rural hospital inclusion but lacks specific mechanisms for mig
             switchScreen('input');
         }
 
+        function esc(v){ return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
         function showError(message) {
-            elements.errorContainer.innerHTML = `<div class="error-message">${message}</div>`;
+            elements.errorContainer.innerHTML = `<div class="error-message">${esc(message)}</div>`;
         }
 
         function sleep(ms) {
